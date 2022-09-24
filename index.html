@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Bootstrap 5 -->
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <!--  Bootstrap JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    <style>
+        body {
+            color: white;
+            background-image: url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2Fwp8058014.jpg&f=1&nofb=1);
+            background-attachment: fixed;
+            padding: 0;
+            margin: 0;
+        }
+        #LoaderDIV {
+            position: absolute;
+            width: 100%;
+            height: 100vh;
+            z-index: 9999;
+            background: linear-gradient(90deg, rgba(255,217,68,1) 48%, rgba(249,255,203,1) 100%);
+            top: 0;
+        }
+        #Loader {
+            /* border: 1em solid white; */
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 15em;
+            height: 15em;
+            transform: translate( -50%, -90% );
+            text-align: center;
+        }
+        #Loader h2 {
+            color: white;
+            font-size: 2.5em;
+            -webkit-text-stroke: 0.02em  black; 
+        }
+        header {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            background: linear-gradient(90deg, rgba(255,217,68,1) 48%, rgba(249,255,203,1) 100%);
+            color: black;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            width: 97%;
+            height: auto;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+            align-items: center;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+        header div:nth-child(2){
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 2rem;
+        }
+        header div  h2 {
+            display: inline-block;
+            color: white;
+            font-size: 5em;
+            margin: 0; 
+            -webkit-text-stroke: 0.02em  black
+        }
+        header div img {
+            width: 5rem;
+            height: 5rem;
+            
+        }
+        h1 {
+            font-size: 3em;
+            padding-left: 0.5em;
+            color: white;
+            -webkit-text-stroke: 0.02em  black;
+            margin: 0;
+            padding: 0.2em;
+        }
+        nav {
+            display: inline-block;
+            padding: 0.5em;
+        }
+        nav li {
+            display: inline;
+            list-style: none;
+            color: white;
+            font-size: 1.5em;
+            text-decoration: none;
+            padding-left: 0.8em;
+            -webkit-text-stroke: 0.03em  black
+        }
+        nav li:hover {
+            cursor: pointer;
+            color: black;
+        }
+        .Search {
+            display: inline-block;
+          background: #ffd944;
+          padding: 0.2em;
+          border-radius: 0.2em;
+        }
+        .Search label {
+            cursor: pointer;
+        }
+        .Search label .bi-search {
+            color: black;
+        }
+        .hideIt {
+            display: none;
+            
+            
+        }
+        main {
+            align-items: center;
+            justify-content: center;
+        }
+        article{
+            background: black;
+            width: 80%;
+            text-align: center;
+            padding: 1em;
+        }
+        #CoinsSection {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            
+        }
+        .coinBox{
+            background: #282828;
+            color: #ffd944;
+            width: 15rem;
+            height: 10rem;
+            border: 0.1rem solid #ffd944;
+            border-radius: 0.5rem;
+            margin: 0.5rem;
+            padding: 1rem;
+        }
+        .coinBox {
+            display: flex;
+            flex-direction: row;
+            /* gap: 5rem; */
+        }
+        .coinBox div:nth-child(1){
+            width: 10em;
+        }
+        .coinBox div:nth-child(2){
+           
+           width: 2em;
+       }
+       .coinBox button {
+        font-size: 0.8rem;
+        padding: 0.5em;
+       }
+    </style>
+</head>
+<body >
+    <header>
+        <div>
+            <h1>Crypto Central</h1>
+            <nav >
+                <li onclick="NavTO(`Coins`)">Coins</li>
+                <li onclick="NavTO(`Feeds`)">Live Feeds</li>
+                <li onclick="NavTO(`About`)">About</li>
+            </nav>
+        </div>
+        
+        <div>
+            <img id="LoaderGIF"  src="https://c.tenor.com/xCav_HCNw-QAAAAj/flipping-coin-gold-flipping-coin.gif" alt="">
+             <h2 id="CurrentPage">Coins</h2>
+        </div>
+    </header>
+
+    <main>
+        
+    </main>
+
+    <footer>
+
+    </footer>
+
+    <div id="LoaderDIV" class="hideIt">
+        <div id="Loader" >
+            <img id="LoaderGIF"  width="100rem" src="https://c.tenor.com/xCav_HCNw-QAAAAj/flipping-coin-gold-flipping-coin.gif" alt="">
+            <h2>Loading...</h2>
+        </div>
+    </div>
+
+     <!-- jQuery 3.6.1 -->
+     <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+     <script src="script.js"></script>
+</body>
+</html>
