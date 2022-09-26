@@ -99,20 +99,20 @@ function Data2Html( CoinObj , WHatToPrint){
                 </div>
                 `}
 
-        let Search = `<div id="searchDiv" class="Search" >
+        const Search = `<div id="searchDiv" class="Search" >
         <label onclick="SearchCoins()" for="SearchBox"><i class="bi bi-search"> Search </i></label>
         <input id="SearchBox" type="text">
         </div>`
-        CoinsList = `${Search}<section id="CoinsSection">${CoinsList}</section>`;
-        NewHtml = CoinsList;
+        const SectionCoin = `${Search}<section id="CoinsSection">${CoinsList}</section>`;
+        NewHtml = SectionCoin;
         break;
     case "info":
        
-        const  CoinInfoList =  
+         NewHtml =  
             `<div class="CoinDetails">
                     <p>
                         <b>Current Price</b> <br>
-                        EUR: ${CoinObj.EUR} &#8364 <br>
+                        EUR: ${CoinObj.eur} &#8364 <br>
                         USD: ${CoinObj.usd} &#36 <br>
                         ILS: ${CoinObj.ils} &#8362
                     </p>
@@ -149,37 +149,35 @@ async function MoreInfo(CoinID){
     try { 
          //get the coin values
         const CoinPicked = CoinsList.get( `${CoinID}` ); 
-        console.log( CoinPicked )
+        console.log(CoinPicked)
+
+        // setting timeStamp 
+        const TimeStamp = TimeStampPuncher( CoinPicked.InfoTime )
             // check if i request the Coins [info] before by searching it in the MAP
-        if( ("info") in CoinPicked ){
-            console.log('CurrentCoinFo')
-            console.log(CoinPicked.info)
-            ///FIXME: Time Stamp
-            if( !("InfoTime" in CoinPicked) ){
-                CoinPicked.InfoTime = undefined;
-                console.log(CoinPicked.InfoTime + ` 2222`)
-            } 
-            let  TimeStamp = TimeStampPuncher( CoinPicked.InfoTime )
-            
-            if ( TimeStamp [2]){ // check time stamp and update if needed
+        if( CoinPicked.Info  ){
+            // check time stamp is valid
+            if ( TimeStamp[1]){ 
                 return;
-            }} 
-            CoinPicked.InfoTime = TimeStamp[1]; // setting the new TimeStamp
-            // if info is missing so..
-            const InfoUrl = `https://api.coingecko.com/api/v3/coins/${CoinID}`;
-            let Timeout = 2;
-            const InfoData = await APiCatcher( InfoUrl, Timeout )
-            //adding info to coin
-            CoinPicked.info = { "eur": InfoData.market_data.current_price.eur, 
-                    "usd" : InfoData.market_data.current_price.usd, 
-                    "ils": InfoData.market_data.current_price.ils,
-                    "img": InfoData.image.small }
-            console.log(CoinPicked)
-            //push the object back to the map
-            CoinsList.set( CoinID , CoinPicked )
-            const CoinIDCard = $(`#card_${CoinID}`); // input of the MORE INFO
-            CoinIDCard.empty() // clean the htmlLOADER for refill with text
-            CoinIDCard.append( Data2Html( CoinPicked.info , "info") ) ;
+            }
+        } 
+        console.log(`what is this`)
+        // Store Time stamp in the Coin obj
+        CoinPicked.InfoTime = TimeStamp[0]; // setting the new TimeStamp
+        // if info is missing so..
+        const InfoUrl = `https://api.coingecko.com/api/v3/coins/${CoinID}`;
+        let Timeout = 2;
+        const InfoData = await APiCatcher( InfoUrl, Timeout )
+        //adding info to coin
+        CoinPicked.Info = { "eur": InfoData.market_data.current_price.eur, 
+                "usd" : InfoData.market_data.current_price.usd, 
+                "ils": InfoData.market_data.current_price.ils,
+                "img": InfoData.image.small }
+        console.log(CoinPicked)
+        //push the object back to the map
+        CoinsList.set( CoinID , CoinPicked )
+        const CoinIDCard = $(`#card_${CoinID}`); // input of the MORE INFO
+        CoinIDCard.empty() // clean the htmlLOADER for refill with text
+        CoinIDCard.append( Data2Html( CoinPicked.Info , "info") ) ;
     } catch (error){
         alert(error)
     }    
@@ -224,19 +222,30 @@ function AddCoin2Report(Coin){
     alert(CoinsReport)
 }
 
-/// FIXME: time stamper
-
 function TimeStampPuncher(Time){
-    let LastTime = Time;
-    const now = new Date()
-    const NewTime = now.setMinutes(now.getMinutes() + 2) // set new time Stamp
     
-    if(LastTime !== undefined ){ // if it has time stamp
-        if( LastTime > NewTime ){
-            alert(LastTime +` 2 min have'nt been past yet`+ NewTime )
-            return [ null , true ];
-        }
+    // declare time
+    const LastTime = Time;
+    const now = new Date();
+    const NewTime = new Date().setMinutes( now.getMinutes() + 2); // set new time Stamp
+    // alert( NewTime)
+
+    // array to return Value & boolean for IF() statement
+    const NewDate  = [ now.valueOf() , false ]
+    const ReplaceDate = [ NewTime , false];
+    const OldDate = [ LastTime , true ];
+     
+    // if there is no time stamp
+    if(LastTime == undefined){
+        return NewDate;
     }
-    alert(`new Time Stamp`)
-    return [ NewTime , false]; 
+    // if 2 minute have NOT past
+    if( LastTime !== undefined ){ 
+        if( LastTime < NewTime ){
+           return OldDate;
+        } 
+    }
+
+    // if 2 minute Have past
+    return ReplaceDate; 
 }
