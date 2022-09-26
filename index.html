@@ -38,10 +38,22 @@
             transform: translate( -50%, -90% );
             text-align: center;
         }
+        #LoaderGIF{
+            width: 5em;
+        }
         #Loader h2 {
             color: white;
             font-size: 2.5em;
             -webkit-text-stroke: 0.02em  black; 
+        }
+        #LoaderSmallGIF {
+            position: absolute;
+            width: 2em;
+            height: 2em;
+            left: 50%;
+            right: 50%;
+            transform: translate( -50%, -50% );
+            text-align: center;
         }
         header {
             display: flex;
@@ -150,8 +162,9 @@
             flex-direction: row;
             /* gap: 5rem; */
         }
+        /* collapse */
         .coinBox div:nth-child(1){
-            width: 10em;
+            width: 14rem;
         }
         .coinBox div:nth-child(2){
            
@@ -160,6 +173,27 @@
        .coinBox button {
         font-size: 0.8rem;
         padding: 0.5em;
+       }
+       .coinBox .collapse {
+        width: auto;
+        height: auto;
+        color:  #282828;
+       }
+       .CoinDetails {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+       }
+       .CoinDetails p  {
+        font-size: 0.9rem;
+       }
+       .CoinDetails p b {
+        text-transform: uppercase;
+       }
+       .CoinDetails img {
+        width: 2rem;
+        height: 2rem;
+        border-radius: 20%;
        }
     </style>
 </head>
@@ -190,13 +224,13 @@
 
     <div id="LoaderDIV" class="hideIt">
         <div id="Loader" >
-            <img id="LoaderGIF"  width="100rem" src="https://c.tenor.com/xCav_HCNw-QAAAAj/flipping-coin-gold-flipping-coin.gif" alt="">
+            <img id="LoaderGIF"   src="https://c.tenor.com/xCav_HCNw-QAAAAj/flipping-coin-gold-flipping-coin.gif" alt="">
             <h2>Loading...</h2>
         </div>
     </div>
 
      <!-- jQuery 3.6.1 -->
-     <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
-     <script src="script.js"></script>
+     <script defer src="https://code.jquery.com/jquery-3.6.1.js"></script>
+     <script defer src="script.js"></script>
 </body>
 </html>

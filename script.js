@@ -1,7 +1,6 @@
 $(document).ready(function StartPage(){
     NavTO()
 })
-
 function Loader(timeout){
     if((timeout == 0)||(timeout == undefined)){
         return;
@@ -22,7 +21,6 @@ async function NavTO(PageHeader){
         alert(PageHeader +` already on this page`)
         return;
     }
-    alert(PageHeader)
     CurrentScreen = PageHeader;
     // reload new page
     let Page; 
@@ -36,7 +34,7 @@ async function NavTO(PageHeader){
         case `About` : 
             Page = AboutPage(); 
             break;
-        default: //defualt to coins page 
+        default: //default to coins page 
             Page = await CoinsPage(); 
         break;
     }
@@ -59,39 +57,131 @@ function APiCatcher(urlInput, timeout){
    
 }
 
+function Data2Html( CoinObj , WHatToPrint){
+    let NewHtml;
+    switch(WHatToPrint){
+        case "Coins":
+            let CoinsList = ``;
+            // Key = id , values = name , symbols
+            for( const [key , value] of CoinObj){
+                CoinsList += `<div class="coinBox">
 
-let CoinsList;
+                    <div id=sec1>
+                            <div>
+                                <h5>${value.symbol}</h5>     
+                                <p>${value.name}</p>          
+                            </div>
+
+                            <div>   
+                            
+                                <button onclick="MoreInfo('${key}')" id="Btn_${key}" data-bs-target="#Info_${key}" class="btn btn-primary" type="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="Info_${value.id}">
+                                    More Info
+                                </button>
+                            
+                                <div class="collapse" id="Info_${key}">
+                                    <div id="card_${key}" class="card card-body">
+                                                <img id="LoaderSmallGIF" src="https://c.tenor.com/xCav_HCNw-QAAAAj/flipping-coin-gold-flipping-coin.gif" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+
+                            <!-- Compare switch-->
+                        <div id=sec2 class="form-check form-switch">
+                            <p>add+</p>
+                            <br>
+                            <input class="form-check-input" type="checkbox" id="Switch_${key}">     
+                        </div>
+                    </div>
+
+                    
+                </div>
+                `}
+
+        let Search = `<div id="searchDiv" class="Search" >
+        <label onclick="SearchCoins()" for="SearchBox"><i class="bi bi-search"> Search </i></label>
+        <input id="SearchBox" type="text">
+        </div>`
+        CoinsList = `${Search}<section id="CoinsSection">${CoinsList}</section>`;
+        NewHtml = CoinsList;
+        break;
+    case "info":
+       
+        const  CoinInfoList =  
+            `<div class="CoinDetails">
+                    <p>
+                        <b>Current Price</b> <br>
+                        EUR: ${CoinObj.EUR} &#8364 <br>
+                        USD: ${CoinObj.usd} &#36 <br>
+                        ILS: ${CoinObj.ils} &#8362
+                    </p>
+                    <img src="${CoinObj.img}" alt="Coin Image"></img>
+            </div>`;
+        break;
+    }
+    return NewHtml;
+}
+
+
+let CoinsList = new Map();
 
 async function CoinsPage(){
     try {
         let TimeOut = 2;
         const CoinsUrl = `https://api.coingecko.com/api/v3/coins/list`;
         Loader(TimeOut)
-        CoinsList = await APiCatcher(CoinsUrl, TimeOut)
-    
-        CoinsList = CoinsList.slice(0, 100).map( Coin => 
-            Coin = `<div class="coinBox">
-                    <div>
-                        <h5>${Coin.symbol}</h5>     
-                        <p>${Coin.name}</p>          
-                        <!-- FIXME: add target for each coin using jQuery-->
-                        <button data-target="${Coin.id}" class="btn btn-primary" data-toggle="collapse">More Info</button>
-                    </div>
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-                    </div>
-                </div>`).splice("").join("");
-
-                console.log(CoinsList);
-                let Search = `<div id="searchDiv" class="Search" >
-                <label onclick="SearchCoins()" for="SearchBox"><i class="bi bi-search"> Search </i></label>
-                <input id="SearchBox" type="text">
-                </div>`
-                CoinsList = `${Search}<section id="CoinsSection">${CoinsList}</section>`
-                return CoinsList;
+        let CoinJson = await APiCatcher(CoinsUrl, TimeOut)
+        CoinJson = CoinJson.slice(0, 100)
+        for ( const Coin of CoinJson ){
+            // setting to the Map the [Key as the id] & [value as name and symbol.. later add the currency and image]
+            CoinsList.set( Coin.id , { "name": Coin.name, "symbol": Coin.symbol } )
+        }
+        console.log(CoinsList)
+        return Data2Html(CoinsList , "Coins")         
     } catch (error){
         alert(error)
         return `no no`;
+    }    
+}
+
+async function MoreInfo(CoinID){
+    try { 
+         //get the coin values
+        const CoinPicked = CoinsList.get( `${CoinID}` ); 
+        console.log( CoinPicked )
+            // check if i request the Coins [info] before by searching it in the MAP
+        if( ("info") in CoinPicked ){
+            console.log('CurrentCoinFo')
+            console.log(CoinPicked.info)
+            ///FIXME: Time Stamp
+            if( !("InfoTime" in CoinPicked) ){
+                CoinPicked.InfoTime = undefined;
+                console.log(CoinPicked.InfoTime + ` 2222`)
+            } 
+            let  TimeStamp = TimeStampPuncher( CoinPicked.InfoTime )
+            
+            if ( TimeStamp [2]){ // check time stamp and update if needed
+                return;
+            }} 
+            CoinPicked.InfoTime = TimeStamp[1]; // setting the new TimeStamp
+            // if info is missing so..
+            const InfoUrl = `https://api.coingecko.com/api/v3/coins/${CoinID}`;
+            let Timeout = 2;
+            const InfoData = await APiCatcher( InfoUrl, Timeout )
+            //adding info to coin
+            CoinPicked.info = { "eur": InfoData.market_data.current_price.eur, 
+                    "usd" : InfoData.market_data.current_price.usd, 
+                    "ils": InfoData.market_data.current_price.ils,
+                    "img": InfoData.image.small }
+            console.log(CoinPicked)
+            //push the object back to the map
+            CoinsList.set( CoinID , CoinPicked )
+            const CoinIDCard = $(`#card_${CoinID}`); // input of the MORE INFO
+            CoinIDCard.empty() // clean the htmlLOADER for refill with text
+            CoinIDCard.append( Data2Html( CoinPicked.info , "info") ) ;
+    } catch (error){
+        alert(error)
     }    
 }
 
@@ -132,4 +222,21 @@ function AddCoin2Report(Coin){
     }
     CoinsReport.push(Coin)
     alert(CoinsReport)
+}
+
+/// FIXME: time stamper
+
+function TimeStampPuncher(Time){
+    let LastTime = Time;
+    const now = new Date()
+    const NewTime = now.setMinutes(now.getMinutes() + 2) // set new time Stamp
+    
+    if(LastTime !== undefined ){ // if it has time stamp
+        if( LastTime > NewTime ){
+            alert(LastTime +` 2 min have'nt been past yet`+ NewTime )
+            return [ null , true ];
+        }
+    }
+    alert(`new Time Stamp`)
+    return [ NewTime , false]; 
 }
