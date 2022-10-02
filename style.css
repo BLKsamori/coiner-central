@@ -1,0 +1,305 @@
+body {
+    color: white;
+    background-image: url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2Fwp8058014.jpg&f=1&nofb=1);
+    background-attachment: fixed;
+    padding: 0;
+    margin: 0;
+}
+.hideIt {
+    display: none;
+}
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    
+}
+/* LOADER Progress Bar */
+#LoaderDIV {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    z-index: 9999;
+    background: linear-gradient(90deg, rgba(255,217,68,1) 48%, rgba(249,255,203,1) 100%);
+    top: 0;
+
+}
+#Loader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 15em;
+    height: 15em;
+    transform: translate( -50%, -90% );
+    text-align: center;
+}
+#LoaderGIF{
+    width: 5em;
+}
+#Loader h2 {
+    color: white;
+    font-size: 2.5em;
+    -webkit-text-stroke: 0.02em  black; 
+}
+#LoaderSmallGIF {
+    position: absolute;
+    width: 2em;
+    height: 2em;
+    left: 50%;
+    right: 50%;
+    transform: translate( -50%, -50% );
+    text-align: center;
+}
+/* Header & NAV */
+header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    background: linear-gradient(90deg, rgba(255,217,68,1) 48%, rgba(249,255,203,1) 100%);
+    color: black;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    width: 97%;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    align-items: center;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+header div:nth-child(2){
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 2rem;
+}
+header div  h2 {
+    display: inline-block;
+    color: white;
+    font-size: 5em;
+    margin: 0; 
+    -webkit-text-stroke: 0.02em  black
+}
+header div img {
+    width: 5rem;
+    height: 5rem;
+}
+h1 {
+    font-size: 3em;
+    padding-left: 0.5em;
+    color: white;
+    -webkit-text-stroke: 0.02em  black;
+    margin: 0;
+    padding: 0.2em;
+}
+nav {
+    display: inline-block;
+    padding: 0.5em;
+}
+nav li {
+    display: inline;
+    list-style: none;
+    color: white;
+    font-size: 1.5em;
+    text-decoration: none;
+    padding-left: 0.8em;
+    -webkit-text-stroke: 0.03em  black
+}
+nav li:hover {
+    cursor: pointer;
+    color: black;
+}
+
+/* COIN PAGE HOME */
+#CoinsSection {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    
+}
+.coinBox{
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    background: #282828;
+    color: #ffd944;
+    width: 15rem;
+    height: 10rem;
+    border: 0.1rem solid #ffd944;
+    border-radius: 0.5rem;
+    margin: 0.5rem;
+    padding: 0.4rem;
+    
+}
+/* collapse */
+.coinBox #prt1 {
+    display: flex;
+    flex-direction: row;
+    gap: 0.2rem;
+    width: 15rem;
+    max-height: 6rem;
+   height: auto;
+   
+   
+}
+/* name Div */
+.coinBox #prt1 div:nth-child(1) {
+    padding: 0.3rem;
+    width: 10rem;
+    padding: 0.2rem;
+    overflow: scroll;
+}
+/* Add div */
+.coinBox #prt1 div:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: center;
+    width: 4rem;
+    padding: 0.2rem;
+}
+.coinBox #prt1 div:nth-child(2) p {
+    font-size: 0.8rem;
+}
+/* Info div */
+.coinBox #prt2 { 
+   width: auto;
+   height: auto;
+   padding: 0.2rem;
+}
+.coinBox button {
+font-size: 0.8rem;
+/* width: 5rem; */
+padding: 0.5em;
+}
+.coinBox .collapse {
+width: auto;
+height: auto;
+color:  #282828;
+}
+/* SearchBAR */
+.Search {
+    display: inline-block;
+  background: #ffd944;
+  padding: 0.2em;
+  border-radius: 0.2em;
+}
+.Search label {
+    cursor: pointer;
+}
+.Search label .bi-search {
+    color: black;
+}
+
+/* REPORT Banner CSS */
+.ReportBannerScreen{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+}
+.BackDropReport {
+    position: fixed;
+    z-index: 4;
+    background: white;
+    width: 100%;
+    height: 100%;
+    opacity: 0.4;
+}
+.ReportBanner {
+    z-index: 6;
+    position: absolute;
+    left: 50%;
+    right: 50%;
+    transform: translate( -50%,10%);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    width: 80%;
+    max-width: 40rem;
+    min-width: 30rem;
+    min-height: 30rem;
+    max-height: 40rem;
+    overflow: scroll;
+    background: black;
+    border-radius: 0.7rem;
+    border: 0.2rem solid  #ffd944;
+}
+.CoinReportLine {
+    background: rgb(57, 54, 44);
+    display: flex;
+    flex-direction: row; 
+    width: 100%;
+    height: 4rem;
+    padding: 0.5rem;
+    border-top: 0.1rem solid #ffd944;
+    
+}
+.CoinReportLine label {
+    width: 90%;
+}
+.CoinReportLine input[type="checkbox"]{
+    width: 1.5rem;
+    height: 1.5rem;
+    align-self: flex-start;
+    width: 3rem;
+}
+.EndReport {
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+    gap: 10rem;
+}
+.EndReport button {
+    border-radius: 0.5rem;
+    width: 4rem;
+    height: 2rem;
+    font-weight: bold;
+}
+.EndReport button:nth-child(1){
+    border: 0.2 solid white;
+    color:  #ffd944;
+    background: rgb(39, 39, 39);
+}
+.EndReport button:nth-child(2){
+    border: 0.5 solid white;
+    background: #ffd944;
+    align-self: flex-end; 
+    justify-self: flex-end;
+}
+
+ /* ABOUT PAGE */
+ article{
+    font-size: 1.2rem;
+    line-height: 2rem;
+    text-align: center;
+    width: 80%;
+    background:black;
+    padding: 3em;
+    
+}
+/* FEED PAGE */
+.emptyFeeds {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    text-align: center;
+    font-size: 1.5rem;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    color: white;
+    background: radial-gradient( circle, rgba(84,85,88,1) 0%, rgba(29,30,33,1) 15%);
+    margin: 0rem;
+    padding: 3rem;
+}

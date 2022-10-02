@@ -1,6 +1,8 @@
+// COin API https://www.coingecko.com/en/api/documentation
 $(document).ready(function StartPage(){
     NavTO()
 })
+
 function Loader(timeout){
     if((timeout == 0)||(timeout == undefined)){
         return;
@@ -11,10 +13,11 @@ function Loader(timeout){
         Loader.addClass(`hideIt`)
     }, 1000 * timeout);
 }
-
+const MainPage = $(`main`) // page <main> 
 let CurrentScreen; // Current Page Saver
+
 async function NavTO(PageHeader){
-    const MainPage = $(`main`) // page <main> 
+    alert(PageHeader)
     const CurrentPage = $(`#CurrentPage`) // <header> >  <h2>
     // check if current page is clicked
     if((CurrentScreen == PageHeader)&&(CurrentScreen !== undefined)){
@@ -27,20 +30,24 @@ async function NavTO(PageHeader){
      switch(PageHeader){
         case `Coins`: 
             Page = await CoinsPage(); 
+            MainPage.html(``)
+            MainPage.append(Page)
             break;
-        case `Live Feeds`: 
-            Page = FeedsPage();
+        case `Feeds`:
+            await FeedsPage();
             break;
         case `About` : 
             Page = AboutPage(); 
+            MainPage.html(``)
+            MainPage.append(Page)
             break;
-        default: //default to coins page 
+        default :
             Page = await CoinsPage(); 
+            MainPage.html(``)
+            MainPage.append(Page)
         break;
     }
     CurrentPage.text(PageHeader);
-    MainPage.text(``)
-    MainPage.append(Page)
 }
 
 function APiCatcher(urlInput, timeout){
@@ -57,72 +64,29 @@ function APiCatcher(urlInput, timeout){
    
 }
 
-function Data2Html( CoinObj , WHatToPrint){
-    let NewHtml;
-    switch(WHatToPrint){
-        case "Coins":
-            let CoinsList = ``;
-            // Key = id , values = name , symbols
-            for( const [key , value] of CoinObj){
-                CoinsList += `<div class="coinBox">
-
-                    <div id=sec1>
-                            <div>
-                                <h5>${value.symbol}</h5>     
-                                <p>${value.name}</p>          
-                            </div>
-
-                            <div>   
-                            
-                                <button onclick="MoreInfo('${key}')" id="Btn_${key}" data-bs-target="#Info_${key}" class="btn btn-primary" type="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="Info_${value.id}">
-                                    More Info
-                                </button>
-                            
-                                <div class="collapse" id="Info_${key}">
-                                    <div id="card_${key}" class="card card-body">
-                                                <img id="LoaderSmallGIF" src="https://c.tenor.com/xCav_HCNw-QAAAAj/flipping-coin-gold-flipping-coin.gif" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-
-                            <!-- Compare switch-->
-                        <div id=sec2 class="form-check form-switch">
-                            <p>add+</p>
-                            <br>
-                            <input class="form-check-input" type="checkbox" id="Switch_${key}">     
-                        </div>
-                    </div>
-
-                    
-                </div>
-                `}
-
-        const Search = `<div id="searchDiv" class="Search" >
-        <label onclick="SearchCoins()" for="SearchBox"><i class="bi bi-search"> Search </i></label>
-        <input id="SearchBox" type="text">
-        </div>`
-        const SectionCoin = `${Search}<section id="CoinsSection">${CoinsList}</section>`;
-        NewHtml = SectionCoin;
-        break;
-    case "info":
-       
-         NewHtml =  
-            `<div class="CoinDetails">
-                    <p>
-                        <b>Current Price</b> <br>
-                        EUR: ${CoinObj.eur} &#8364 <br>
-                        USD: ${CoinObj.usd} &#36 <br>
-                        ILS: ${CoinObj.ils} &#8362
-                    </p>
-                    <img src="${CoinObj.img}" alt="Coin Image"></img>
-            </div>`;
-        break;
+// FIXME: coin search continue the API
+async function SearchCoins(){
+    const SearchInput = document.querySelector(`#SearchBox`);
+    if((SearchInput.value == ``)||(SearchInput.value.length < 2)){
+        alert(`Input Incorrect`)
+        return;
     }
-    return NewHtml;
-}
+    alert(`Search Coins: ${SearchInput.value}`)
+    try {
+    const SearchUrl = `https://api.coingecko.com/api/v3/search?query=${SearchInput.value}`
+    const SearchedCoin = APiCatcher(SearchUrl)
+        // 
+        // FIXME:
+        // CODE GOES HERE
+        // 
 
+
+    //clean search box after Results
+    SearchInput.value =``;
+    } catch(error) {
+        alert(error)
+    }
+}
 
 let CoinsList = new Map();
 
@@ -183,45 +147,6 @@ async function MoreInfo(CoinID){
     }    
 }
 
-function FeedsPage(){
-    alert(`Feed Page`)
-}
-function AboutPage(){
-    alert(`About Page`)
-    return `<article> Digital currency- or currency as it's also known- is the transfer of money or payment information via computer networks. It's a virtual unit of currency that can be transferred and received by electronic means. The most popular digital currency is Bitcoin, which is gaining ground in the financial world and becoming more relevant with each passing day.
-    Digital currency is easy to transfer and receive since it exists in digital form. Transactions are sent over the internet and saved on computer systems without needing to be physically preserved. This makes digital currency much more convenient than traditional currency since users don't have to seek out a bank or physical location to receive their payment. Digital currency also has many advantages when it comes to security and transaction processing speed. However, there are downsides when compared to physical currency- for example, digital currencies can be hacked or lost easily.
-    </article>`
-}
-
-function SearchCoins(){
-    const SearchInput = document.querySelector(`#SearchBox`);
-    if((SearchInput.value == ``)||(SearchInput.value.length < 2)){
-        alert(`Input Incorrect`)
-        return;
-    }
-    alert(`Search Coins: ${SearchInput.value}`)
-
-    //clean search box after Results
-    SearchInput.value =``;
-}
-
-
-
-let CoinsReport = [];
-function AddCoin2Report(Coin){ 
-    alert(`this: `+ Coin)
-    if(CoinsReport.find(Coin)){
-        alert(`Coin is in already`)
-        return;
-    } 
-    if(CoinsReport.length == 2 ){
-        alert(`There are already 2 Coins in the Report`)
-        return;
-    }
-    CoinsReport.push(Coin)
-    alert(CoinsReport)
-}
-
 function TimeStampPuncher(Time){
     
     // declare time
@@ -249,3 +174,337 @@ function TimeStampPuncher(Time){
     // if 2 minute Have past
     return ReplaceDate; 
 }
+
+/// REPORT BANNER ON COIN PAGE
+let CoinsReport = [];
+let CoinsReportBanner = [];
+
+function AddCoin2Report(CoinID){ 
+   
+  //check if coin has checked or unchecked
+  const CoinCheckBox = $(`#Switch_${CoinID}` )
+  if( !CoinCheckBox.prop( 'checked')){
+    // remove the coin
+    CoinsReport = CoinsReport.filter(coin => coin.id !== CoinID) //.delete()
+    return;
+  }
+  const NewCoinReport = {"id": CoinID,"name": CoinsList.get(CoinID).name, "symbol": CoinsList.get(CoinID).symbol}
+  if(CoinsReport.length > 4 ){
+    CoinCheckBox.prop( 'checked' , false) // unchecked the item
+    CoinsReportBanner = CoinsReport;
+    CoinsReportBanner.push(CoinID )
+   
+    MainPage.append(Data2Html( CoinsReportBanner , "reportBanner")) ///FIXME:
+      return;
+  } else {
+    CoinsReport.push(NewCoinReport)
+  }
+  //FIXME: ADD save array in the Storage
+}
+/// report Banner banner
+
+function CoinReportBanner(CoinID){ 
+
+    const ReportBanner = $(`.ReportBannerScreen`) // the Report Banner
+
+    const CoinCheckBanner = $( `#Check_${CoinID}`)  //$( `#Check_CoinID`)
+    alert(`this: `+ CoinID)
+
+  // if Cancel button was pushed
+  if ( CoinID == `cancel`){
+    ReportBanner.remove()
+    return;
+  }
+  if ( CoinID == `done`){
+    alert('About DOn: ' + CoinsReportBanner.length) 
+    if(CoinsReportBanner.length > 5 ){
+          return;
+      }
+
+    CoinsReport = CoinsReportBanner;
+    for( const Coin in CoinsReport ){
+        const CoinChecked = $(`#Switch_${Coin}` )
+        CoinChecked.prop( 'checked' , true)
+    }
+    ReportBanner.remove()
+    return;
+  }
+
+  if( !CoinCheckBanner.prop( 'checked')) {
+    CoinsReportBanner = CoinsReportBanner.filter(coin => coin.id !== CoinID)
+    return;
+    } else{
+        alert(` is in`)
+        const NewCoinReport = {"id": CoinID,"name": CoinsList.get(CoinID).name , "symbol": CoinsList.get(CoinID).symbol}
+        CoinsReportBanner.push(NewCoinReport)
+    } 
+}
+
+let CoinsPricesArr = [];
+
+async function FeedsPage(){
+    try{
+        if(CoinsReport.length == 0){
+            MainPage.html(``)
+            MainPage.append(Data2Html( CoinsReport , "EmptyFeed"))
+            return;
+        }
+        let CoinsSymbols = [];
+        for(const Coin of CoinsReport){
+            console.log(Coin);
+            CoinsSymbols.push(Coin.symbol)
+            console.log(Coin.symbol);
+        }
+
+        MainPage.html(``)
+        //Append the Div for the Chart
+        MainPage.append(Data2Html( "" , "Feed"))
+        //then Add the Chart to the DIV
+
+        CoinsSymbols = CoinsSymbols.splice("").join().toUpperCase()
+        const CurrenciesTO = `USD,EUR,ILS`
+        const ApiKey = `3fa63ebf50a7a9985593e34a3bff90add4979f3b6445759dfe38779bf898e559`
+        const CoinsPriceUrl = `https://min-api.cryptocompare.com/data/pricemulti?fsyms=` + CoinsSymbols + `&tsyms=`+ CurrenciesTO + ApiKey;
+        Loader(2)
+        setInterval(() => {
+            GetFeeds(CoinsPriceUrl)
+        }, 1000 * 2);
+        
+        return 
+    } catch(error){
+        alert(error)
+    }
+}
+ async function GetFeeds(CoinsPriceUrl){
+    console.log(CoinsPriceUrl);
+    const CoinsPrices = await APiCatcher( CoinsPriceUrl, 0 )
+    const NewTime = new Date();
+    console.log(`Time is: `+ NewTime);
+    CoinsPricesArr.push({"PriceTime": NewTime, "CoinsPrices": CoinsPrices})
+    console.log(CoinsPricesArr);
+    FeedsChart(CoinsPricesArr)
+ }
+
+function AboutPage(){
+    alert(`this is About Page`)
+    return Data2Html( "" ,  "About");
+}
+
+
+function Data2Html( CoinObj , WHatToPrint){
+    alert( `Data2Html: ` + WHatToPrint)
+    let NewHtml =``;
+    switch(WHatToPrint){
+        
+        case "Coins":
+            let CoinsList = ``;
+            // Key = id , values = name , symbols
+            for( const [key , value] of CoinObj){
+                CoinsList += 
+                `<div class="coinBox">
+
+                        <div id=prt1>
+                            <div>
+                                <h5>${value.symbol}</h5>     
+                                <p>${value.name}</p>          
+                            </div>
+
+                            <!-- Compare switch-->
+                            <div class="form-check form-switch">
+                                <p> Add+</p>
+                                <input onchange="AddCoin2Report('${key}')" class="form-check-input" type="checkbox" id="Switch_${key}">     
+                            </div>
+                            
+                        </div>
+                        
+
+                        
+                        <!-- Collapse -->
+                        <div id=prt2 >   
+                                <button onclick="MoreInfo('${key}')" id="Btn_${key}" data-bs-target="#Info_${key}" class="btn btn-primary" type="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="Info_${value.id}">
+                                    More Info
+                                </button>
+                            
+                                <div class="collapse" id="Info_${key}">
+                                    <div id="card_${key}" class="card card-body">
+                                                <img id="LoaderSmallGIF" src="https://c.tenor.com/xCav_HCNw-QAAAAj/flipping-coin-gold-flipping-coin.gif" alt="">
+                                    </div>
+                                </div>
+                        </div>
+
+                </div>
+                `}
+
+        const Search = `<div id="searchDiv" class="Search" >
+        <label onclick="SearchCoins()" for="SearchBox"><i class="bi bi-search"> Search </i></label>
+        <input id="SearchBox" type="text">
+        </div>`
+        const SectionCoin = `${Search}<section id="CoinsSection">${CoinsList}</section>`;
+        NewHtml = SectionCoin;
+        break;
+
+    case "info":
+       
+         NewHtml =  
+            `<div class="CoinDetails">
+                    <p>
+                        <b>Current Price</b> <br>
+                        EUR: ${CoinObj.eur} &#8364 <br>
+                        USD: ${CoinObj.usd} &#36 <br>
+                        ILS: ${CoinObj.ils} &#8362
+                    </p>
+                    <img src="${CoinObj.img}" alt="Coin Image"></img>
+            </div>`;
+        break;
+
+    case "reportBanner":
+        NewHtml += `<section class="ReportBannerScreen">
+        <div class="BackDropReport"></div>
+        <section class="ReportBanner">
+            <span> You Can Add Up to 5 Coins</span>
+            <h2>Coin Report <span>(${CoinObj.length})</span></h2>`;
+        
+        CoinObj.forEach( Coin => {
+            NewHtml += `<div id="report_${Coin.id}" class="CoinReportLine"> 
+            <label for="Check_${Coin.id}" >
+                <h5>${Coin.id}</h5>
+                <p>Z${Coin.name}</p>
+            </label> 
+            <input onchange="CoinReportBanner('${Coin.id}')" class="form-check-input" type="checkbox" id="Check_${Coin.id}" checked>         
+        </div>`});
+        NewHtml += `<div class="EndReport">
+                        <button onclick="CoinReportBanner('cancel')" >Cancel</button>
+                        <button onclick="CoinReportBanner('done')" >Done</button>
+                     </div>
+             </section>
+        </section>`;
+        break;
+
+    case "EmptyFeed":
+        NewHtml = `<div class="emptyFeeds"> 
+            <p>
+                Feeds are <b>Empty</b>, (${CoinObj.length}) Coins to Compare. <br>
+                Please add Coins from the Coins-Page
+                and come back.
+            </p>
+    </div>`
+        break;
+
+    case "Feed":
+        NewHtml = `<div id="chartContainer" style="height: 300px; width: 100%;"></div>`
+        break;
+    case "About":
+        NewHtml = `<article> Digital currency- or currency as it's also known- is the transfer of money or payment information via computer networks. It's a virtual unit of currency that can be transferred and received by electronic means. The most popular digital currency is Bitcoin, which is gaining ground in the financial world and becoming more relevant with each passing day.
+        Digital currency is easy to transfer and receive since it exists in digital form. Transactions are sent over the internet and saved on computer systems without needing to be physically preserved. This makes digital currency much more convenient than traditional currency since users don't have to seek out a bank or physical location to receive their payment. 
+        <br> Digital currency also has many advantages when it comes to security and transaction processing speed. However, there are downsides when compared to physical currency- for example, digital currencies can be hacked or lost easily.
+        <br><br> So while U hold on your precious coins we will provide you with the stat so you will never get caught sleeping on your wallet.
+        </article>`;
+        break;
+    }
+
+    return NewHtml;
+}
+
+
+function FeedsChart(CoinCompereObj) {
+    console.log(`CoinCompereObj`);
+    console.log(CoinCompereObj);
+    if(!Object.keys(CoinCompereObj).length){
+        console.log(`Empty`);
+        return;
+    }
+    console.log(`CoinCompereObj isGood`);
+    for (const CoinsPriceList of CoinCompereObj){
+        for( const Coin of CoinsPriceList){
+            
+        }
+    }
+    var options = {
+        exportEnabled: true,
+        animationEnabled: true,
+        title:{
+            text: "Units Sold VS Profit"
+        },
+        subtitles: [{
+            text: "Click Legend to Hide or Unhide Data Series"
+        }],
+        axisX: {
+            title: "States"
+        },
+        axisY: {
+            title: "Units Sold",
+            titleFontColor: "#4F81BC",
+            lineColor: "#4F81BC",
+            labelFontColor: "#4F81BC",
+            tickColor: "#4F81BC"
+        },
+        axisY2: {
+            title: "Profit in USD",
+            titleFontColor: "#C0504E",
+            lineColor: "#C0504E",
+            labelFontColor: "#C0504E",
+            tickColor: "#C0504E"
+        },
+        toolTip: {
+            shared: true
+        },
+        legend: {
+            cursor: "pointer",
+            itemclick: toggleDataSeries
+        },
+        data: [{
+            type: "spline",
+            name: "Units Sold",
+            showInLegend: true,
+            xValueFormatString: "MMM YYYY",
+            yValueFormatString: "#,##0 Units",
+            dataPoints: [
+                { x: new Date(2016, 0, 1),  y: 120 },
+                { x: new Date(2016, 1, 1), y: 135 },
+                { x: new Date(2016, 2, 1), y: 144 },
+                { x: new Date(2016, 3, 1),  y: 103 },
+                { x: new Date(2016, 4, 1),  y: 93 },
+                { x: new Date(2016, 5, 1),  y: 129 },
+                { x: new Date(2016, 6, 1), y: 143 },
+                { x: new Date(2016, 7, 1), y: 156 },
+                { x: new Date(2016, 8, 1),  y: 122 },
+                { x: new Date(2016, 9, 1),  y: 106 },
+                { x: new Date(2016, 10, 1),  y: 137 },
+                { x: new Date(2016, 11, 1), y: 142 }
+            ]
+        },
+        {
+            type: "spline",
+            name: "Profit",
+            axisYType: "secondary",
+            showInLegend: true,
+            xValueFormatString: "MMM YYYY",
+            yValueFormatString: "$#,##0.#",
+            dataPoints: [
+                { x: new Date(2016, 0, 1),  y: 19034.5 },
+                { x: new Date(2016, 1, 1), y: 20015 },
+                { x: new Date(2016, 2, 1), y: 27342 },
+                { x: new Date(2016, 3, 1),  y: 20088 },
+                { x: new Date(2016, 4, 1),  y: 20234 },
+                { x: new Date(2016, 5, 1),  y: 29034 },
+                { x: new Date(2016, 6, 1), y: 30487 },
+                { x: new Date(2016, 7, 1), y: 32523 },
+                { x: new Date(2016, 8, 1),  y: 20234 },
+                { x: new Date(2016, 9, 1),  y: 27234 },
+                { x: new Date(2016, 10, 1),  y: 33548 },
+                { x: new Date(2016, 11, 1), y: 32534 }
+            ]
+        }]
+    };
+    $("#chartContainer").CanvasJSChart(options);
+    
+    function toggleDataSeries(e) {
+        if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+            e.dataSeries.visible = false;
+        } else {
+            e.dataSeries.visible = true;
+        }
+        e.chart.render();
+    }
+    
+    }
