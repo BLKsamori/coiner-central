@@ -1,0 +1,320 @@
+{
+  "shapes" : [
+    {
+      "class" : "dia-node",
+      "attrs" : "{\n  \"lockAspectRatio\" : false,\n  \"shape\" : \"rect\",\n  \"position\" : \"{-750.00000000000011, 40}\",\n  \"angle\" : 0,\n  \"size\" : \"{1540.0000000000002, 1080}\",\n  \"identifier\" : \"CB01B43A-67AC-4F69-8843-1FCB016D68F7\",\n  \"tag\" : 0,\n  \"connectable\" : true,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"isTemplate\" : false,\n  \"themeStyle\" : \"style_12\",\n  \"privateStyle\" : {\n\n  },\n  \"isRelative\" : false\n}"
+    },
+    {
+      "class" : "dia-node",
+      "attrs" : "{\n  \"lockAspectRatio\" : false,\n  \"shape\" : \"apqc\",\n  \"position\" : \"{550.9145568433654, 203.18181818181824}\",\n  \"angle\" : 0,\n  \"size\" : \"{153.26732673267327, 44.545454545454547}\",\n  \"identifier\" : \"2870F628-6A49-46EE-8279-BD0995A704B2\",\n  \"tag\" : 0,\n  \"connectable\" : true,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"isTemplate\" : false,\n  \"themeStyle\" : \"style_23\",\n  \"value\" : \"First Load:\\nAll the coins\",\n  \"privateStyle\" : {\n    \"textAlignment\" : 2,\n    \"font\" : \"Helvetica,14.0\"\n  },\n  \"isRelative\" : false\n}"
+    },
+    {
+      "class" : "connector",
+      "attrs" : "{\n  \"isRelative\" : false,\n  \"points\" : [\n    {\n      \"point\" : \"{624.72643803148424, 247.72727272727275}\",\n      \"axis\" : 1\n    },\n    {\n      \"point\" : \"{621.90465585326649, 266.7045454545455}\",\n      \"axis\" : 2\n    }\n  ],\n  \"shape\" : \"connector\",\n  \"targetPoint\" : \"{621.90465585326649, 285.68181818181824}\",\n  \"identifier\" : \"961EB327-B3F0-43CF-8F2A-199D5233E176\",\n  \"tag\" : 0,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"themeStyle\" : \"edge_11\",\n  \"isTemplate\" : false,\n  \"privateStyle\" : {\n    \"crossStyle\" : \"round\"\n  },\n  \"exitPoint\" : {\n    \"offset\" : \"{83.019801980198011, 0}\",\n    \"direction\" : 0,\n    \"location\" : \"{-0.5, -0.5}\"\n  },\n  \"sourcePoint\" : \"{627.54822020970198, 247.72727272727275}\",\n  \"entryPoint\" : {\n    \"offset\" : \"{0, 0}\",\n    \"direction\" : 0,\n    \"location\" : \"{0, 0.5}\"\n  }\n}"
+    },
+    {
+      "class" : "dia-node",
+      "attrs" : "{\n  \"lockAspectRatio\" : false,\n  \"shape\" : \"advanced:triangle\",\n  \"position\" : \"{538.88485387306844, 285.68181818181824}\",\n  \"angle\" : 0,\n  \"size\" : \"{171.68316831683177, 95}\",\n  \"identifier\" : \"303F8A4D-C5D6-4038-8E7F-195C852ADCFA\",\n  \"tag\" : 0,\n  \"connectable\" : true,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"isTemplate\" : false,\n  \"themeStyle\" : \"style_15\",\n  \"value\" : \"\\nif\\nCoinArr == `` \\n|| undifined\",\n  \"privateStyle\" : {\n    \"font\" : \"Helvetica,14.0\",\n    \"textAlignment\" : 2,\n    \"textColor\" : \"#283D59FF\"\n  },\n  \"isRelative\" : false,\n  \"shapeOption\" : {\n    \"dx\" : 0.47036188548019475\n  }\n}"
+    },
+    {
+      "class" : "dia-node",
+      "attrs" : "{\n  \"lockAspectRatio\" : false,\n  \"shape\" : \"rect\",\n  \"position\" : \"{220, 480}\",\n  \"angle\" : 0,\n  \"size\" : \"{191.58415841584159, 70}\",\n  \"identifier\" : \"C7D1C6FC-55D0-4EAA-8123-36343B65FB56\",\n  \"tag\" : 0,\n  \"connectable\" : true,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"isTemplate\" : false,\n  \"themeStyle\" : \"style_21\",\n  \"value\" : \"1) CoinArr .map { “id”: 1231, “html”: <div> }\\n2) Set object CoinList\",\n  \"privateStyle\" : {\n    \"font\" : \"Helvetica,14.0\",\n    \"textAlignment\" : 2,\n    \"textColor\" : \"#283D59FF\"\n  },\n  \"isRelative\" : false\n}"
+    },
+    {
+      "class" : "connector",
+      "attrs" : "{\n  \"isRelative\" : false,\n  \"points\" : [\n\n  ],\n  \"shape\" : \"connector\",\n  \"targetPoint\" : \"{320, 340.68181818181824}\",\n  \"value\" : {\n    \"labels\" : [\n      {\n        \"string\" : \"true\",\n        \"offset\" : \"{0, 0}\",\n        \"position\" : 0.36883533133676627,\n        \"positionType\" : 0\n      }\n    ]\n  },\n  \"identifier\" : \"94CAD92E-BAE2-4B2A-B89B-B55040A50A26\",\n  \"tag\" : 0,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"privateStyle\" : {\n    \"textAlignment\" : 2,\n    \"textBackgroundColor\" : \"#FFFFFFFF\",\n    \"textVerticalAlignment\" : 1,\n    \"font\" : \"Helvetica,12.0\",\n    \"crossStyle\" : \"round\"\n  },\n  \"themeStyle\" : \"edge_11\",\n  \"isTemplate\" : false,\n  \"exitPoint\" : {\n    \"offset\" : \"{0, 0}\",\n    \"direction\" : 0,\n    \"location\" : \"{0, -0.5}\"\n  },\n  \"sourcePoint\" : \"{579.26146325042771, 333.18181818181824}\",\n  \"entryPoint\" : {\n    \"offset\" : \"{40.376609377359316, 47.5}\",\n    \"direction\" : 0,\n    \"location\" : \"{-0.5, -0.5}\"\n  }\n}"
+    },
+    {
+      "class" : "dia-node",
+      "attrs" : "{\n  \"lockAspectRatio\" : false,\n  \"shape\" : \"rect\",\n  \"position\" : \"{550.00000000000011, 780}\",\n  \"angle\" : 0,\n  \"size\" : \"{102.17821782178217, 44.545454545454547}\",\n  \"identifier\" : \"0BDDF0E6-1B22-42FC-837E-47AC170144CE\",\n  \"tag\" : 0,\n  \"connectable\" : true,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"isTemplate\" : false,\n  \"themeStyle\" : \"style_16\",\n  \"value\" : \"return CoinDom\",\n  \"privateStyle\" : {\n    \"textAlignment\" : 2,\n    \"font\" : \"Helvetica,14.0\"\n  },\n  \"isRelative\" : false\n}"
+    },
+    {
+      "class" : "connector",
+      "attrs" : "{\n  \"isRelative\" : false,\n  \"points\" : [\n\n  ],\n  \"shape\" : \"connector\",\n  \"targetPoint\" : \"{670, 692.27272727272725}\",\n  \"value\" : {\n    \"labels\" : [\n      {\n        \"string\" : \"false\",\n        \"offset\" : \"{0, 0}\",\n        \"position\" : 0.50535748112496603,\n        \"positionType\" : 0\n      }\n    ]\n  },\n  \"identifier\" : \"6E873B23-EF9A-4676-A594-BA0E459CD105\",\n  \"tag\" : 0,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"privateStyle\" : {\n    \"textAlignment\" : 2,\n    \"textVerticalAlignment\" : 1,\n    \"textBackgroundColor\" : \"#FFFFFFFF\",\n    \"font\" : \"Helvetica,12.0\",\n    \"crossStyle\" : \"round\"\n  },\n  \"themeStyle\" : \"edge_11\",\n  \"isTemplate\" : false,\n  \"exitPoint\" : {\n    \"offset\" : \"{0, 0}\",\n    \"direction\" : 0,\n    \"location\" : \"{0.5, 0}\"\n  },\n  \"sourcePoint\" : \"{660.05368385683562, 331.76254828382571}\",\n  \"entryPoint\" : {\n    \"offset\" : \"{0, 0}\",\n    \"direction\" : 0,\n    \"location\" : \"{0.20577000163555245, -0.01493968313676353}\"\n  }\n}"
+    },
+    {
+      "class" : "dia-node",
+      "attrs" : "{\n  \"lockAspectRatio\" : false,\n  \"shape\" : \"rect\",\n  \"position\" : \"{525.24752475247521, 670}\",\n  \"angle\" : 0,\n  \"size\" : \"{144.75247524752476, 44.545454545454547}\",\n  \"identifier\" : \"0FC41285-72C7-49BE-BA53-DBECD3EF99D8\",\n  \"tag\" : 0,\n  \"connectable\" : true,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"isTemplate\" : false,\n  \"themeStyle\" : \"variant_4\",\n  \"value\" : \"CoinDom  = CoinsList.map (html)\",\n  \"privateStyle\" : {\n    \"font\" : \"Helvetica,14.0\",\n    \"textAlignment\" : 2,\n    \"textColor\" : \"#606F85FF\"\n  },\n  \"isRelative\" : false\n}"
+    },
+    {
+      "class" : "connector",
+      "attrs" : "{\n  \"isRelative\" : false,\n  \"points\" : [\n\n  ],\n  \"shape\" : \"connector\",\n  \"targetPoint\" : \"{597.62376237623755, 670}\",\n  \"identifier\" : \"2681A9AC-6507-4EC6-B20B-16DBF95368AD\",\n  \"tag\" : 0,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"themeStyle\" : \"edge_11\",\n  \"isTemplate\" : false,\n  \"privateStyle\" : {\n    \"crossStyle\" : \"round\"\n  },\n  \"exitPoint\" : {\n    \"offset\" : \"{0, 0}\",\n    \"direction\" : 0,\n    \"location\" : \"{0, -0.5}\"\n  },\n  \"sourcePoint\" : \"{597.62376237623766, 594.39999999999998}\",\n  \"entryPoint\" : {\n    \"offset\" : \"{0, 0}\",\n    \"direction\" : 0,\n    \"location\" : \"{0, 0.38}\"\n  }\n}"
+    },
+    {
+      "class" : "connector",
+      "attrs" : "{\n  \"isRelative\" : false,\n  \"points\" : [\n\n  ],\n  \"shape\" : \"connector\",\n  \"targetPoint\" : \"{597.81014450124678, 785.64421618024608}\",\n  \"identifier\" : \"D06F9A31-1148-4FCE-B92A-4BFC4EC5F758\",\n  \"tag\" : 0,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"themeStyle\" : \"edge_11\",\n  \"isTemplate\" : false,\n  \"privateStyle\" : {\n    \"crossStyle\" : \"round\"\n  },\n  \"exitPoint\" : {\n    \"offset\" : \"{0, 0}\",\n    \"direction\" : 0,\n    \"location\" : \"{-0.032090640055628498, -0.37329310615774114}\"\n  },\n  \"sourcePoint\" : \"{597.62376237623755, 714.5454545454545}\",\n  \"entryPoint\" : {\n    \"offset\" : \"{0, 0}\",\n    \"direction\" : 0,\n    \"location\" : \"{0, 0.5}\"\n  }\n}"
+    },
+    {
+      "class" : "dia-node",
+      "attrs" : "{\n  \"lockAspectRatio\" : false,\n  \"shape\" : \"apqc\",\n  \"position\" : \"{-225.71910652297117, 190}\",\n  \"angle\" : 0,\n  \"size\" : \"{136.23762376237624, 70.909090909090992}\",\n  \"identifier\" : \"2383876C-46AE-485B-B3F7-50FF67802A67\",\n  \"tag\" : 0,\n  \"connectable\" : true,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"isTemplate\" : false,\n  \"themeStyle\" : \"style_23\",\n  \"value\" : \"more info BTN click\\n(getting coinID from input)\",\n  \"privateStyle\" : {\n    \"textAlignment\" : 2,\n    \"font\" : \"Helvetica,14.0\",\n    \"textColor\" : \"#FFFFFFFF\"\n  },\n  \"isRelative\" : false\n}"
+    },
+    {
+      "class" : "dia-node",
+      "attrs" : "{\n  \"lockAspectRatio\" : false,\n  \"shape\" : \"rect\",\n  \"position\" : \"{469.99999999999989, 907.72727272727275}\",\n  \"angle\" : 0,\n  \"size\" : \"{263.96039603960395, 44.545454545454547}\",\n  \"identifier\" : \"A7BEFBA3-3EC2-48CB-95BB-83C80D90F019\",\n  \"tag\" : 0,\n  \"connectable\" : true,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"isTemplate\" : false,\n  \"themeStyle\" : \"style_24\",\n  \"value\" : \"Print COINS In the DOM\",\n  \"privateStyle\" : {\n    \"textAlignment\" : 2,\n    \"font\" : \"Helvetica,14.0\",\n    \"textColor\" : \"#FFFFFFFF\"\n  },\n  \"isRelative\" : false\n}"
+    },
+    {
+      "class" : "connector",
+      "attrs" : "{\n  \"isRelative\" : false,\n  \"points\" : [\n\n  ],\n  \"shape\" : \"connector\",\n  \"targetPoint\" : \"{601.98019801980183, 907.72727272727275}\",\n  \"identifier\" : \"5F3D5438-FC2A-47BF-8AB6-A657F818F02B\",\n  \"tag\" : 0,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"themeStyle\" : \"edge_11\",\n  \"isTemplate\" : false,\n  \"privateStyle\" : {\n    \"crossStyle\" : \"round\"\n  },\n  \"exitPoint\" : {\n    \"offset\" : \"{0, 0}\",\n    \"direction\" : 0,\n    \"location\" : \"{0, -0.5}\"\n  },\n  \"sourcePoint\" : \"{601.08910891089124, 824.5454545454545}\",\n  \"entryPoint\" : {\n    \"offset\" : \"{0, 0}\",\n    \"direction\" : 0,\n    \"location\" : \"{0, 0.5}\"\n  }\n}"
+    },
+    {
+      "class" : "dia-node",
+      "attrs" : "{\n  \"lockAspectRatio\" : false,\n  \"shape\" : \"ellipse\",\n  \"position\" : \"{40, 710}\",\n  \"angle\" : 0,\n  \"size\" : \"{290, 280}\",\n  \"identifier\" : \"E8EA9E77-B015-44ED-B9ED-008871109E8B\",\n  \"tag\" : 0,\n  \"connectable\" : true,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"isTemplate\" : false,\n  \"themeStyle\" : \"style_13\",\n  \"value\" : \"Map Object structure\\n[ \\nkey = Coin.id,\\nvalue = {Coin. symbol: “symbol”,\\nCoin.name: “name” ,\\ninfo: { eur: 10, usd: 12, ild: 25}\\ntime.stamp: currentDate}\\n]\",\n  \"privateStyle\" : {\n    \"textColor\" : \"#000000FF\",\n    \"strokeColor\" : \"#FFFC79FF\",\n    \"textAlignment\" : 2,\n    \"font\" : \"Helvetica,14.0\",\n    \"fillColor1\" : \"#00FDFFFF\",\n    \"strokeWidth\" : 19\n  },\n  \"isRelative\" : false\n}"
+    },
+    {
+      "class" : "connector",
+      "attrs" : "{\n  \"isRelative\" : false,\n  \"points\" : [\n    {\n      \"point\" : \"{305.58161014880625, 584.738489391146}\",\n      \"axis\" : 2\n    },\n    {\n      \"point\" : \"{277.894019264495, 622.4376595708402}\",\n      \"axis\" : 1\n    },\n    {\n      \"point\" : \"{250.20642838018375, 663.54961974505773}\",\n      \"axis\" : 2\n    },\n    {\n      \"point\" : \"{241.22497064439631, 704.66157991927525}\",\n      \"axis\" : 1\n    }\n  ],\n  \"shape\" : \"connector\",\n  \"targetPoint\" : \"{232.24351290860886, 704.66157991927525}\",\n  \"value\" : {\n    \"labels\" : [\n      {\n        \"string\" : \"adding object\\n to array\",\n        \"offset\" : \"{0, 0}\",\n        \"position\" : 0.22573711730595092,\n        \"positionType\" : 0\n      }\n    ]\n  },\n  \"identifier\" : \"95513F2D-9376-4F4D-93BF-D2F775F50616\",\n  \"tag\" : 0,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"privateStyle\" : {\n    \"textAlignment\" : 2,\n    \"connectorMode\" : 2,\n    \"textVerticalAlignment\" : 1,\n    \"strokeDash\" : 0,\n    \"textBackgroundColor\" : \"#FFFFFFFF\",\n    \"crossStyle\" : \"round\",\n    \"strokeColor\" : \"#FF2600FF\",\n    \"font\" : \"Helvetica,12.0\",\n    \"textColor\" : \"#FF2600FF\"\n  },\n  \"themeStyle\" : \"edge_11\",\n  \"isTemplate\" : false,\n  \"exitPoint\" : {\n    \"offset\" : \"{0, 0}\",\n    \"direction\" : 0,\n    \"location\" : \"{0.13782046292766809, 0.11542738881414376}\"\n  },\n  \"sourcePoint\" : \"{305.58161014880625, 547.03931921145181}\",\n  \"entryPoint\" : {\n    \"offset\" : \"{0, 0}\",\n    \"direction\" : 0,\n    \"location\" : \"{-0.053294954778840775, 0.45770456016359728}\"\n  }\n}"
+    },
+    {
+      "class" : "dia-node",
+      "attrs" : "{\n  \"lockAspectRatio\" : false,\n  \"shape\" : \"rect\",\n  \"position\" : \"{-721.11514612693156, 710}\",\n  \"angle\" : 0,\n  \"size\" : \"{191.58415841584159, 100}\",\n  \"identifier\" : \"F5C6BA7A-B686-48DC-8703-C6A717D3DCF3\",\n  \"tag\" : 0,\n  \"connectable\" : true,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"isTemplate\" : false,\n  \"themeStyle\" : \"style_21\",\n  \"value\" : \"add to the CoinSelected {“timeStampe”: current Time}\\nthe return from the \\n[func timeStamp]\\nand set it in the map\",\n  \"privateStyle\" : {\n    \"textAlignment\" : 2,\n    \"font\" : \"Helvetica,14.0\",\n    \"textColor\" : \"#283D59FF\"\n  },\n  \"isRelative\" : false\n}"
+    },
+    {
+      "class" : "connector",
+      "attrs" : "{\n  \"isRelative\" : false,\n  \"points\" : [\n    {\n      \"point\" : \"{-699.33444365737887, 934.70550679307144}\",\n      \"axis\" : 2\n    },\n    {\n      \"point\" : \"{-339.11760228116816, 1081.4979153331499}\",\n      \"axis\" : 1\n    },\n    {\n      \"point\" : \"{21.099239095042549, 848.12331734461952}\",\n      \"axis\" : 2\n    },\n    {\n      \"point\" : \"{71.618619548939137, 614.74871935608917}\",\n      \"axis\" : 1\n    },\n    {\n      \"point\" : \"{122.13800000283572, 661.16699323021237}\",\n      \"axis\" : 2\n    }\n  ],\n  \"shape\" : \"connector\",\n  \"targetPoint\" : \"{122.13800000283572, 707.58526710433557}\",\n  \"value\" : {\n    \"labels\" : [\n      {\n        \"string\" : \"adding item to object\",\n        \"offset\" : \"{0, 0}\",\n        \"position\" : 0.36154550627670956,\n        \"positionType\" : 0\n      }\n    ]\n  },\n  \"identifier\" : \"E7422C8F-8E6B-4243-9249-75171AD91A8E\",\n  \"tag\" : 0,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"privateStyle\" : {\n    \"textAlignment\" : 2,\n    \"textBackgroundColor\" : \"#FFFFFFFF\",\n    \"textVerticalAlignment\" : 1,\n    \"strokeDash\" : 0,\n    \"connectorMode\" : 2,\n    \"crossStyle\" : \"round\",\n    \"strokeColor\" : \"#FF2600FF\",\n    \"font\" : \"Helvetica,12.0\"\n  },\n  \"themeStyle\" : \"edge_11\",\n  \"isTemplate\" : false,\n  \"exitPoint\" : {\n    \"offset\" : \"{0, 0}\",\n    \"direction\" : 0,\n    \"location\" : \"{0.066323376625217992, 0.11813450657808849}\"\n  },\n  \"sourcePoint\" : \"{-699.33444365737887, 787.913098252993}\",\n  \"entryPoint\" : {\n    \"offset\" : \"{0, 0}\",\n    \"direction\" : 0,\n    \"location\" : \"{0, 0}\"\n  }\n}"
+    },
+    {
+      "class" : "dia-node",
+      "attrs" : "{\n  \"lockAspectRatio\" : false,\n  \"shape\" : \"flow\",\n  \"position\" : \"{-249.48148276059499, 310.90909090909099}\",\n  \"angle\" : 0,\n  \"size\" : \"{171.88118811881191, 80}\",\n  \"identifier\" : \"B71719D4-FC3F-4B83-B58F-4B379573F11C\",\n  \"tag\" : 0,\n  \"connectable\" : true,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"isTemplate\" : false,\n  \"themeStyle\" : \"variant_1\",\n  \"value\" : \"CoinSelected = CoinsList.get( Coin,id) \",\n  \"privateStyle\" : {\n    \"textAlignment\" : 2,\n    \"font\" : \"Helvetica,14.0\",\n    \"textColor\" : \"#606F85FF\"\n  },\n  \"isRelative\" : false\n}"
+    },
+    {
+      "class" : "connector",
+      "attrs" : "{\n  \"isRelative\" : false,\n  \"points\" : [\n\n  ],\n  \"shape\" : \"connector\",\n  \"targetPoint\" : \"{-163.54088870118903, 310.90909090909099}\",\n  \"identifier\" : \"C9F2B4B7-5795-4314-B972-D639A44C328C\",\n  \"tag\" : 0,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"themeStyle\" : \"edge_11\",\n  \"isTemplate\" : false,\n  \"privateStyle\" : {\n    \"crossStyle\" : \"round\"\n  },\n  \"exitPoint\" : {\n    \"offset\" : \"{85.940594059405953, 0}\",\n    \"direction\" : 0,\n    \"location\" : \"{-0.5, -0.5}\"\n  },\n  \"sourcePoint\" : \"{-157.60029464178308, 260.90909090909099}\",\n  \"entryPoint\" : {\n    \"offset\" : \"{0, 0}\",\n    \"direction\" : 0,\n    \"location\" : \"{0, 0.5}\"\n  }\n}"
+    },
+    {
+      "class" : "connector",
+      "attrs" : "{\n  \"isRelative\" : false,\n  \"points\" : [\n    {\n      \"point\" : \"{-285.25610864512259, 732.32961899752877}\",\n      \"axis\" : 1\n    },\n    {\n      \"point\" : \"{-379.39413334716539, 618.68704873644799}\",\n      \"axis\" : 2\n    },\n    {\n      \"point\" : \"{-459.38830310338511, 505.04447847536721}\",\n      \"axis\" : 1\n    },\n    {\n      \"point\" : \"{-539.38247285960483, 525.4767846922291}\",\n      \"axis\" : 2\n    }\n  ],\n  \"shape\" : \"connector\",\n  \"targetPoint\" : \"{-539.38247285960483, 545.90909090909099}\",\n  \"value\" : {\n    \"labels\" : [\n      {\n        \"string\" : \"false - have \",\n        \"offset\" : \"{0, 0}\",\n        \"position\" : 0.47814137606168777,\n        \"positionType\" : 0\n      }\n    ]\n  },\n  \"identifier\" : \"D9633536-0A43-4D11-A5B4-28DB42E53D85\",\n  \"tag\" : 0,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"privateStyle\" : {\n    \"textAlignment\" : 2,\n    \"textBackgroundColor\" : \"#FFFFFFFF\",\n    \"textVerticalAlignment\" : 1,\n    \"crossStyle\" : \"round\",\n    \"font\" : \"Helvetica,12.0\"\n  },\n  \"themeStyle\" : \"edge_11\",\n  \"isTemplate\" : false,\n  \"exitPoint\" : {\n    \"offset\" : \"{0, 0}\",\n    \"direction\" : 0,\n    \"location\" : \"{0, -0.5}\"\n  },\n  \"sourcePoint\" : \"{-191.1180839430798, 732.32961899752877}\",\n  \"entryPoint\" : {\n    \"offset\" : \"{0, 0}\",\n    \"direction\" : 0,\n    \"location\" : \"{-0.21700195524126559, -0.014392958820829638}\"\n  }\n}"
+    },
+    {
+      "class" : "dia-node",
+      "attrs" : "{\n  \"lockAspectRatio\" : false,\n  \"shape\" : \"advanced:triangle\",\n  \"position\" : \"{-256.51118573089201, 435.90909090909099}\",\n  \"angle\" : 0,\n  \"size\" : \"{185.94059405940595, 75}\",\n  \"identifier\" : \"E55EE17F-0D02-499E-84A2-5DEA29A84D76\",\n  \"tag\" : 0,\n  \"connectable\" : true,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"isTemplate\" : false,\n  \"themeStyle\" : \"variant_4\",\n  \"value\" : \"if\\n(CoinSelected\\n.Info )\",\n  \"privateStyle\" : {\n    \"textAlignment\" : 2,\n    \"font\" : \"Helvetica,14.0\",\n    \"textColor\" : \"#606F85FF\"\n  },\n  \"isRelative\" : false\n}"
+    },
+    {
+      "class" : "connector",
+      "attrs" : "{\n  \"isRelative\" : false,\n  \"points\" : [\n    {\n      \"point\" : \"{-396.72861386053103, 473.40909090909099}\",\n      \"axis\" : 1\n    },\n    {\n      \"point\" : \"{-583.4311905050215, 507.93834391578912}\",\n      \"axis\" : 2\n    }\n  ],\n  \"shape\" : \"connector\",\n  \"targetPoint\" : \"{-583.4311905050215, 542.46759692248725}\",\n  \"value\" : {\n    \"labels\" : [\n      {\n        \"string\" : \"false - if it has \\nNo info\",\n        \"offset\" : \"{0, 0}\",\n        \"position\" : 0.36799789893428109,\n        \"positionType\" : 0\n      }\n    ]\n  },\n  \"identifier\" : \"5BBF47AA-8BBB-4D08-8FB7-658C89201DE1\",\n  \"tag\" : 0,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"privateStyle\" : {\n    \"textAlignment\" : 2,\n    \"textBackgroundColor\" : \"#FFFFFFFF\",\n    \"textVerticalAlignment\" : 1,\n    \"crossStyle\" : \"round\",\n    \"font\" : \"Helvetica,12.0\"\n  },\n  \"themeStyle\" : \"edge_11\",\n  \"isTemplate\" : false,\n  \"exitPoint\" : {\n    \"offset\" : \"{0, 0}\",\n    \"direction\" : 0,\n    \"location\" : \"{0, 0}\"\n  },\n  \"sourcePoint\" : \"{-210.02603721604052, 473.40909090909099}\",\n  \"entryPoint\" : {\n    \"offset\" : \"{46.485148514851488, 37.5}\",\n    \"direction\" : 0,\n    \"location\" : \"{-0.5, -0.5}\"\n  }\n}"
+    },
+    {
+      "class" : "connector",
+      "attrs" : "{\n  \"isRelative\" : false,\n  \"points\" : [\n\n  ],\n  \"shape\" : \"connector\",\n  \"targetPoint\" : \"{-160.92955099909352, 444.0574247590074}\",\n  \"identifier\" : \"0C1F867D-389B-40DB-AF88-17F4E519EB2E\",\n  \"tag\" : 0,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"themeStyle\" : \"edge_11\",\n  \"isTemplate\" : false,\n  \"privateStyle\" : {\n    \"crossStyle\" : \"round\"\n  },\n  \"exitPoint\" : {\n    \"offset\" : \"{0, 0}\",\n    \"direction\" : 0,\n    \"location\" : \"{0.014043935458554133, -0.39135554866778116}\"\n  },\n  \"sourcePoint\" : \"{-160.92955099909352, 395.26467228860702}\",\n  \"entryPoint\" : {\n    \"offset\" : \"{0, 0}\",\n    \"direction\" : 0,\n    \"location\" : \"{0, 0}\"\n  }\n}"
+    },
+    {
+      "class" : "dia-node",
+      "attrs" : "{\n  \"lockAspectRatio\" : false,\n  \"shape\" : \"rect\",\n  \"position\" : \"{-225.71910652297117, 868.63636363636374}\",\n  \"angle\" : 0,\n  \"size\" : \"{100, 70}\",\n  \"identifier\" : \"2B21D535-A865-4296-A403-0E511A0CFBDD\",\n  \"tag\" : 0,\n  \"connectable\" : true,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"isTemplate\" : false,\n  \"themeStyle\" : \"style_16\",\n  \"value\" : \"return CoinSelected.info\",\n  \"privateStyle\" : {\n    \"font\" : \"Helvetica,14.0\",\n    \"textAlignment\" : 2\n  },\n  \"isRelative\" : false\n}"
+    },
+    {
+      "class" : "connector",
+      "attrs" : "{\n  \"isRelative\" : false,\n  \"points\" : [\n\n  ],\n  \"shape\" : \"connector\",\n  \"targetPoint\" : \"{-150.76861147346619, 695.90909090909099}\",\n  \"value\" : {\n    \"labels\" : [\n      {\n        \"string\" : \"true\\n-\\nit has\\nINFO\",\n        \"offset\" : \"{0, 0}\",\n        \"position\" : 0.3475205308646977,\n        \"positionType\" : 0\n      }\n    ]\n  },\n  \"identifier\" : \"7EA12D2A-E0B4-4D06-9750-21000227856D\",\n  \"tag\" : 0,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"privateStyle\" : {\n    \"textAlignment\" : 2,\n    \"textBackgroundColor\" : \"#FFFFFFFF\",\n    \"textVerticalAlignment\" : 1,\n    \"font\" : \"Helvetica,12.0\",\n    \"crossStyle\" : \"round\"\n  },\n  \"themeStyle\" : \"edge_11\",\n  \"isTemplate\" : false,\n  \"exitPoint\" : {\n    \"offset\" : \"{92.970297029702976, 0}\",\n    \"direction\" : 0,\n    \"location\" : \"{-0.5, -0.5}\"\n  },\n  \"sourcePoint\" : \"{-117.05574018633752, 473.40909090909099}\",\n  \"entryPoint\" : {\n    \"offset\" : \"{139.45544554455446, 37.5}\",\n    \"direction\" : 0,\n    \"location\" : \"{-0.5, -0.5}\"\n  }\n}"
+    },
+    {
+      "class" : "dia-node",
+      "attrs" : "{\n  \"lockAspectRatio\" : false,\n  \"shape\" : \"rect\",\n  \"position\" : \"{-307.69930454277318, 998.63636363636374}\",\n  \"angle\" : 0,\n  \"size\" : \"{263.96039603960395, 44.545454545454547}\",\n  \"identifier\" : \"713C068D-A725-4E0C-AA8A-C83DD88D17E6\",\n  \"tag\" : 0,\n  \"connectable\" : true,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"isTemplate\" : false,\n  \"themeStyle\" : \"style_24\",\n  \"value\" : \"Print INFO In the DOM Collapser\",\n  \"privateStyle\" : {\n    \"font\" : \"Helvetica,14.0\",\n    \"textAlignment\" : 2,\n    \"textColor\" : \"#FFFFFFFF\"\n  },\n  \"isRelative\" : false\n}"
+    },
+    {
+      "class" : "connector",
+      "attrs" : "{\n  \"isRelative\" : false,\n  \"points\" : [\n\n  ],\n  \"shape\" : \"connector\",\n  \"targetPoint\" : \"{-175.54414059587316, 1005.2086969687775}\",\n  \"identifier\" : \"57310BE8-3748-48C8-8D2B-55816C847CF3\",\n  \"tag\" : 0,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"themeStyle\" : \"edge_11\",\n  \"isTemplate\" : false,\n  \"privateStyle\" : {\n    \"crossStyle\" : \"round\"\n  },\n  \"exitPoint\" : {\n    \"offset\" : \"{0, 0}\",\n    \"direction\" : 0,\n    \"location\" : \"{0.00066284916117413152, -0.35245782314989449}\"\n  },\n  \"sourcePoint\" : \"{-175.71910652297117, 938.63636363636374}\",\n  \"entryPoint\" : {\n    \"offset\" : \"{0, 0}\",\n    \"direction\" : 0,\n    \"location\" : \"{0, 0.5}\"\n  }\n}"
+    },
+    {
+      "class" : "dia-node",
+      "attrs" : "{\n  \"lockAspectRatio\" : false,\n  \"shape\" : \"advanced:triangle\",\n  \"position\" : \"{-243.73890850316923, 695.90909090909099}\",\n  \"angle\" : 0,\n  \"size\" : \"{185.94059405940595, 75}\",\n  \"identifier\" : \"E23FB57F-F6E6-4AFB-B582-024085555330\",\n  \"tag\" : 0,\n  \"connectable\" : true,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"isTemplate\" : false,\n  \"themeStyle\" : \"variant_4\",\n  \"value\" : \"if\\n(timeStamp \\nchecker)\\nif 2 minutes passed\",\n  \"privateStyle\" : {\n    \"font\" : \"Helvetica,14.0\",\n    \"textAlignment\" : 2,\n    \"textColor\" : \"#606F85FF\"\n  },\n  \"isRelative\" : false\n}"
+    },
+    {
+      "class" : "dia-node",
+      "attrs" : "{\n  \"lockAspectRatio\" : false,\n  \"shape\" : \"flow\",\n  \"position\" : \"{-625.32306691901078, 545.90909090909099}\",\n  \"angle\" : 0,\n  \"size\" : \"{171.88118811881191, 80}\",\n  \"identifier\" : \"8D5B10A5-0B46-4D9A-88AE-3FED1893B870\",\n  \"tag\" : 0,\n  \"connectable\" : true,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"isTemplate\" : false,\n  \"themeStyle\" : \"variant_1\",\n  \"value\" : \"CoinInfo = get New info current\\nadd info to the CoinsSelected\",\n  \"privateStyle\" : {\n    \"textColor\" : \"#FFFFFFFF\",\n    \"textAlignment\" : 2,\n    \"font\" : \"Helvetica,14.0\",\n    \"fillColor1\" : \"#7A81FFFF\"\n  },\n  \"isRelative\" : false\n}"
+    },
+    {
+      "class" : "connector",
+      "attrs" : "{\n  \"isRelative\" : false,\n  \"points\" : [\n    {\n      \"point\" : \"{-539.38247285960483, 637.7307897022082}\",\n      \"axis\" : 2\n    },\n    {\n      \"point\" : \"{-582.35276988930787, 649.55248849532541}\",\n      \"axis\" : 1\n    },\n    {\n      \"point\" : \"{-625.32306691901078, 679.7762442476627}\",\n      \"axis\" : 2\n    }\n  ],\n  \"shape\" : \"connector\",\n  \"targetPoint\" : \"{-625.32306691901078, 710}\",\n  \"identifier\" : \"FD4273F6-1ECA-4A8F-95D8-8A3F30591855\",\n  \"tag\" : 0,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"themeStyle\" : \"edge_11\",\n  \"isTemplate\" : false,\n  \"privateStyle\" : {\n    \"crossStyle\" : \"round\"\n  },\n  \"exitPoint\" : {\n    \"offset\" : \"{0, 0}\",\n    \"direction\" : 0,\n    \"location\" : \"{0, -0.5}\"\n  },\n  \"sourcePoint\" : \"{-539.38247285960483, 625.90909090909099}\",\n  \"entryPoint\" : {\n    \"offset\" : \"{0, 0}\",\n    \"direction\" : 0,\n    \"location\" : \"{0, 0.5}\"\n  }\n}"
+    },
+    {
+      "class" : "connector",
+      "attrs" : "{\n  \"isRelative\" : false,\n  \"points\" : [\n\n  ],\n  \"shape\" : \"connector\",\n  \"targetPoint\" : \"{-175.71910652297117, 868.63636363636374}\",\n  \"identifier\" : \"D5149A41-208E-47F9-A376-A32D603FE30D\",\n  \"tag\" : 0,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"themeStyle\" : \"edge_11\",\n  \"isTemplate\" : false,\n  \"privateStyle\" : {\n    \"crossStyle\" : \"round\"\n  },\n  \"exitPoint\" : {\n    \"offset\" : \"{0, 0}\",\n    \"direction\" : 0,\n    \"location\" : \"{0, -0.5}\"\n  },\n  \"sourcePoint\" : \"{-104.28346295861476, 733.40909090909099}\",\n  \"entryPoint\" : {\n    \"offset\" : \"{139.45544554455446, 37.5}\",\n    \"direction\" : 0,\n    \"location\" : \"{-0.5, -0.5}\"\n  }\n}"
+    },
+    {
+      "class" : "connector",
+      "attrs" : "{\n  \"isRelative\" : false,\n  \"points\" : [\n    {\n      \"point\" : \"{-558.49215694307429, 699.83120827078471}\",\n      \"axis\" : 2\n    },\n    {\n      \"point\" : \"{-492.1930248582766, 690}\",\n      \"axis\" : 1\n    },\n    {\n      \"point\" : \"{-425.89389277347891, 754.32768332505009}\",\n      \"axis\" : 2\n    },\n    {\n      \"point\" : \"{-305.79336432897435, 818.65536665010018}\",\n      \"axis\" : 1\n    },\n    {\n      \"point\" : \"{-185.69283588446979, 845.32695081148188}\",\n      \"axis\" : 2\n    }\n  ],\n  \"shape\" : \"connector\",\n  \"targetPoint\" : \"{-185.69283588446979, 871.99853497286358}\",\n  \"identifier\" : \"7CD2B963-4C47-4F57-B1FB-7F225EB0784D\",\n  \"tag\" : 0,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"themeStyle\" : \"edge_11\",\n  \"isTemplate\" : false,\n  \"privateStyle\" : {\n    \"crossStyle\" : \"round\"\n  },\n  \"exitPoint\" : {\n    \"offset\" : \"{0, 0}\",\n    \"direction\" : 0,\n    \"location\" : \"{-0.099737293614986122, -0.4519689809071451}\"\n  },\n  \"sourcePoint\" : \"{-558.49215694307429, 709.66241654156943}\",\n  \"entryPoint\" : {\n    \"offset\" : \"{0, 0}\",\n    \"direction\" : 0,\n    \"location\" : \"{0.34883317351780796, -0.50337583458430568}\"\n  }\n}"
+    },
+    {
+      "class" : "dia-node",
+      "attrs" : "{\n  \"lockAspectRatio\" : false,\n  \"shape\" : \"rect\",\n  \"position\" : \"{-225.71910652297117, 60}\",\n  \"angle\" : 0,\n  \"size\" : \"{575.71910652297117, 70}\",\n  \"identifier\" : \"1627BD98-0F30-439E-A960-EF6E7E5842AE\",\n  \"tag\" : 0,\n  \"connectable\" : true,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"isTemplate\" : false,\n  \"themeStyle\" : \"style_14\",\n  \"value\" : \"COINS PAGE\",\n  \"privateStyle\" : {\n    \"font\" : \"Helvetica,40.0\",\n    \"textAlignment\" : 2\n  },\n  \"isRelative\" : false\n}"
+    },
+    {
+      "class" : "dia-node",
+      "attrs" : "{\n  \"lockAspectRatio\" : false,\n  \"shape\" : \"stars:rounded-rectangle-callout\",\n  \"position\" : \"{660.56802218990015, 120}\",\n  \"angle\" : 0,\n  \"size\" : \"{100, 70}\",\n  \"identifier\" : \"AFA11527-7B5A-4084-A99E-50D10261C37D\",\n  \"tag\" : 0,\n  \"connectable\" : true,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"isTemplate\" : false,\n  \"themeStyle\" : \"variant_3\",\n  \"value\" : \"01\",\n  \"privateStyle\" : {\n    \"font\" : \"Helvetica,14.0\",\n    \"textAlignment\" : 2,\n    \"textColor\" : \"#606F85FF\"\n  },\n  \"isRelative\" : false\n}"
+    },
+    {
+      "class" : "dia-node",
+      "attrs" : "{\n  \"lockAspectRatio\" : false,\n  \"shape\" : \"stars:rounded-rectangle-callout\",\n  \"position\" : \"{-40, 155.4545454545455}\",\n  \"angle\" : 0,\n  \"size\" : \"{100, 70}\",\n  \"identifier\" : \"891D3C56-0FE6-4541-B40D-2260B4D028A3\",\n  \"tag\" : 0,\n  \"connectable\" : true,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"isTemplate\" : false,\n  \"themeStyle\" : \"variant_3\",\n  \"value\" : \"02\",\n  \"privateStyle\" : {\n    \"font\" : \"Helvetica,14.0\",\n    \"textAlignment\" : 2,\n    \"textColor\" : \"#606F85FF\"\n  },\n  \"isRelative\" : false\n}"
+    },
+    {
+      "class" : "dia-node",
+      "attrs" : "{\n  \"lockAspectRatio\" : false,\n  \"shape\" : \"delay\",\n  \"position\" : \"{-715, 300}\",\n  \"angle\" : 0,\n  \"size\" : \"{250, 70}\",\n  \"identifier\" : \"2DBCA294-5035-4E6B-AB45-48C68F6784A7\",\n  \"tag\" : 0,\n  \"connectable\" : true,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"isTemplate\" : false,\n  \"themeStyle\" : \"variant_2\",\n  \"value\" : \"INFO API\\nhttps:\\\/\\\/api.coingecko.com\\\/api\\\/v3\\\/coins\\\/{ id }\",\n  \"privateStyle\" : {\n    \"textColor\" : \"#FFFFFFFF\",\n    \"textAlignment\" : 2,\n    \"font\" : \"Helvetica,14.0\",\n    \"fillColor1\" : \"#FF8AD8FF\"\n  },\n  \"isRelative\" : false\n}"
+    },
+    {
+      "class" : "dia-node",
+      "attrs" : "{\n  \"lockAspectRatio\" : false,\n  \"shape\" : \"flow\",\n  \"position\" : \"{234.05940594059405, 340.68181818181824}\",\n  \"angle\" : 0,\n  \"size\" : \"{171.88118811881191, 80}\",\n  \"identifier\" : \"EAA96206-D2AA-4F07-B7E8-6D71A13A67A1\",\n  \"tag\" : 0,\n  \"connectable\" : true,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"isTemplate\" : false,\n  \"themeStyle\" : \"variant_1\",\n  \"value\" : \"CoinArr = get New Coin List \",\n  \"privateStyle\" : {\n    \"textColor\" : \"#283D59FF\",\n    \"textAlignment\" : 2,\n    \"font\" : \"Helvetica,14.0\",\n    \"fillColor1\" : \"#7A81FFFF\"\n  },\n  \"isRelative\" : false\n}"
+    },
+    {
+      "class" : "connector",
+      "attrs" : "{\n  \"isRelative\" : false,\n  \"points\" : [\n\n  ],\n  \"shape\" : \"connector\",\n  \"targetPoint\" : \"{322.06063257234541, 483.1897419047267}\",\n  \"identifier\" : \"AAA4C712-DCD2-4C9C-A6ED-3237CCE2BEDA\",\n  \"tag\" : 0,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"themeStyle\" : \"edge_11\",\n  \"isTemplate\" : false,\n  \"privateStyle\" : {\n    \"crossStyle\" : \"round\"\n  },\n  \"exitPoint\" : {\n    \"offset\" : \"{0, 0}\",\n    \"direction\" : 0,\n    \"location\" : \"{0.032719580868572948, -0.45443225850390423}\"\n  },\n  \"sourcePoint\" : \"{320, 420.68181818181824}\",\n  \"entryPoint\" : {\n    \"offset\" : \"{0, 0}\",\n    \"direction\" : 0,\n    \"location\" : \"{0, 0.5}\"\n  }\n}"
+    },
+    {
+      "class" : "dia-node",
+      "attrs" : "{\n  \"lockAspectRatio\" : false,\n  \"shape\" : \"delay\",\n  \"position\" : \"{190, 185}\",\n  \"angle\" : 0,\n  \"size\" : \"{250, 70}\",\n  \"identifier\" : \"0AF5A15C-EA6D-49C7-B1FD-45F973739ED8\",\n  \"tag\" : 0,\n  \"connectable\" : true,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"isTemplate\" : false,\n  \"themeStyle\" : \"variant_2\",\n  \"value\" : \"Coins API\\nhttps:\\\/\\\/api.coingecko.com\\\/api\\\/v3\\\/coins\\\/list\",\n  \"privateStyle\" : {\n    \"textColor\" : \"#FFFFFFFF\",\n    \"textAlignment\" : 2,\n    \"font\" : \"Helvetica,14.0\",\n    \"fillColor1\" : \"#FF8AD8FF\"\n  },\n  \"isRelative\" : false\n}"
+    },
+    {
+      "class" : "connector",
+      "attrs" : "{\n  \"isRelative\" : false,\n  \"points\" : [\n\n  ],\n  \"shape\" : \"connector\",\n  \"targetPoint\" : \"{286.18896767454896, 335.71329412613727}\",\n  \"identifier\" : \"BC909128-2DB1-4152-826F-3B291699ED3C\",\n  \"tag\" : 0,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"themeStyle\" : \"edge_11\",\n  \"isTemplate\" : false,\n  \"privateStyle\" : {\n    \"strokeDash\" : 1,\n    \"connectorMode\" : 14,\n    \"crossStyle\" : \"round\"\n  },\n  \"exitPoint\" : {\n    \"offset\" : \"{0, 0}\",\n    \"direction\" : 0,\n    \"location\" : \"{0.17284997900944735, -0.22619139432765067}\"\n  },\n  \"sourcePoint\" : \"{286.18896767454885, 256.50155354435185}\",\n  \"entryPoint\" : {\n    \"offset\" : \"{0, 0}\",\n    \"direction\" : 0,\n    \"location\" : \"{-0.11524412930180461, 0.52145076491931219}\"\n  }\n}"
+    },
+    {
+      "class" : "connector",
+      "attrs" : "{\n  \"isRelative\" : false,\n  \"points\" : [\n\n  ],\n  \"shape\" : \"connector\",\n  \"targetPoint\" : \"{-611.67600767623458, 541.86238706630752}\",\n  \"identifier\" : \"15E16203-2F4B-43F8-B5AD-7A524B2F6DA4\",\n  \"tag\" : 0,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"themeStyle\" : \"edge_11\",\n  \"isTemplate\" : false,\n  \"privateStyle\" : {\n    \"connectorMode\" : 14,\n    \"strokeDash\" : 1,\n    \"crossStyle\" : \"round\"\n  },\n  \"exitPoint\" : {\n    \"offset\" : \"{0, 0}\",\n    \"direction\" : 0,\n    \"location\" : \"{-0.41017922576378862, -0.035312604568233777}\"\n  },\n  \"sourcePoint\" : \"{-610.17633759422336, 370.96942688749527}\",\n  \"entryPoint\" : {\n    \"offset\" : \"{0, 0}\",\n    \"direction\" : 0,\n    \"location\" : \"{-0.080705350376893414, 0.5138489555356468}\"\n  }\n}"
+    },
+    {
+      "class" : "dia-node",
+      "attrs" : "{\n  \"lockAspectRatio\" : false,\n  \"shape\" : \"rect\",\n  \"position\" : \"{-2320, 40}\",\n  \"angle\" : 0,\n  \"size\" : \"{1540.0000000000002, 1080}\",\n  \"identifier\" : \"05E75CAD-1B8D-49DA-9800-7164CAFB8770\",\n  \"tag\" : 0,\n  \"connectable\" : true,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"isTemplate\" : false,\n  \"themeStyle\" : \"style_12\",\n  \"privateStyle\" : {\n\n  },\n  \"isRelative\" : false\n}"
+    },
+    {
+      "class" : "dia-node",
+      "attrs" : "{\n  \"lockAspectRatio\" : false,\n  \"shape\" : \"rect\",\n  \"position\" : \"{-1905.7191065229713, 105}\",\n  \"angle\" : 0,\n  \"size\" : \"{575.71910652297117, 70}\",\n  \"identifier\" : \"F67386BD-CB80-4625-9C7F-4554076E3B41\",\n  \"tag\" : 0,\n  \"connectable\" : true,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"isTemplate\" : false,\n  \"themeStyle\" : \"style_14\",\n  \"value\" : \"Live Feed Page\",\n  \"privateStyle\" : {\n    \"font\" : \"Helvetica,40.0\",\n    \"textAlignment\" : 2,\n    \"textColor\" : \"#FFFFFFFF\"\n  },\n  \"isRelative\" : false\n}"
+    },
+    {
+      "class" : "dia-node",
+      "attrs" : "{\n  \"lockAspectRatio\" : false,\n  \"shape\" : \"rect\",\n  \"position\" : \"{-3495.7191065229713, 115}\",\n  \"angle\" : 0,\n  \"size\" : \"{575.71910652297117, 70}\",\n  \"identifier\" : \"8B32B808-86A3-4D4B-93E3-04608365FEDA\",\n  \"tag\" : 0,\n  \"connectable\" : true,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"isTemplate\" : false,\n  \"themeStyle\" : \"style_14\",\n  \"value\" : \"Live Feed Page\",\n  \"privateStyle\" : {\n    \"font\" : \"Helvetica,40.0\",\n    \"textAlignment\" : 2,\n    \"textColor\" : \"#FFFFFFFF\"\n  },\n  \"isRelative\" : false\n}"
+    },
+    {
+      "class" : "dia-node",
+      "attrs" : "{\n  \"lockAspectRatio\" : false,\n  \"shape\" : \"rect\",\n  \"position\" : \"{-3910, 50}\",\n  \"angle\" : 0,\n  \"size\" : \"{1540.0000000000002, 1080}\",\n  \"identifier\" : \"13D09350-0639-4121-A093-9DB80314A47D\",\n  \"tag\" : 0,\n  \"connectable\" : true,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"isTemplate\" : false,\n  \"themeStyle\" : \"style_12\",\n  \"privateStyle\" : {\n\n  },\n  \"isRelative\" : false\n}"
+    },
+    {
+      "class" : "dia-node",
+      "attrs" : "{\n  \"lockAspectRatio\" : false,\n  \"shape\" : \"rect\",\n  \"position\" : \"{-3470, 105}\",\n  \"angle\" : 0,\n  \"size\" : \"{575.71910652297117, 70}\",\n  \"identifier\" : \"9433D309-699D-4216-9DDC-C4464FE864AA\",\n  \"tag\" : 0,\n  \"connectable\" : true,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"isTemplate\" : false,\n  \"themeStyle\" : \"style_14\",\n  \"value\" : \"AboutPage\",\n  \"privateStyle\" : {\n    \"font\" : \"Helvetica,40.0\",\n    \"textAlignment\" : 2,\n    \"textColor\" : \"#FFFFFFFF\"\n  },\n  \"isRelative\" : false\n}"
+    },
+    {
+      "class" : "dia-node",
+      "attrs" : "{\n  \"lockAspectRatio\" : false,\n  \"shape\" : \"multiDocument\",\n  \"position\" : \"{512.62376237623766, 480}\",\n  \"angle\" : 0,\n  \"size\" : \"{170, 130}\",\n  \"identifier\" : \"9A6F5BFE-6B0B-4667-8FD3-E542FD4A577B\",\n  \"tag\" : 0,\n  \"connectable\" : true,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"isTemplate\" : false,\n  \"themeStyle\" : \"variant_2\",\n  \"value\" : \"CoinsList  = New MAP\\n\",\n  \"privateStyle\" : {\n    \"textColor\" : \"#FFFFFFFF\",\n    \"textAlignment\" : 2,\n    \"font\" : \"Helvetica,14.0\",\n    \"fillColor1\" : \"#941100FF\"\n  },\n  \"isRelative\" : false\n}"
+    },
+    {
+      "class" : "connector",
+      "attrs" : "{\n  \"isRelative\" : false,\n  \"points\" : [\n    {\n      \"point\" : \"{315.79207920792078, 578.99015895079503}\",\n      \"axis\" : 2\n    },\n    {\n      \"point\" : \"{372.03439734689277, 607.98031790159007}\",\n      \"axis\" : 1\n    },\n    {\n      \"point\" : \"{428.27671548586477, 533.99015895079503}\",\n      \"axis\" : 2\n    },\n    {\n      \"point\" : \"{512.95023893105122, 460}\",\n      \"axis\" : 1\n    },\n    {\n      \"point\" : \"{597.62376237623766, 470}\",\n      \"axis\" : 2\n    }\n  ],\n  \"shape\" : \"connector\",\n  \"targetPoint\" : \"{597.62376237623766, 480}\",\n  \"identifier\" : \"53258BFE-3521-4968-AF64-B5233E21F3A3\",\n  \"tag\" : 0,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"themeStyle\" : \"edge_11\",\n  \"isTemplate\" : false,\n  \"privateStyle\" : {\n    \"strokeDash\" : 0,\n    \"connectorMode\" : 2,\n    \"crossStyle\" : \"round\"\n  },\n  \"exitPoint\" : {\n    \"offset\" : \"{0, 0}\",\n    \"direction\" : 0,\n    \"location\" : \"{0, -0.5}\"\n  },\n  \"sourcePoint\" : \"{315.79207920792078, 550}\",\n  \"entryPoint\" : {\n    \"offset\" : \"{0, 0}\",\n    \"direction\" : 0,\n    \"location\" : \"{0, 0.5}\"\n  }\n}"
+    },
+    {
+      "class" : "dia-node",
+      "attrs" : "{\n  \"lockAspectRatio\" : false,\n  \"shape\" : \"rect\",\n  \"position\" : \"{-1340, 1290}\",\n  \"angle\" : 0,\n  \"size\" : \"{1180, 875}\",\n  \"identifier\" : \"093D6BAF-3659-464E-9FD1-4FEA89D96309\",\n  \"tag\" : 0,\n  \"connectable\" : true,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"isTemplate\" : false,\n  \"themeStyle\" : \"style_15\",\n  \"privateStyle\" : {\n\n  },\n  \"isRelative\" : false\n}"
+    },
+    {
+      "class" : "dia-node",
+      "attrs" : "{\n  \"lockAspectRatio\" : false,\n  \"shape\" : \"rect\",\n  \"position\" : \"{-1015.7191065229713, 1370}\",\n  \"angle\" : 0,\n  \"size\" : \"{575.71910652297117, 70}\",\n  \"identifier\" : \"7B796504-1F19-45E8-94EE-9BD45BF450E5\",\n  \"tag\" : 0,\n  \"connectable\" : true,\n  \"isLocked\" : false,\n  \"visible\" : true,\n  \"isTemplate\" : false,\n  \"themeStyle\" : \"style_14\",\n  \"value\" : \"time Stamper\",\n  \"privateStyle\" : {\n    \"font\" : \"Helvetica,40.0\",\n    \"textAlignment\" : 2,\n    \"textColor\" : \"#FFFFFFFF\"\n  },\n  \"isRelative\" : false\n}"
+    }
+  ],
+  "frame" : [
+    [
+      -3935,
+      0
+    ],
+    [
+      4762,
+      2298
+    ]
+  ],
+  "terminals" : {
+    "5F3D5438-FC2A-47BF-8AB6-A657F818F02B" : [
+      "0BDDF0E6-1B22-42FC-837E-47AC170144CE",
+      "A7BEFBA3-3EC2-48CB-95BB-83C80D90F019"
+    ],
+    "D06F9A31-1148-4FCE-B92A-4BFC4EC5F758" : [
+      "0FC41285-72C7-49BE-BA53-DBECD3EF99D8",
+      "0BDDF0E6-1B22-42FC-837E-47AC170144CE"
+    ],
+    "5BBF47AA-8BBB-4D08-8FB7-658C89201DE1" : [
+      "E55EE17F-0D02-499E-84A2-5DEA29A84D76",
+      "null"
+    ],
+    "7EA12D2A-E0B4-4D06-9750-21000227856D" : [
+      "E55EE17F-0D02-499E-84A2-5DEA29A84D76",
+      "E23FB57F-F6E6-4AFB-B582-024085555330"
+    ],
+    "2681A9AC-6507-4EC6-B20B-16DBF95368AD" : [
+      "9A6F5BFE-6B0B-4667-8FD3-E542FD4A577B",
+      "0FC41285-72C7-49BE-BA53-DBECD3EF99D8"
+    ],
+    "94CAD92E-BAE2-4B2A-B89B-B55040A50A26" : [
+      "303F8A4D-C5D6-4038-8E7F-195C852ADCFA",
+      "EAA96206-D2AA-4F07-B7E8-6D71A13A67A1"
+    ],
+    "53258BFE-3521-4968-AF64-B5233E21F3A3" : [
+      "C7D1C6FC-55D0-4EAA-8123-36343B65FB56",
+      "9A6F5BFE-6B0B-4667-8FD3-E542FD4A577B"
+    ],
+    "57310BE8-3748-48C8-8D2B-55816C847CF3" : [
+      "2B21D535-A865-4296-A403-0E511A0CFBDD",
+      "713C068D-A725-4E0C-AA8A-C83DD88D17E6"
+    ],
+    "7CD2B963-4C47-4F57-B1FB-7F225EB0784D" : [
+      "F5C6BA7A-B686-48DC-8703-C6A717D3DCF3",
+      "2B21D535-A865-4296-A403-0E511A0CFBDD"
+    ],
+    "D5149A41-208E-47F9-A376-A32D603FE30D" : [
+      "E23FB57F-F6E6-4AFB-B582-024085555330",
+      "2B21D535-A865-4296-A403-0E511A0CFBDD"
+    ],
+    "961EB327-B3F0-43CF-8F2A-199D5233E176" : [
+      "2870F628-6A49-46EE-8279-BD0995A704B2",
+      "303F8A4D-C5D6-4038-8E7F-195C852ADCFA"
+    ],
+    "15E16203-2F4B-43F8-B5AD-7A524B2F6DA4" : [
+      "2DBCA294-5035-4E6B-AB45-48C68F6784A7",
+      "CB01B43A-67AC-4F69-8843-1FCB016D68F7"
+    ],
+    "FD4273F6-1ECA-4A8F-95D8-8A3F30591855" : [
+      "8D5B10A5-0B46-4D9A-88AE-3FED1893B870",
+      "F5C6BA7A-B686-48DC-8703-C6A717D3DCF3"
+    ],
+    "0C1F867D-389B-40DB-AF88-17F4E519EB2E" : [
+      "null",
+      "E55EE17F-0D02-499E-84A2-5DEA29A84D76"
+    ],
+    "C9F2B4B7-5795-4314-B972-D639A44C328C" : [
+      "2383876C-46AE-485B-B3F7-50FF67802A67",
+      "B71719D4-FC3F-4B83-B58F-4B379573F11C"
+    ],
+    "E7422C8F-8E6B-4243-9249-75171AD91A8E" : [
+      "null",
+      "CB01B43A-67AC-4F69-8843-1FCB016D68F7"
+    ],
+    "D9633536-0A43-4D11-A5B4-28DB42E53D85" : [
+      "E23FB57F-F6E6-4AFB-B582-024085555330",
+      "8D5B10A5-0B46-4D9A-88AE-3FED1893B870"
+    ],
+    "BC909128-2DB1-4152-826F-3B291699ED3C" : [
+      "0AF5A15C-EA6D-49C7-B1FD-45F973739ED8",
+      "CB01B43A-67AC-4F69-8843-1FCB016D68F7"
+    ],
+    "95513F2D-9376-4F4D-93BF-D2F775F50616" : [
+      "C7D1C6FC-55D0-4EAA-8123-36343B65FB56",
+      "CB01B43A-67AC-4F69-8843-1FCB016D68F7"
+    ],
+    "6E873B23-EF9A-4676-A594-BA0E459CD105" : [
+      "303F8A4D-C5D6-4038-8E7F-195C852ADCFA",
+      "0FC41285-72C7-49BE-BA53-DBECD3EF99D8"
+    ],
+    "AAA4C712-DCD2-4C9C-A6ED-3237CCE2BEDA" : [
+      "EAA96206-D2AA-4F07-B7E8-6D71A13A67A1",
+      "C7D1C6FC-55D0-4EAA-8123-36343B65FB56"
+    ]
+  },
+  "design" : {
+    "connectorPathStyle" : "rounded",
+    "themeName" : "zen2",
+    "paper" : {
+      "rightMargin" : 20,
+      "bottomMargin" : 20,
+      "topMargin" : 20,
+      "name" : "a4",
+      "leftMargin" : 20,
+      "ori" : true
+    },
+    "autoFrame" : true,
+    "showPageMarker" : true
+  },
+  "showsGrids" : true,
+  "version" : "100"
+}

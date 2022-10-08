@@ -1,4 +1,5 @@
-// COin API https://www.coingecko.com/en/api/documentation
+// Coin list site https://www.coingecko.com/en/api/documentation
+// Coin compare site https://min-api.cryptocompare.com
 $(document).ready(function StartPage(){
     NavTO()
 })
@@ -17,11 +18,10 @@ const MainPage = $(`main`) // page <main>
 let CurrentScreen; // Current Page Saver
 
 async function NavTO(PageHeader){
-    alert(PageHeader)
     const CurrentPage = $(`#CurrentPage`) // <header> >  <h2>
     // check if current page is clicked
     if((CurrentScreen == PageHeader)&&(CurrentScreen !== undefined)){
-        alert(PageHeader +` already on this page`)
+        console.log(PageHeader +` already on this page`)
         return;
     }
     CurrentScreen = PageHeader;
@@ -29,7 +29,8 @@ async function NavTO(PageHeader){
     let Page; 
      switch(PageHeader){
         case `Coins`: 
-            Page = await CoinsPage(); 
+            Page = await CoinsPage();
+            CoinsReport.length = 0 
             MainPage.html(``)
             MainPage.append(Page)
             break;
@@ -38,11 +39,13 @@ async function NavTO(PageHeader){
             break;
         case `About` : 
             Page = AboutPage(); 
+            CoinsReport.length = 0
             MainPage.html(``)
             MainPage.append(Page)
             break;
         default :
             Page = await CoinsPage(); 
+            CoinsReport.length = 0
             MainPage.html(``)
             MainPage.append(Page)
         break;
@@ -105,7 +108,7 @@ async function CoinsPage(){
         return Data2Html(CoinsList , "Coins")         
     } catch (error){
         alert(error)
-        return `no no`;
+        return `Problem With the SERVER`;
     }    
 }
 
@@ -242,8 +245,8 @@ function CoinReportBanner(CoinID){
 
 let CoinsPricesArr = [];
 
-async function FeedsPage(){
-    try{
+function FeedsPage(){
+    
         if(CoinsReport.length == 0){
             MainPage.html(``)
             MainPage.append(Data2Html( CoinsReport , "EmptyFeed"))
@@ -262,28 +265,13 @@ async function FeedsPage(){
         //then Add the Chart to the DIV
 
         CoinsSymbols = CoinsSymbols.splice("").join().toUpperCase()
-        const CurrenciesTO = `USD,EUR,ILS`
         const ApiKey = `3fa63ebf50a7a9985593e34a3bff90add4979f3b6445759dfe38779bf898e559`
-        const CoinsPriceUrl = `https://min-api.cryptocompare.com/data/pricemulti?fsyms=` + CoinsSymbols + `&tsyms=`+ CurrenciesTO + ApiKey;
+        const CoinsPriceUrl = `https://min-api.cryptocompare.com/data/pricemulti?fsyms=` + CoinsSymbols + `&tsyms=USD&extraParams=` + ApiKey;
         Loader(2)
-        setInterval(() => {
-            GetFeeds(CoinsPriceUrl)
-        }, 1000 * 2);
-        
-        return 
-    } catch(error){
-        alert(error)
-    }
+        FeedsChart(CoinsPriceUrl)
+        return ;
 }
- async function GetFeeds(CoinsPriceUrl){
-    console.log(CoinsPriceUrl);
-    const CoinsPrices = await APiCatcher( CoinsPriceUrl, 0 )
-    const NewTime = new Date();
-    console.log(`Time is: `+ NewTime);
-    CoinsPricesArr.push({"PriceTime": NewTime, "CoinsPrices": CoinsPrices})
-    console.log(CoinsPricesArr);
-    FeedsChart(CoinsPricesArr)
- }
+
 
 function AboutPage(){
     alert(`this is About Page`)
@@ -292,7 +280,6 @@ function AboutPage(){
 
 
 function Data2Html( CoinObj , WHatToPrint){
-    alert( `Data2Html: ` + WHatToPrint)
     let NewHtml =``;
     switch(WHatToPrint){
         
@@ -406,105 +393,65 @@ function Data2Html( CoinObj , WHatToPrint){
 }
 
 
-function FeedsChart(CoinCompereObj) {
-    console.log(`CoinCompereObj`);
-    console.log(CoinCompereObj);
-    if(!Object.keys(CoinCompereObj).length){
-        console.log(`Empty`);
-        return;
-    }
-    console.log(`CoinCompereObj isGood`);
-    for (const CoinsPriceList of CoinCompereObj){
-        for( const Coin of CoinsPriceList){
-            
-        }
-    }
-    var options = {
-        exportEnabled: true,
+
+///
+function FeedsChart(CoinsUrl){
+	
+
+    var CoinsPoints = [];
+    CoinsPoints.length = 0
+
+    var options =  {
         animationEnabled: true,
-        title:{
-            text: "Units Sold VS Profit"
+        theme: "light2",
+        title: {
+            text: "Daily Sales Data"
         },
-        subtitles: [{
-            text: "Click Legend to Hide or Unhide Data Series"
-        }],
         axisX: {
-            title: "States"
+            title: "Time"
         },
         axisY: {
-            title: "Units Sold",
-            titleFontColor: "#4F81BC",
-            lineColor: "#4F81BC",
-            labelFontColor: "#4F81BC",
-            tickColor: "#4F81BC"
+            title: "USD",
+            titleFontSize: 24
         },
-        axisY2: {
-            title: "Profit in USD",
-            titleFontColor: "#C0504E",
-            lineColor: "#C0504E",
-            labelFontColor: "#C0504E",
-            tickColor: "#C0504E"
-        },
-        toolTip: {
-            shared: true
-        },
-        legend: {
-            cursor: "pointer",
-            itemclick: toggleDataSeries
-        },
-        data: [{
-            type: "spline",
-            name: "Units Sold",
-            showInLegend: true,
-            xValueFormatString: "MMM YYYY",
-            yValueFormatString: "#,##0 Units",
-            dataPoints: [
-                { x: new Date(2016, 0, 1),  y: 120 },
-                { x: new Date(2016, 1, 1), y: 135 },
-                { x: new Date(2016, 2, 1), y: 144 },
-                { x: new Date(2016, 3, 1),  y: 103 },
-                { x: new Date(2016, 4, 1),  y: 93 },
-                { x: new Date(2016, 5, 1),  y: 129 },
-                { x: new Date(2016, 6, 1), y: 143 },
-                { x: new Date(2016, 7, 1), y: 156 },
-                { x: new Date(2016, 8, 1),  y: 122 },
-                { x: new Date(2016, 9, 1),  y: 106 },
-                { x: new Date(2016, 10, 1),  y: 137 },
-                { x: new Date(2016, 11, 1), y: 142 }
-            ]
-        },
-        {
-            type: "spline",
-            name: "Profit",
-            axisYType: "secondary",
-            showInLegend: true,
-            xValueFormatString: "MMM YYYY",
-            yValueFormatString: "$#,##0.#",
-            dataPoints: [
-                { x: new Date(2016, 0, 1),  y: 19034.5 },
-                { x: new Date(2016, 1, 1), y: 20015 },
-                { x: new Date(2016, 2, 1), y: 27342 },
-                { x: new Date(2016, 3, 1),  y: 20088 },
-                { x: new Date(2016, 4, 1),  y: 20234 },
-                { x: new Date(2016, 5, 1),  y: 29034 },
-                { x: new Date(2016, 6, 1), y: 30487 },
-                { x: new Date(2016, 7, 1), y: 32523 },
-                { x: new Date(2016, 8, 1),  y: 20234 },
-                { x: new Date(2016, 9, 1),  y: 27234 },
-                { x: new Date(2016, 10, 1),  y: 33548 },
-                { x: new Date(2016, 11, 1), y: 32534 }
-            ]
-        }]
+        data: CoinsPoints
     };
+     
     $("#chartContainer").CanvasJSChart(options);
+    updateData();
     
-    function toggleDataSeries(e) {
-        if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
-            e.dataSeries.visible = false;
-        } else {
-            e.dataSeries.visible = true;
+    function addData(dataInput) {
+        // new time
+        let now = new Date()
+        let NewDate = CanvasJS.formatDate( now, "mm:ss")
+        console.log(`CoinsPoints`);
+        console.log(CoinsPoints);
+        // make new Line if its the first round of pulling data
+        const InputLength = Object.keys(dataInput).length;
+        if(InputLength > CoinsPoints.length ){
+            for (let key in dataInput) {
+                CoinsPoints.push( {type: "spline",
+                name: key,
+                showInLegend: true,
+                dataPoints: [] })
+            }
         }
-        e.chart.render();
-    }
+        // adding point to date and USD price
+        for (let key in dataInput) {
+            CoinsPoints.find(  n => { n.name == key ;
+                n.dataPoints.push({
+                    x: NewDate,
+                    y: dataInput[key].USD
+            })
+            } )
+          }
+          console.log(CoinsPoints);
+        $("#chartContainer").CanvasJSChart().render();
+        setTimeout(updateData, 1500);
     
     }
+    function updateData() {
+        $.getJSON(CoinsUrl, addData);
+    }
+
+ }
