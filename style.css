@@ -1,9 +1,23 @@
+:root {
+    --bg-color: linear-gradient(90deg, rgba(85,95,105,1) 0%, rgba(29,30,33,1) 100%);
+    --primary-color: #ccd3da;
+    --secondary-color:#555f69;
+    --contras-color: white;
+    --font-coins:  'Goldman', cursive;
+    --font-ui: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
 body {
-    color: white;
-    background-image: url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2Fwp8058014.jpg&f=1&nofb=1);
+    color: var(--secondary-color);
+    background-image: url(https://images.unsplash.com/photo-1579468118288-682e600b8565?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80);
     background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
     padding: 0;
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 .hideIt {
     display: none;
@@ -23,9 +37,10 @@ main {
     width: 100%;
     height: 100vh;
     z-index: 9999;
-    background: linear-gradient(90deg, rgba(255,217,68,1) 48%, rgba(249,255,203,1) 100%);
+    background-image: url(https://images.unsplash.com/photo-1645905159052-0dc842ada711?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1586&q=80);
+    background-size: cover;
+    background-blend-mode: darken;
     top: 0;
-
 }
 #Loader {
     position: absolute;
@@ -40,7 +55,7 @@ main {
     width: 5em;
 }
 #Loader h2 {
-    color: white;
+    color: var(--primary-color);
     font-size: 2.5em;
     -webkit-text-stroke: 0.02em  black; 
 }
@@ -58,15 +73,15 @@ header {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    background: linear-gradient(90deg, rgba(255,217,68,1) 48%, rgba(249,255,203,1) 100%);
-    color: black;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    width: 97%;
+    background: var(--bg-color);
+    font-family: var( --font-ui);
+    width: 100%;
     height: auto;
     padding: 0;
     margin: 0;
     text-align: center;
     align-items: center;
+    justify-content: center;
     padding-left: 2rem;
     padding-right: 2rem;
 }
@@ -77,20 +92,20 @@ header div:nth-child(2){
 }
 header div  h2 {
     display: inline-block;
-    color: white;
+    color: var(--contras-color);
     font-size: 5em;
     margin: 0; 
-    -webkit-text-stroke: 0.02em  black
+    -webkit-text-stroke: 0.02em  var(--secondary-color);
 }
 header div img {
     width: 5rem;
     height: 5rem;
 }
-h1 {
+header h1 {
     font-size: 3em;
     padding-left: 0.5em;
-    color: white;
-    -webkit-text-stroke: 0.02em  black;
+    color: var(--contras-color);
+    -webkit-text-stroke: 0.02em  var(--secondary-color);
     margin: 0;
     padding: 0.2em;
 }
@@ -101,15 +116,16 @@ nav {
 nav li {
     display: inline;
     list-style: none;
-    color: white;
+    color: var(--contras-color);
     font-size: 1.5em;
     text-decoration: none;
     padding-left: 0.8em;
-    -webkit-text-stroke: 0.03em  black
+    -webkit-text-stroke: 0.03em  black;
 }
 nav li:hover {
     cursor: pointer;
-    color: black;
+    -webkit-text-stroke: 0.05em  var(--primary-color);
+    color: var(--secondary-color);
 }
 
 /* COIN PAGE HOME */
@@ -125,14 +141,15 @@ nav li:hover {
     display: flex;
     flex-direction: column;
     gap: 0.2rem;
-    background: #282828;
-    color: #ffd944;
+    font-family:var( --font-coins);
+    background: rgba(0, 0, 0, 0.4);
+    box-shadow: 1rem 1rem 2rem rgba(0,0,0,.5);
+    color: var( --contras-color);
     width: 15rem;
     height: 10rem;
-    border: 0.1rem solid #ffd944;
-    border-radius: 0.5rem;
+    border: 0.1rem solid var( --primary-color);
     margin: 0.5rem;
-    padding: 0.4rem;
+    padding: 0.8rem;
     
 }
 /* collapse */
@@ -148,6 +165,7 @@ nav li:hover {
 }
 /* name Div */
 .coinBox #prt1 div:nth-child(1) {
+    font-size: 0.8rem;
     padding: 0.3rem;
     width: 10rem;
     padding: 0.2rem;
@@ -159,11 +177,18 @@ nav li:hover {
     flex-direction: column;
     align-items: flex-end;
     text-align: center;
-    width: 4rem;
+    width: 2rem;
     padding: 0.2rem;
 }
 .coinBox #prt1 div:nth-child(2) p {
     font-size: 0.8rem;
+}
+
+.card-body{
+    display: flex;
+    flex-direction: row;
+    font-size: 1rem;
+    width: 15rem;
 }
 /* Info div */
 .coinBox #prt2 { 
@@ -172,21 +197,21 @@ nav li:hover {
    padding: 0.2rem;
 }
 .coinBox button {
-font-size: 0.8rem;
-/* width: 5rem; */
-padding: 0.5em;
+    font-size: 0.8rem;
+    padding: 0.5em;
 }
 .coinBox .collapse {
-width: auto;
-height: auto;
-color:  #282828;
+    width: auto;
+    height: auto;
+    color:  #282828;
 }
 /* SearchBAR */
 .Search {
     display: inline-block;
-  background: #ffd944;
-  padding: 0.2em;
-  border-radius: 0.2em;
+    background: var( --primary-color);
+    padding: 0.2em;
+    border-radius: 0.2em;
+    position: sticky;
 }
 .Search label {
     cursor: pointer;
@@ -207,7 +232,7 @@ color:  #282828;
 .BackDropReport {
     position: fixed;
     z-index: 4;
-    background: white;
+    background: var(--contras-color);
     width: 100%;
     height: 100%;
     opacity: 0.4;
@@ -215,6 +240,8 @@ color:  #282828;
 .ReportBanner {
     z-index: 6;
     position: absolute;
+    color: var(--contras-color);
+    font-family:var( --font-coins);
     left: 50%;
     right: 50%;
     transform: translate( -50%,10%);
@@ -231,9 +258,9 @@ color:  #282828;
     min-height: 30rem;
     max-height: 40rem;
     overflow: scroll;
-    background: black;
+    background: var(--secondary-color);
     border-radius: 0.7rem;
-    border: 0.2rem solid  #ffd944;
+    border: 0.2rem solid  var( --primary-color);
 }
 .CoinReportLine {
     background: rgb(57, 54, 44);
@@ -242,7 +269,7 @@ color:  #282828;
     width: 100%;
     height: 4rem;
     padding: 0.5rem;
-    border-top: 0.1rem solid #ffd944;
+    border-top: 0.1rem solid var( --primary-color);
     
 }
 .CoinReportLine label {
@@ -267,39 +294,57 @@ color:  #282828;
     font-weight: bold;
 }
 .EndReport button:nth-child(1){
-    border: 0.2 solid white;
-    color:  #ffd944;
+    border: 0.2 solid var(--contras-color);
+    color:  var( --primary-color);
     background: rgb(39, 39, 39);
 }
 .EndReport button:nth-child(2){
-    border: 0.5 solid white;
-    background: #ffd944;
+    border: 0.5 solid var(--secondary-color);
+    background: var( --primary-color);
     align-self: flex-end; 
     justify-self: flex-end;
 }
-
+/* CHART */
+#chartContainer{
+    margin: 1rem;
+    /* position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50% ,-50%); */
+}
  /* ABOUT PAGE */
  article{
     font-size: 1.2rem;
     line-height: 2rem;
     text-align: center;
     width: 80%;
-    background:black;
+    color: black;
+    background: rgba(255,255,255,.4);
+    box-shadow: 0 15px 20px rgba(0,0,0,.2);
+    text-align: center;
     padding: 3em;
-    
+    margin: 1rem;
 }
 /* FEED PAGE */
 .emptyFeeds {
     display: flex;
-    flex-direction: row;
-    align-items: baseline;
+    flex-direction: column;
+    font-size: 1.2rem;
+    line-height: 2rem;
     text-align: center;
-    font-size: 1.5rem;
-    justify-content: center;
-    width: 100vw;
-    height: 100vh;
-    color: white;
-    background: radial-gradient( circle, rgba(84,85,88,1) 0%, rgba(29,30,33,1) 15%);
-    margin: 0rem;
-    padding: 3rem;
+    width: 80%;
+    color: var(--secondary-color);
+    background: rgba(255,255,255,.4);
+    box-shadow: 0 15px 20px rgba(0,0,0,.2);
+    text-align: center;
+    padding: 3em;
+    margin: 1rem;
+}
+
+footer{
+    margin-top: auto;
+    text-align: center;
+    background: var(--bg-color);
+    color: var(--primary-color);
+    height: 4rem;
 }

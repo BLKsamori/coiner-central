@@ -4,6 +4,7 @@ $(document).ready(function StartPage(){
     NavTO()
 })
 
+
 function Loader(timeout){
     if((timeout == 0)||(timeout == undefined)){
         return;
@@ -21,7 +22,6 @@ async function NavTO(PageHeader){
     const CurrentPage = $(`#CurrentPage`) // <header> >  <h2>
     // check if current page is clicked
     if((CurrentScreen == PageHeader)&&(CurrentScreen !== undefined)){
-        console.log(PageHeader +` already on this page`)
         return;
     }
     CurrentScreen = PageHeader;
@@ -30,7 +30,6 @@ async function NavTO(PageHeader){
      switch(PageHeader){
         case `Coins`: 
             Page = await CoinsPage();
-            CoinsReport.length = 0 
             MainPage.html(``)
             MainPage.append(Page)
             break;
@@ -39,13 +38,11 @@ async function NavTO(PageHeader){
             break;
         case `About` : 
             Page = AboutPage(); 
-            CoinsReport.length = 0
             MainPage.html(``)
             MainPage.append(Page)
             break;
         default :
             Page = await CoinsPage(); 
-            CoinsReport.length = 0
             MainPage.html(``)
             MainPage.append(Page)
         break;
@@ -71,10 +68,8 @@ function APiCatcher(urlInput, timeout){
 async function SearchCoins(){
     const SearchInput = document.querySelector(`#SearchBox`);
     if((SearchInput.value == ``)||(SearchInput.value.length < 2)){
-        alert(`Input Incorrect`)
         return;
     }
-    alert(`Search Coins: ${SearchInput.value}`)
     try {
     const SearchUrl = `https://api.coingecko.com/api/v3/search?query=${SearchInput.value}`
     const SearchedCoin = APiCatcher(SearchUrl)
@@ -104,7 +99,6 @@ async function CoinsPage(){
             // setting to the Map the [Key as the id] & [value as name and symbol.. later add the currency and image]
             CoinsList.set( Coin.id , { "name": Coin.name, "symbol": Coin.symbol } )
         }
-        console.log(CoinsList)
         return Data2Html(CoinsList , "Coins")         
     } catch (error){
         alert(error)
@@ -116,7 +110,6 @@ async function MoreInfo(CoinID){
     try { 
          //get the coin values
         const CoinPicked = CoinsList.get( `${CoinID}` ); 
-        console.log(CoinPicked)
 
         // setting timeStamp 
         const TimeStamp = TimeStampPuncher( CoinPicked.InfoTime )
@@ -127,7 +120,6 @@ async function MoreInfo(CoinID){
                 return;
             }
         } 
-        console.log(`what is this`)
         // Store Time stamp in the Coin obj
         CoinPicked.InfoTime = TimeStamp[0]; // setting the new TimeStamp
         // if info is missing so..
@@ -139,7 +131,6 @@ async function MoreInfo(CoinID){
                 "usd" : InfoData.market_data.current_price.usd, 
                 "ils": InfoData.market_data.current_price.ils,
                 "img": InfoData.image.small }
-        console.log(CoinPicked)
         //push the object back to the map
         CoinsList.set( CoinID , CoinPicked )
         const CoinIDCard = $(`#card_${CoinID}`); // input of the MORE INFO
@@ -209,9 +200,7 @@ function AddCoin2Report(CoinID){
 function CoinReportBanner(CoinID){ 
 
     const ReportBanner = $(`.ReportBannerScreen`) // the Report Banner
-
     const CoinCheckBanner = $( `#Check_${CoinID}`)  //$( `#Check_CoinID`)
-    alert(`this: `+ CoinID)
 
   // if Cancel button was pushed
   if ( CoinID == `cancel`){
@@ -219,7 +208,6 @@ function CoinReportBanner(CoinID){
     return;
   }
   if ( CoinID == `done`){
-    alert('About DOn: ' + CoinsReportBanner.length) 
     if(CoinsReportBanner.length > 5 ){
           return;
       }
@@ -237,7 +225,6 @@ function CoinReportBanner(CoinID){
     CoinsReportBanner = CoinsReportBanner.filter(coin => coin.id !== CoinID)
     return;
     } else{
-        alert(` is in`)
         const NewCoinReport = {"id": CoinID,"name": CoinsList.get(CoinID).name , "symbol": CoinsList.get(CoinID).symbol}
         CoinsReportBanner.push(NewCoinReport)
     } 
@@ -254,9 +241,7 @@ function FeedsPage(){
         }
         let CoinsSymbols = [];
         for(const Coin of CoinsReport){
-            console.log(Coin);
             CoinsSymbols.push(Coin.symbol)
-            console.log(Coin.symbol);
         }
 
         MainPage.html(``)
@@ -274,7 +259,6 @@ function FeedsPage(){
 
 
 function AboutPage(){
-    alert(`this is About Page`)
     return Data2Html( "" ,  "About");
 }
 
@@ -369,6 +353,7 @@ function Data2Html( CoinObj , WHatToPrint){
 
     case "EmptyFeed":
         NewHtml = `<div class="emptyFeeds"> 
+            <h1> Oops</h1>
             <p>
                 Feeds are <b>Empty</b>, (${CoinObj.length}) Coins to Compare. <br>
                 Please add Coins from the Coins-Page
@@ -384,7 +369,7 @@ function Data2Html( CoinObj , WHatToPrint){
         NewHtml = `<article> Digital currency- or currency as it's also known- is the transfer of money or payment information via computer networks. It's a virtual unit of currency that can be transferred and received by electronic means. The most popular digital currency is Bitcoin, which is gaining ground in the financial world and becoming more relevant with each passing day.
         Digital currency is easy to transfer and receive since it exists in digital form. Transactions are sent over the internet and saved on computer systems without needing to be physically preserved. This makes digital currency much more convenient than traditional currency since users don't have to seek out a bank or physical location to receive their payment. 
         <br> Digital currency also has many advantages when it comes to security and transaction processing speed. However, there are downsides when compared to physical currency- for example, digital currencies can be hacked or lost easily.
-        <br><br> So while U hold on your precious coins we will provide you with the stat so you will never get caught sleeping on your wallet.
+        <br><br> So while U hold on your precious coins we will provide you with the state so you will never get caught sleeping on your wallet.
         </article>`;
         break;
     }
@@ -393,11 +378,10 @@ function Data2Html( CoinObj , WHatToPrint){
 }
 
 
-
-///
 function FeedsChart(CoinsUrl){
-	
-
+    //clear the array for the next time 
+    CoinsReport.length = 0 
+    
     var CoinsPoints = [];
     CoinsPoints.length = 0
 
@@ -424,8 +408,7 @@ function FeedsChart(CoinsUrl){
         // new time
         let now = new Date()
         let NewDate = CanvasJS.formatDate( now, "mm:ss")
-        console.log(`CoinsPoints`);
-        console.log(CoinsPoints);
+        
         // make new Line if its the first round of pulling data
         const InputLength = Object.keys(dataInput).length;
         if(InputLength > CoinsPoints.length ){
@@ -436,6 +419,7 @@ function FeedsChart(CoinsUrl){
                 dataPoints: [] })
             }
         }
+
         // adding point to date and USD price
         for (let key in dataInput) {
             CoinsPoints.find(  n => { n.name == key ;
@@ -445,9 +429,10 @@ function FeedsChart(CoinsUrl){
             })
             } )
           }
-          console.log(CoinsPoints);
+         console.log(`CoinsPoints`);
+         console.log(CoinsPoints);
         $("#chartContainer").CanvasJSChart().render();
-        setTimeout(updateData, 1500);
+        setTimeout(updateData, 1000 * 2);
     
     }
     function updateData() {
