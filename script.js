@@ -363,7 +363,10 @@ function Data2Html( CoinObj , WHatToPrint){
         break;
 
     case "Feed":
-        NewHtml = `<div id="chartContainer" style="height: 300px; width: 100%;"></div>`
+        NewHtml = `<section class="LiveFeeds">
+                    <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+                    <div id="chartSummery"><div>
+                <section>`
         break;
     case "About":
         NewHtml = `<article> Digital currency- or currency as it's also known- is the transfer of money or payment information via computer networks. It's a virtual unit of currency that can be transferred and received by electronic means. The most popular digital currency is Bitcoin, which is gaining ground in the financial world and becoming more relevant with each passing day.
@@ -379,7 +382,7 @@ function Data2Html( CoinObj , WHatToPrint){
 
 
 function FeedsChart(CoinsUrl){
-    //clear the array for the next time 
+    //clear the Coin array for the next Compare 
     CoinsReport.length = 0 
     
     var CoinsPoints = [];
@@ -390,6 +393,9 @@ function FeedsChart(CoinsUrl){
         theme: "light2",
         title: {
             text: "Daily Sales Data"
+        },
+        toolTip: {
+            shared: true
         },
         axisX: {
             title: "Time"
@@ -413,24 +419,34 @@ function FeedsChart(CoinsUrl){
         const InputLength = Object.keys(dataInput).length;
         if(InputLength > CoinsPoints.length ){
             for (let key in dataInput) {
-                CoinsPoints.push( {type: "spline",
-                name: key,
-                showInLegend: true,
-                dataPoints: [] })
+                CoinsPoints.push( {
+					name: key,
+					type: "spline",
+					xValueFormatString: "HH:mm:ss",
+					showInLegend: true,
+					dataPoints: [] })
             }
         }
 
-        // adding point to date and USD price
-        for (let key in dataInput) {
-            CoinsPoints.find(  n => { n.name == key ;
-                n.dataPoints.push({
-                    x: NewDate,
-                    y: dataInput[key].USD
-            })
-            } )
-          }
-         console.log(`CoinsPoints`);
-         console.log(CoinsPoints);
+        let SummeryOfChartText = `<h4>Coin Latest Prices</h4> <p>`;
+        for ( const CoinName in dataInput){
+            // adding point to date and USD price
+            CoinsPoints.find(  CoinLine => CoinLine.name == CoinName)
+            .dataPoints.push({ x: now,
+                            y: dataInput[CoinName].USD })  
+            // adding Latest price for easy watch
+             SummeryOfChartText += `<b> ${CoinName} </b>: ${dataInput[CoinName].USD} &#36 <br>`
+        }   
+        SummeryOfChartText += `</p>`;
+
+        // shift when data get too crowded
+        if (CoinsPoints[0].length > 20 ) {
+            CoinsPoints.forEach(  CoinLine => CoinLine.dataPoints.shift())
+        }
+
+         // update the Summery Text
+         $("#chartSummery").html(``)
+         $("#chartSummery").append(SummeryOfChartText)
         $("#chartContainer").CanvasJSChart().render();
         setTimeout(updateData, 1000 * 2);
     

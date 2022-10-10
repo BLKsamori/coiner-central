@@ -17,13 +17,20 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body >
+
     <header>
         <div>
             <h1>Crypto Central</h1>
             <nav >
-                <li onclick="NavTO(`Coins`)">Coins</li>
-                <li onclick="NavTO(`Feeds`)">Live Feeds</li>
-                <li onclick="NavTO(`About`)">About</li>
+                <div id="burger">
+                    <i class="bi bi-list"></i>
+                    <i class="bi bi-x"></i>
+                </div>
+                <ul>
+                    <li onclick="NavTO(`Coins`)">Coins</li>
+                    <li onclick="NavTO(`Feeds`)">Live Feeds</li>
+                    <li onclick="NavTO(`About`)">About</li>
+                </ul>
             </nav>
         </div>
         
