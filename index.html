@@ -21,11 +21,14 @@
     <header>
         <div>
             <h1>Crypto Central</h1>
+
+            <input type="checkbox" id="burgerCheck">
+            <label for="burgerCheck" class="burger">
+                <i class="bi bi-list"></i>
+                <i class="bi bi-x"></i>
+            </label>
+
             <nav >
-                <div id="burger">
-                    <i class="bi bi-list"></i>
-                    <i class="bi bi-x"></i>
-                </div>
                 <ul>
                     <li onclick="NavTO(`Coins`)">Coins</li>
                     <li onclick="NavTO(`Feeds`)">Live Feeds</li>
@@ -46,7 +49,7 @@
     </main>
 
     <footer>
-        <p>Coin Crypto net</p>
+        <p>&#169 Coin Crypto net</p>
     </footer>
 
     <div id="LoaderDIV" class="hideIt">

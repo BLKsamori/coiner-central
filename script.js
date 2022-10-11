@@ -369,11 +369,14 @@ function Data2Html( CoinObj , WHatToPrint){
                 <section>`
         break;
     case "About":
-        NewHtml = `<article> Digital currency- or currency as it's also known- is the transfer of money or payment information via computer networks. It's a virtual unit of currency that can be transferred and received by electronic means. The most popular digital currency is Bitcoin, which is gaining ground in the financial world and becoming more relevant with each passing day.
+        NewHtml = `<section class="about">
+        <h3>Crypto Central<h3>
+        <article> Digital currency- or currency as it's also known- is the transfer of money or payment information via computer networks. It's a virtual unit of currency that can be transferred and received by electronic means. The most popular digital currency is Bitcoin, which is gaining ground in the financial world and becoming more relevant with each passing day.
         Digital currency is easy to transfer and receive since it exists in digital form. Transactions are sent over the internet and saved on computer systems without needing to be physically preserved. This makes digital currency much more convenient than traditional currency since users don't have to seek out a bank or physical location to receive their payment. 
         <br> Digital currency also has many advantages when it comes to security and transaction processing speed. However, there are downsides when compared to physical currency- for example, digital currencies can be hacked or lost easily.
         <br><br> So while U hold on your precious coins we will provide you with the state so you will never get caught sleeping on your wallet.
-        </article>`;
+        </article>
+        </section>`;
         break;
     }
 

@@ -2,15 +2,19 @@
     --bg-color: linear-gradient(90deg, rgba(85,95,105,1) 0%, rgba(29,30,33,1) 100%);
     --primary-color: #ccd3da;
     --secondary-color:#555f69;
+    --read-color: black;
     --accent-color: #0d6efd;
     --contras-color: white;
     --font-coins:  'Goldman', cursive;
     --font-ui: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    --bg-img: url(https://images.unsplash.com/photo-1579468118288-682e600b8565?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80);
+    --loader-bg-img:url(https://images.unsplash.com/photo-1645905159052-0dc842ada711?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1586&q=80);
 }
+* { box-sizing: border-box;}
 /* DeskTOP */
     body {
         color: var(--secondary-color);
-        background-image: url(https://images.unsplash.com/photo-1579468118288-682e600b8565?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80);
+        background-image: var(--bg-img);
         background-attachment: fixed;
         background-size: cover;
         background-repeat: no-repeat;
@@ -38,7 +42,7 @@
         width: 100%;
         height: 100vh;
         z-index: 9999;
-        background-image: url(https://images.unsplash.com/photo-1645905159052-0dc842ada711?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1586&q=80);
+        background-image: var(--loader-bg-img);
         background-size: cover;
         background-blend-mode: darken;
         top: 0;
@@ -58,7 +62,7 @@
     #Loader h2 {
         color: var(--primary-color);
         font-size: 2.5em;
-        -webkit-text-stroke: 0.02em  black; 
+        -webkit-text-stroke: 0.02em  var(--read-color) 
     }
     #LoaderSmallGIF {
         position: absolute;
@@ -114,8 +118,11 @@
         width: 2em;
         height: 2em;
     }
-    #burger {
+    #burgerCheck {
         display: none;
+    }
+    .burger {
+        z-index: 5;
         color: var(--contras-color);
         width: auto; 
     }
@@ -133,7 +140,7 @@
         font-size: 1.2em;
         text-decoration: none;
         padding-left: 0.8em;
-        -webkit-text-stroke: 0.03em  black;
+        -webkit-text-stroke: 0.03em  var(--read-color)
     }
     nav li:hover {
         cursor: pointer;
@@ -164,7 +171,7 @@
         padding: 0.8rem;
         
     }
-    /* collapse */
+    /* collapse  */
     .coinBox #prt1 {
         display: flex;
         flex-direction: row;
@@ -196,15 +203,9 @@
         font-size: 0.8rem;
     }
 
-    .card-body{
-        display: flex;
-        flex-direction: row;
-        font-size: 1rem;
-        width: 15rem;
-    }
     /* Info div */
     .coinBox #prt2 { 
-    width: auto;
+    width: 15rem;
     height: auto;
     padding: 0.2rem;
     }
@@ -216,6 +217,20 @@
         width: auto;
         height: auto;
         color:  #282828;
+    }
+    .CoinDetails{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        width: 100%;
+        gap: 1rem;
+    }
+    .CoinDetails p {
+        font-size: 1rem;
+    }
+    .CoinDetails img {
+        width: 3rem;
+        height: 3rem;
     }
     /* SearchBAR */
     .Search {
@@ -229,7 +244,7 @@
         cursor: pointer;
     }
     .Search label .bi-search {
-        color: black;
+        color: var(--read-color)
     }
 
     /* REPORT Banner CSS */
@@ -325,17 +340,32 @@
         transform: translate(-50% ,-50%); */
     }
     /* ABOUT PAGE */
-    article{
-        font-size: 1.2rem;
-        line-height: 2rem;
-        text-align: center;
+    .about {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
         width: 80%;
-        color: black;
         background: rgba(255,255,255,.4);
         box-shadow: 0 15px 20px rgba(0,0,0,.2);
         text-align: center;
-        padding: 3em;
+        align-items: center;
+        justify-content: center;
         margin: 1rem;
+    }
+    .about h3{
+        color: var(--read-color);
+        padding-top: 1rem;
+    }
+    .about article{
+        font-size: 1.2rem;
+        line-height: 2rem;
+        align-self: center;
+        justify-self: center;
+        width: 100%;
+        padding: 1rem;
+        color: var(--read-color);
+        
+        
     }
     /* FEED PAGE */
     .LiveFeeds {
@@ -369,31 +399,171 @@
 
 /* SMART PHONES */
 @media screen and ( max-width: 767px){
+    body {
+        background-size: 300%;
+        background-position: center;
+    }
+    /* LOADER Progress Bar */
+    #LoaderDIV {
+        background-size: 300%;
+        background-position: center;
+    }
+    /* Header */
+    header h1  {
+        font-size: 1.5rem;
+    }
     header div:nth-child(1) {
         display: flex;
         flex-direction: row-reverse;
+        align-items: baseline;
     } 
-     #burger {
-        display: contents;
-        width: auto;
-    }
     nav ul{
         display: none;
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        background: var(--bg-color);
+        text-align: start;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+        z-index: 2;
     }
+    nav ul li { 
+        padding: 1rem;
+        border-bottom: 0.3rem solid var(--secondary-color);
+        color:var(--primary-color)
+    }
+    nav ul li:hover {
+        color: var(--contras-color);
+        font-weight: bold;
+        font-size: 2rem;
+    }
+    nav ul li:enabled ~ nav ul {
+        display: none;
+    }
+     /* Checked Burger */
+     .burger {
+        font-size: 2rem;
+     }
+     .burger .bi-x{
+        display: none;
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, -50%);
+     }
+    #burgerCheck:checked ~  .burger .bi-list{
+        display: none;
+    } 
+    #burgerCheck:checked ~ .burger .bi-x,
+    #burgerCheck:checked ~nav ul{
+        display: flex;
+        flex-direction: column;
+    } 
+
+    .coinBox{
+        font-size: 0.1rem; 
+        width: 11rem;
+        height: 10rem; 
+        padding: 0.8rem;
+    }
+    .coinBox #prt1 {
+        display: flex;
+        flex-direction: row;
+        gap: 0.2rem;
+        width: 10rem;
+        max-height: 6rem;
+        height: auto;
+    }
+   /*     /* name Div */
+   .coinBox #prt1 div:nth-child(1) {
+       font-size: 0.7rem;
+       width: 10rem;
+       overflow: scroll;
+    }
+    .coinBox #prt1 div:nth-child(1) h5 {
+        font-size: 1rem;
+    }
+    /* Add div */
+    .coinBox #prt1 div:nth-child(2) {
+        width: 4rem;
+        font-size: 1rem;
+    }
+    .coinBox #prt1 div:nth-child(2) p {
+        font-size: 0.5rem;
+    }
+    
+    /* Info div */
+    .coinBox #prt2 { 
+        width: 12rem;
+        height: auto;
+        padding: 0.2rem;
+    
+    }
+    .coinBox button {
+        padding: 0.5em;
+    }
+    .coinBox .collapse {
+        width: auto;
+        height: auto;
+        color:  #282828;
+    } 
+    .CoinDetails p {
+        font-size: 0.8rem;
+    }
+    .CoinDetails img {
+        width: 3rem;
+        height: 3rem;
+    }
+    /* FEED PAGE */
+    .LiveFeeds {
+        width: 90%;
+    }
+    .emptyFeeds {
+        font-size: 1rem;
+        line-height: 1.5rem;
+        width: 90%;
+        padding: 1em;
+        margin: 1rem;
+    }
+    /* ABOUT PAGE */
+    .about {
+        width: 95%;
+        /* margin: 1rem; */
+    }
+    .about article{
+        font-size: 1rem;
+        line-height: 1.5rem;
+        width: 100%;
+        color: var(--read-color);
+        padding: 1em;
+        /* margin: 1rem; */
+    }
+
 }
 
 /* TABLETS */
 @media screen and ( min-width: 767px) and ( max-width: 1023px){
+    body {
+        background-size: cover;
+        background-position: center;
+    }
+     /* LOADER Progress Bar */
+     #LoaderDIV {
+        background-size: 300%;
+        background-position: center;
+    }
+    /* Header */
     header div:nth-child(1) {
         display: flex;
         flex-direction: row-reverse;
     } 
-    #burger {
-        display: contents;
-        width: auto;
-    }
-    nav ul{
+    /* nav ul{
         display: none;
-    }
+    } */
 }
 
