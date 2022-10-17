@@ -1,9 +1,8 @@
 // Coin list site https://www.coingecko.com/en/api/documentation
 // Coin compare site https://min-api.cryptocompare.com
 $(document).ready(function StartPage(){
-    NavTO()
+    NavTO();
 })
-
 
 function Loader(timeout){
     if((timeout == 0)||(timeout == undefined)){
@@ -60,30 +59,31 @@ function APiCatcher(urlInput, timeout){
             })
         }, 1000 * timeout);
         
-    } )
-   
+    } )  
 }
 
 // FIXME: coin search continue the API
-async function SearchCoins(){
-    const SearchInput = document.querySelector(`#SearchBox`);
-    if((SearchInput.value == ``)||(SearchInput.value.length < 2)){
+function SearchCoins(){
+    let SearchResults = new Map();
+    const SearchInput = $(`#SearchBox`);
+    const SearcSec = $('#CoinsSearchSection');
+    const SearchValue = SearchInput.val();
+    
+    if( (SearchValue == ``)||(SearchValue < 2) ){
+        if( SearcSec.children().length ){
+            SearcSec.remove();
+         }
+        ErrorBanner( "Search" )
         return;
     }
-    try {
-    const SearchUrl = `https://api.coingecko.com/api/v3/search?query=${SearchInput.value}`
-    const SearchedCoin = APiCatcher(SearchUrl)
-        // 
-        // FIXME:
-        // CODE GOES HERE
-        // 
-
-
-    //clean search box after Results
-    SearchInput.value =``;
-    } catch(error) {
-        alert(error)
+    const SearchRegex = eval(`/${SearchValue}/`);
+    for( const [key, value] of CoinsList.entries() ){
+        if(  (SearchRegex.test( key )) || (SearchRegex.test( value )) ){
+            SearchResults.set(key , value);
+        }
     }
+    SearchInput.val(``);
+    MainPage.append( Data2Html( SearchResults ,"Search") );
 }
 
 let CoinsList = new Map();
@@ -101,8 +101,7 @@ async function CoinsPage(){
         }
         return Data2Html(CoinsList , "Coins")         
     } catch (error){
-        alert(error)
-        return `Problem With the SERVER`;
+        ErrorBanner( "Coin Page")
     }    
 }
 
@@ -174,60 +173,94 @@ let CoinsReport = [];
 let CoinsReportBanner = [];
 
 function AddCoin2Report(CoinID){ 
-   
-  //check if coin has checked or unchecked
-  const CoinCheckBox = $(`#Switch_${CoinID}` )
+    const Compare_Counter = $('.go_compare b');
+    const CompareBtn = $('.counter_box')
+    const TrashCan = $('.clean_compare ')
+   const CoinCheckBox = $(`#Switch_${CoinID}` ) // checkbox Switch 
+   const ClearCompare = () =>{
+        Compare_Counter.html(  CoinsReport.length )
+       CompareBtn.removeClass( 'CompareActive')
+       const Switches = $('.form-check-input' );
+       $.each( Switches,  function(){
+           $(this).prop( 'checked' , false)
+        })
+    }
+    if( CoinID == 'clear_Compare'){
+        CoinsReport.length = 0;
+        ClearCompare()
+        return;
+    }
+    //check if coin has checked or unchecked
   if( !CoinCheckBox.prop( 'checked')){
     // remove the coin
     CoinsReport = CoinsReport.filter(coin => coin.id !== CoinID) //.delete()
+    Compare_Counter.html(  CoinsReport.length )
+    if(CoinsReport.length == 0 ){
+        ClearCompare()
+    }
     return;
   }
   const NewCoinReport = {"id": CoinID,"name": CoinsList.get(CoinID).name, "symbol": CoinsList.get(CoinID).symbol}
-  if(CoinsReport.length > 4 ){
-    CoinCheckBox.prop( 'checked' , false) // unchecked the item
+  if(CoinsReport.length  > 4  ){
+    CoinCheckBox.prop( 'checked' , false) // unchecked the item 
     CoinsReportBanner = CoinsReport;
-    CoinsReportBanner.push(CoinID )
-   
-    MainPage.append(Data2Html( CoinsReportBanner , "reportBanner")) ///FIXME:
+    CoinsReportBanner.push( NewCoinReport ); //adding the EXTRA coin
+    MainPage.append(Data2Html( CoinsReportBanner , "reportBanner")) 
+        for( const coin of CoinsReportBanner ){
+            const CheckBoxReport = $(`#Check_${coin.id}`)
+            CheckBoxReport.prop( 'checked' , true)
+        }
       return;
   } else {
-    CoinsReport.push(NewCoinReport)
+      CoinsReport.push(NewCoinReport)
+      Compare_Counter.html(  CoinsReport.length )
+      CompareBtn.addClass( 'CompareActive')
+      return;
   }
-  //FIXME: ADD save array in the Storage
 }
+
 /// report Banner banner
-
 function CoinReportBanner(CoinID){ 
-
+    console.log("CoinsReportBanner");
+    console.log(CoinsReportBanner);
+    console.log("CoinsReport");
+    console.log(CoinsReport);
     const ReportBanner = $(`.ReportBannerScreen`) // the Report Banner
-    const CoinCheckBanner = $( `#Check_${CoinID}`)  //$( `#Check_CoinID`)
-
-  // if Cancel button was pushed
-  if ( CoinID == `cancel`){
-    ReportBanner.remove()
-    return;
-  }
-  if ( CoinID == `done`){
-    if(CoinsReportBanner.length > 5 ){
-          return;
-      }
-
-    CoinsReport = CoinsReportBanner;
-    for( const Coin in CoinsReport ){
-        const CoinChecked = $(`#Switch_${Coin}` )
-        CoinChecked.prop( 'checked' , true)
+    const CoinCheckBanner = $(`#Check_${CoinID}`)  //$( `#Check_CoinID`)
+    
+    // END report buttons
+    // if Cancel button was pushed
+    if ( CoinID === `cancel`){
+        CoinsReportBanner.length = 0;
+        ReportBanner.remove()
+        return;
     }
-    ReportBanner.remove()
-    return;
-  }
+    // if Done button was pushed
+    if ( CoinID === 'done'){
+        if(CoinsReportBanner.length > 5 ){
+            ErrorBanner("ReportFull")
+            return;
+        }
+        
+        AddCoin2Report('clear_Compare') 
+        CoinsReport = CoinsReportBanner;
+        for( const coin of CoinsReport ){
+            const swicthReport = $(`#Switch_${coin.id}`)
+            swicthReport.prop( 'checked' , true)
+        }
+        CoinsReportBanner.length = 0;
+        ReportBanner.remove()
+        return;
+    }
+    if( !CoinCheckBanner.prop( 'checked')) {
+        CoinsReportBanner = CoinsReportBanner.filter(coin => coin.id !== CoinID);
+        } else {
+        const NewCoinReport = {"id": CoinID,"name": CoinsList.get(CoinID).name, "symbol": CoinsList.get(CoinID).symbol};
+          CoinsReportBanner.push(NewCoinReport)
+      } 
+      $('#reportCount').html(CoinsReportBanner.length);
+      return;
 
-  if( !CoinCheckBanner.prop( 'checked')) {
-    CoinsReportBanner = CoinsReportBanner.filter(coin => coin.id !== CoinID)
-    return;
-    } else{
-        const NewCoinReport = {"id": CoinID,"name": CoinsList.get(CoinID).name , "symbol": CoinsList.get(CoinID).symbol}
-        CoinsReportBanner.push(NewCoinReport)
-    } 
 }
 
 let CoinsPricesArr = [];
@@ -262,16 +295,37 @@ function AboutPage(){
     return Data2Html( "" ,  "About");
 }
 
-
+function ErrorBanner( TypeError){
+    let MessageError = ``;
+    switch(TypeError){
+        case "Coin Page":
+            MessageError =  Data2Html( `Problem With the SERVER, Please Try again with i a few moments.`,  "New Alert" ) ;
+            break;
+        case "Search":
+            MessageError = Data2Html( `No match for the phrase, <br> Please try different phrase with 2 or more letters.`, "New Alert" );
+            break;
+        case "ReportFull":
+            MessageError = Data2Html( "Too Many Coins.<br> Please Remove Some coins to max of 5 Coins in Total.","New Alert" );
+            break;
+        case "close":
+            $(".new_alert").remove();
+            break;
+        default:
+            MessageError = Data2Html( "Something break pls try again","New Alert" );
+            break;
+    }
+    MainPage.append(MessageError)
+     return;
+    
+}
 function Data2Html( CoinObj , WHatToPrint){
     let NewHtml =``;
     switch(WHatToPrint){
-        
-        case "Coins":
-            let CoinsList = ``;
+        case "Search":
+            let CoinsSearchPrint = ``;
             // Key = id , values = name , symbols
             for( const [key , value] of CoinObj){
-                CoinsList += 
+                CoinsSearchPrint += 
                 `<div class="coinBox">
 
                         <div id=prt1>
@@ -305,12 +359,75 @@ function Data2Html( CoinObj , WHatToPrint){
 
                 </div>
                 `}
+        const ClosedBtn = ` <button onclick="SearchCoins()">
+                <i class="bi bi-x-square-fill"></i> 
+            </button>`;
+        const SectionSearched = `<section id="CoinsSearchSection">
+                <h5> Search Results ${ClosedBtn}</h5>
+                <section class="searchResult">
+                    ${CoinsSearchPrint}
+                 </section>
+            </section>`;
+        NewHtml = SectionSearched;
+        break;
 
+        case "Coins":
+            let CoinsListPrint = ``;
+            // Key = id , values = name , symbols
+            for( const [key , value] of CoinObj){
+                CoinsListPrint += 
+                `<div class="coinBox">
+
+                        <div id=prt1>
+                            <div>
+                                <h5>${value.symbol}</h5>     
+                                <p>${value.name}</p>          
+                            </div>
+
+                            <!-- Compare switch-->
+                            <div class="form-check form-switch">
+                                <p> Add+</p>
+                                <input onchange="AddCoin2Report('${key}')" class="form-check-input" type="checkbox" id="Switch_${key}">     
+                            </div>
+                            
+                        </div>
+                        
+
+                        
+                        <!-- Collapse -->
+                        <div id=prt2 >   
+                                <button onclick="MoreInfo('${key}')" id="Btn_${key}" data-bs-target="#Info_${key}" class="btn btn-primary" type="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="Info_${value.id}">
+                                    More Info
+                                </button>
+                            
+                                <div class="collapse" id="Info_${key}">
+                                    <div id="card_${key}" class="card card-body">
+                                                <img id="LoaderSmallGIF" src="https://c.tenor.com/xCav_HCNw-QAAAAj/flipping-coin-gold-flipping-coin.gif" alt="">
+                                    </div>
+                                </div>
+                        </div>
+
+                </div>
+                `}
         const Search = `<div id="searchDiv" class="Search" >
         <label onclick="SearchCoins()" for="SearchBox"><i class="bi bi-search"> Search </i></label>
-        <input id="SearchBox" type="text">
-        </div>`
-        const SectionCoin = `${Search}<section id="CoinsSection">${CoinsList}</section>`;
+        <input id="SearchBox" type="search" placeholder="type here..">
+        </div>`;
+        const Compare_Counter = `<div class="counter_box">
+                <button onclick="NavTO('Feeds')" class="go_compare">
+                    Compare <b>0</b> Coins
+                </button>
+                <button class="clean_compare">
+                    <i class="bi bi-trash trash_compare" onclick="AddCoin2Report('clear_Compare')"></i>
+                </button>
+            </div>`;
+        const SectionCoin = `<div class="middle_bar">
+                                    ${Compare_Counter}
+                                    ${Search}
+                                </div>
+                            <section id="CoinsSection">
+                                ${CoinsListPrint}
+                            </section>`;
         NewHtml = SectionCoin;
         break;
 
@@ -329,26 +446,34 @@ function Data2Html( CoinObj , WHatToPrint){
         break;
 
     case "reportBanner":
-        NewHtml += `<section class="ReportBannerScreen">
-        <div class="BackDropReport"></div>
-        <section class="ReportBanner">
-            <span> You Can Add Up to 5 Coins</span>
-            <h2>Coin Report <span>(${CoinObj.length})</span></h2>`;
+        let NewReportCOin = ``;
         
         CoinObj.forEach( Coin => {
-            NewHtml += `<div id="report_${Coin.id}" class="CoinReportLine"> 
+            NewReportCOin += `<div id="report_${Coin.id}" class="CoinReportLine"> 
+            <span>${CoinObj.indexOf(Coin) + 1} </span>
             <label for="Check_${Coin.id}" >
                 <h5>${Coin.id}</h5>
                 <p>Z${Coin.name}</p>
             </label> 
-            <input onchange="CoinReportBanner('${Coin.id}')" class="form-check-input" type="checkbox" id="Check_${Coin.id}" checked>         
+            <input onchange="CoinReportBanner('${Coin.id}')" class="form-check-input" type="checkbox" id="Check_${Coin.id}">         
         </div>`});
-        NewHtml += `<div class="EndReport">
-                        <button onclick="CoinReportBanner('cancel')" >Cancel</button>
-                        <button onclick="CoinReportBanner('done')" >Done</button>
-                     </div>
-             </section>
-        </section>`;
+        const EndReport = `<div class="EndReport">
+                            <button onclick="CoinReportBanner('cancel')" >Cancel</button>
+                            <button onclick="CoinReportBanner('done')" >Done</button>
+                        </div>`;
+        const ReportSection= `<section class="ReportBannerScreen">
+                <div class="BackDropReport">
+                </div>
+                <section class="ReportBanner">
+                    <span> You Can Add Up to 5 Coins</span>
+                    <h2><span id="reportCount">${CoinObj.length}</span> Coin in The Report </h2>
+                    <section class="reportList">
+                        ${NewReportCOin}
+                        ${EndReport}
+                    </section>
+                </section>
+            </section>`;
+        NewHtml = ReportSection;
         break;
 
     case "EmptyFeed":
@@ -364,20 +489,33 @@ function Data2Html( CoinObj , WHatToPrint){
 
     case "Feed":
         NewHtml = `<section class="LiveFeeds">
-                    <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+                    <div id="chartContainer" style="height: 300px; width: 100%;">
+                    </div>
                     <div id="chartSummery"><div>
                 <section>`
         break;
     case "About":
         NewHtml = `<section class="about">
         <h3>Crypto Central<h3>
-        <article> Digital currency- or currency as it's also known- is the transfer of money or payment information via computer networks. It's a virtual unit of currency that can be transferred and received by electronic means. The most popular digital currency is Bitcoin, which is gaining ground in the financial world and becoming more relevant with each passing day.
+        <article> Digital currency- or currency as it's also known- is the transfer of money or payment information via computer networks.<br> It's a virtual unit of currency that can be transferred and received by electronic means. The most popular digital currency is Bitcoin, which is gaining ground in the financial world and becoming more relevant with each passing day.
         Digital currency is easy to transfer and receive since it exists in digital form. Transactions are sent over the internet and saved on computer systems without needing to be physically preserved. This makes digital currency much more convenient than traditional currency since users don't have to seek out a bank or physical location to receive their payment. 
-        <br> Digital currency also has many advantages when it comes to security and transaction processing speed. However, there are downsides when compared to physical currency- for example, digital currencies can be hacked or lost easily.
+        <br><br> Digital currency also has many advantages when it comes to security and transaction processing speed. However, there are downsides when compared to physical currency- for example, digital currencies can be hacked or lost easily.
         <br><br> So while U hold on your precious coins we will provide you with the state so you will never get caught sleeping on your wallet.
         </article>
         </section>`;
         break;
+    case "New Alert":
+        NewHtml = `<div class="new_alert">
+                        <div class="alert_head">
+                            <button onclick="ErrorBanner('close')">
+                                <i class="bi bi-x-square-fill"></i> 
+                            </button>
+                            <h5> ERROR !</h5>
+                        </div>
+                        <div class="alert_body">
+                             <p> ${CoinObj} </p>
+                        </div>
+                    </div>`;
     }
 
     return NewHtml;
@@ -390,21 +528,21 @@ function FeedsChart(CoinsUrl){
     
     var CoinsPoints = [];
     CoinsPoints.length = 0
-
+    
     var options =  {
         animationEnabled: true,
-        theme: "light2",
+        theme: "dark2",
         title: {
-            text: "Daily Sales Data"
+            text: "Daily Crypto Data"
         },
         toolTip: {
             shared: true
         },
         axisX: {
-            title: "Time"
+            title: "Time per Sec"
         },
         axisY: {
-            title: "USD",
+            title: "Price in USD",
             titleFontSize: 24
         },
         data: CoinsPoints
@@ -437,13 +575,14 @@ function FeedsChart(CoinsUrl){
             CoinsPoints.find(  CoinLine => CoinLine.name == CoinName)
             .dataPoints.push({ x: now,
                             y: dataInput[CoinName].USD })  
-            // adding Latest price for easy watch
-             SummeryOfChartText += `<b> ${CoinName} </b>: ${dataInput[CoinName].USD} &#36 <br>`
+            // Formatting the price to show on the div
+            const PriceToString = dataInput[CoinName].USD.toLocaleString("en-US");
+            // adding Latest price for easy watch Div
+             SummeryOfChartText += `<b> ${CoinName} </b>: ${PriceToString} &#36 <br>`
         }   
         SummeryOfChartText += `</p>`;
-
         // shift when data get too crowded
-        if (CoinsPoints[0].length > 20 ) {
+        if (CoinsPoints[0].dataPoints.length > 20 ) {
             CoinsPoints.forEach(  CoinLine => CoinLine.dataPoints.shift())
         }
 
