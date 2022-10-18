@@ -62,17 +62,17 @@ function APiCatcher(urlInput, timeout){
     } )  
 }
 
-// FIXME: coin search continue the API
-function SearchCoins(){
+
+
+function SearchCoins(Punch){
     let SearchResults = new Map();
     const SearchInput = $(`#SearchBox`);
-    const SearcSec = $('#CoinsSearchSection');
     const SearchValue = SearchInput.val();
-    
+    if( Punch == "XSearch"){
+        $('#CoinsSearchSection').remove()
+        return;
+    }
     if( (SearchValue == ``)||(SearchValue < 2) ){
-        if( SearcSec.children().length ){
-            SearcSec.remove();
-         }
         ErrorBanner( "Search" )
         return;
     }
@@ -203,7 +203,10 @@ function AddCoin2Report(CoinID){
   const NewCoinReport = {"id": CoinID,"name": CoinsList.get(CoinID).name, "symbol": CoinsList.get(CoinID).symbol}
   if(CoinsReport.length  > 4  ){
     CoinCheckBox.prop( 'checked' , false) // unchecked the item 
-    CoinsReportBanner = CoinsReport;
+    for(const coin of CoinsReport){
+        CoinsReportBanner.push(coin)
+    }
+    // CoinsReportBanner = CoinsReport;
     CoinsReportBanner.push( NewCoinReport ); //adding the EXTRA coin
     MainPage.append(Data2Html( CoinsReportBanner , "reportBanner")) 
         for( const coin of CoinsReportBanner ){
@@ -211,20 +214,17 @@ function AddCoin2Report(CoinID){
             CheckBoxReport.prop( 'checked' , true)
         }
       return;
-  } else {
+  } 
       CoinsReport.push(NewCoinReport)
       Compare_Counter.html(  CoinsReport.length )
       CompareBtn.addClass( 'CompareActive')
       return;
-  }
+  
 }
 
 /// report Banner banner
 function CoinReportBanner(CoinID){ 
-    console.log("CoinsReportBanner");
-    console.log(CoinsReportBanner);
-    console.log("CoinsReport");
-    console.log(CoinsReport);
+    
     const ReportBanner = $(`.ReportBannerScreen`) // the Report Banner
     const CoinCheckBanner = $(`#Check_${CoinID}`)  //$( `#Check_CoinID`)
     
@@ -241,22 +241,32 @@ function CoinReportBanner(CoinID){
             ErrorBanner("ReportFull")
             return;
         }
-        
-        AddCoin2Report('clear_Compare') 
-        CoinsReport = CoinsReportBanner;
+        AddCoin2Report('clear_Compare')  //clear the board
+        CoinsReport.length = 0;
+        for(const coin of CoinsReportBanner){
+            CoinsReport.push(coin)
+        }
         for( const coin of CoinsReport ){
-            const swicthReport = $(`#Switch_${coin.id}`)
-            swicthReport.prop( 'checked' , true)
+            const switchReport = $(`#Switch_${coin.id}`)
+            switchReport.prop( 'checked' , true)
         }
         CoinsReportBanner.length = 0;
+        $('.counter_box').addClass( 'CompareActive')
+        $('.go_compare b').html(  CoinsReport.length )
+
         ReportBanner.remove()
         return;
     }
     if( !CoinCheckBanner.prop( 'checked')) {
         CoinsReportBanner = CoinsReportBanner.filter(coin => coin.id !== CoinID);
+       $('#doneReport').addClass('reportGood')
         } else {
-        const NewCoinReport = {"id": CoinID,"name": CoinsList.get(CoinID).name, "symbol": CoinsList.get(CoinID).symbol};
-          CoinsReportBanner.push(NewCoinReport)
+        const CoinReportLeft = {"id": CoinID,"name": CoinsList.get(CoinID).name, "symbol": CoinsList.get(CoinID).symbol};
+        CoinsReportBanner.push(CoinReportLeft)
+          if (CoinsReportBanner.length > 5) {
+       $('#doneReport').removeClass('reportGood')
+            
+          }
       } 
       $('#reportCount').html(CoinsReportBanner.length);
       return;
@@ -326,7 +336,7 @@ function Data2Html( CoinObj , WHatToPrint){
             // Key = id , values = name , symbols
             for( const [key , value] of CoinObj){
                 CoinsSearchPrint += 
-                `<div class="coinBox">
+                `<div class="coinBox ">
 
                         <div id=prt1>
                             <div>
@@ -359,7 +369,7 @@ function Data2Html( CoinObj , WHatToPrint){
 
                 </div>
                 `}
-        const ClosedBtn = ` <button onclick="SearchCoins()">
+        const ClosedBtn = ` <button onclick="SearchCoins('XSearch')">
                 <i class="bi bi-x-square-fill"></i> 
             </button>`;
         const SectionSearched = `<section id="CoinsSearchSection">
@@ -410,7 +420,7 @@ function Data2Html( CoinObj , WHatToPrint){
                 </div>
                 `}
         const Search = `<div id="searchDiv" class="Search" >
-        <label onclick="SearchCoins()" for="SearchBox"><i class="bi bi-search"> Search </i></label>
+        <label onclick="SearchCoins()" for="SearchBox"><i class="bi bi-search"></i><p> Search </p></label>
         <input id="SearchBox" type="search" placeholder="type here..">
         </div>`;
         const Compare_Counter = `<div class="counter_box">
@@ -437,9 +447,10 @@ function Data2Html( CoinObj , WHatToPrint){
             `<div class="CoinDetails">
                     <p>
                         <b>Current Price</b> <br>
-                        EUR: ${CoinObj.eur} &#8364 <br>
-                        USD: ${CoinObj.usd} &#36 <br>
-                        ILS: ${CoinObj.ils} &#8362
+                        
+                        EUR: ${CoinObj.eur.toLocaleString()} &#8364 <br>
+                        USD: ${CoinObj.usd.toLocaleString()} &#36 <br>
+                        ILS: ${CoinObj.ils.toLocaleString()} &#8362
                     </p>
                     <img src="${CoinObj.img}" alt="Coin Image"></img>
             </div>`;
@@ -452,14 +463,14 @@ function Data2Html( CoinObj , WHatToPrint){
             NewReportCOin += `<div id="report_${Coin.id}" class="CoinReportLine"> 
             <span>${CoinObj.indexOf(Coin) + 1} </span>
             <label for="Check_${Coin.id}" >
-                <h5>${Coin.id}</h5>
+                <h5>${Coin.symbol}</h5>
                 <p>Z${Coin.name}</p>
             </label> 
             <input onchange="CoinReportBanner('${Coin.id}')" class="form-check-input" type="checkbox" id="Check_${Coin.id}">         
         </div>`});
         const EndReport = `<div class="EndReport">
                             <button onclick="CoinReportBanner('cancel')" >Cancel</button>
-                            <button onclick="CoinReportBanner('done')" >Done</button>
+                            <button id='doneReport' onclick="CoinReportBanner('done')" >Done</button>
                         </div>`;
         const ReportSection= `<section class="ReportBannerScreen">
                 <div class="BackDropReport">
@@ -531,7 +542,7 @@ function FeedsChart(CoinsUrl){
     
     var options =  {
         animationEnabled: true,
-        theme: "dark2",
+        theme: "light2",
         title: {
             text: "Daily Crypto Data"
         },
@@ -576,7 +587,7 @@ function FeedsChart(CoinsUrl){
             .dataPoints.push({ x: now,
                             y: dataInput[CoinName].USD })  
             // Formatting the price to show on the div
-            const PriceToString = dataInput[CoinName].USD.toLocaleString("en-US");
+            const PriceToString = dataInput[CoinName].USD.toLocaleString();
             // adding Latest price for easy watch Div
              SummeryOfChartText += `<b> ${CoinName} </b>: ${PriceToString} &#36 <br>`
         }   
@@ -589,7 +600,7 @@ function FeedsChart(CoinsUrl){
          // update the Summery Text
          $("#chartSummery").html(``)
          $("#chartSummery").append(SummeryOfChartText)
-        $("#chartContainer").CanvasJSChart().render();
+        $("#chartContainer").CanvasJSChart().render()
         setTimeout(updateData, 1000 * 2);
     
     }

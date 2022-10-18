@@ -241,17 +241,28 @@
     }
     /* SearchBAR  + Section*/
     .Search {
-        display: inline-block;
-        background: var( --primary-color);
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
         padding: 0.2em;
         border-radius: 0.2em;
         position: sticky;
+        height: 2.5rem;
     }
     .Search label {
+        display: flex;
+        flex-direction: row;
+        align-items: baseline;
+        gap: 0.5rem;
+        justify-content: center;
         cursor: pointer;
-    }
-    .Search label .bi-search {
-        color: var(--read-color)
+        background: var(--contras-color);
+        color: var(--read-color);
+        padding: 0.2rem 1rem  0.2rem 1rem;
+        border: 0.1rem solid var(--contras-color);
+        border-radius: 0.2rem;
+        margin-top: 0.2rem;
+        margin-right: 0.5rem;
     }
     #CoinsSearchSection {
         position: fixed;
@@ -265,11 +276,46 @@
         align-items: center;
         justify-content: center;
         z-index: 4;
-        min-width: 30%;
-        min-height: 30%;
-        max-width: 80%;
-        max-height: 80%;
+        width: 50%;
+        max-height: 90%;
         overflow: scroll;
+    }
+    #CoinsSearchSection .coinBox{
+        display: flex;
+        flex-direction: row;
+        gap: 0.2rem;
+        font-family:var( --font-1);
+        background: rgba(0, 0, 0, 0.4);
+        box-shadow: 1rem 1rem 2rem rgba(0,0,0,.5);
+        color: var( --contras-color);
+        width: 100%;
+        height: 5rem;
+        border: 0.1rem solid var( --primary-color);
+        margin: 0.3rem;
+        padding: 0.2rem;
+    }
+    #CoinsSearchSection  .coinBox #prt1{
+        display: flex;
+        flex-direction: row;
+        flex-basis: 70%;
+        width: 100%;
+    }
+    #CoinsSearchSection  .coinBox #prt2{
+        display: flex;
+        flex-direction: row;
+        flex-basis: 20%;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        margin: 1rem;
+    }
+    #CoinsSearchSection .coinBox #prt1 div:nth-child(1) {
+        flex-basis: 70%;
+        width: 100%;
+    }
+    #CoinsSearchSection .coinBox #prt1 div:nth-child(2) {
+        flex-basis: 30%;
+        width: 100%;
     }
     .middle_bar {
         display: flex;
@@ -279,14 +325,16 @@
         display: flex;
         flex-direction: row;
         padding: 0.2rem;
+        height: 3rem;
     }
     .counter_box  button {
-        border-radius: 0.5rem;
+        border-radius: 0.2rem;
         margin-left: 0.4rem ;
     }
     .counter_box  .go_compare {
         background: var(--primary-color);
         color: var(--read-color);
+        font-size: 0.9rem;
         font-family: var(--font-1);
         border: 0.1rem solid var(--contras-color);
         padding: 0 1rem 0 1rem;
@@ -307,7 +355,7 @@
     
     #CoinsSearchSection h5 button  {
         border: none;
-        background: red;
+        /* background: var(--Gold-Color) */
     }
     #CoinsSearchSection h5 {
         font-family: var(--font-2);
@@ -322,7 +370,7 @@
         justify-content: center;
         overflow: scroll;
     }
-    /* REPORT Banner CSS */
+    /* REPORT Banner  */
     .ReportBannerScreen{
         display: flex;
         flex-direction: column;
@@ -356,11 +404,8 @@
         align-items: center;
         justify-content: center;
         padding: 1em;
-        width: 80%;
-        max-width: 40em;
-        min-width: 30em;
-        min-height: 30em;
-        max-height: 40em;
+        width: 50%;
+        height: auto;
         overflow: scroll;
         border-radius: 0.7rem;
         border: 0.2rem solid  var( --primary-color);
@@ -425,13 +470,29 @@
         align-self: flex-end; 
         justify-self: flex-end;
     }
+    .reportGood {
+        background: var(--accent-color) !important;
+        color: var(--primary-color);
+        animation: doneBtn_swirl 2.5s infinite;
+    }
+    @keyframes doneBtn_swirl {
+        0% { transform: skewX(9deg); } 
+        10% { transform: skewX(-8deg); } 
+        20% { transform: skewX(7deg); } 
+        30% { transform: skewX(-6deg); } 
+        40% { transform: skewX(5deg); } 
+        50% { transform: skewX(-4deg); } 
+        60% { transform: skewX(3deg); } 
+        70% { transform: skewX(-2deg); } 
+        80% { transform: skewX(1deg); } 
+        90% { transform: skewX(0deg); } 
+        100% { transform: skewX(0deg); } 
+        }
+      
     /* CHART */
     #chartContainer{
-        margin: 1rem;
-        /* position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50% ,-50%); */
+        margin-top: 1rem;
+        
     }
     #chartSummery {
         border: 0.1rem solid black;
@@ -467,6 +528,7 @@
         color: var(--read-color);
         padding-top: 1rem;
         font-size: 3rem;
+        font-family: var(--font-1);
     }
     .about article{
         font-size: 1.3rem;
@@ -480,11 +542,6 @@
         text-align: start;
     }
     /* FEED PAGE */
-    .LiveFeeds {
-        display: flex;
-        flex-direction: column;
-        width: 90%;
-    }
     .emptyFeeds {
         display: flex;
         flex-direction: column;
@@ -499,7 +556,18 @@
         padding: 3em;
         margin: 1rem;
     }
-
+    .LiveFeeds {
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        align-items: center;
+    }
+    .canvasjs-chart-canvas {
+        width: 100%;
+        margin: 0  !important;
+        padding: 0 !important;
+    }
+    /* footer */
     footer{
         margin-top: auto;
         display: flex;
@@ -547,7 +615,7 @@
 /* SMART PHONES */
 @media screen and ( max-width: 767px){
     body {
-        background-size: 300%;
+        background-size: 400%;
         background-position: center;
     }
     /* LOADER Progress Bar */
@@ -571,7 +639,7 @@
         display: none;
         position: fixed;
         width: 100%;
-        height: 100vh;
+        height: 100%;
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
@@ -586,12 +654,15 @@
     nav ul li { 
         padding: 1rem;
         border-bottom: 0.3rem solid var(--secondary-color);
-        color:var(--primary-color)
+        color:var(--primary-color);
+        font-size: 1.8rem;
     }
     nav ul li:hover {
         color: var(--contras-color);
         font-weight: bold;
-        font-size: 2rem;
+        font-size: 2.2rem;
+        color: var(--accent-color);
+        -webkit-text-stroke: 0.1rem  var(--primary-color);
     }
     nav ul li:enabled ~ nav ul {
         display: none;
@@ -606,6 +677,8 @@
         position: absolute;
         left: 50%;
         transform: translate(-50%, -50%);
+        border: 0.1rem solid var(--primary-color);
+        border-radius: 50%;
      }
     #burgerCheck:checked ~  .burger .bi-list{
         display: none;
@@ -615,9 +688,17 @@
         display: flex;
         flex-direction: column;
     } 
+    .middle_bar {
+        gap: 1rem;
+        display: flex;
+        flex-direction: row-reverse;
+    }
     .counter_box {
         font-size: 0.8rem;
+        display: flex;
+        flex-direction: row;
     }
+
     
     .coinBox{
         font-size: 0.1rem; 
@@ -662,21 +743,52 @@
         padding: 0.5em;
     }
     .coinBox .collapse {
-        width: 13rem;
+        width: 12rem;
         height: auto;
         color:  #282828;
         padding: 0;
         margin: 0;
+        position: relative;
+        left: -1.5rem;
     } 
     .CoinDetails p {
         font-size: 0.8rem;
         
     }
     .CoinDetails img {
-        width: 3rem;
-        height: 3rem;
+        width: 2rem;
+        height: 2rem;
     }
-    /* FEED PAGE */
+    /* Search Mobile */
+    #searchDiv  {
+        font-size: 0.8rem;
+        display: flex;
+        width: 50%;
+        align-self: flex-start;
+        justify-self: flex-start;
+        
+    }
+    #searchDiv p {
+        display: none;
+    }
+    #searchDiv {
+        padding: 0.2rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 0.2rem;
+    }
+    #searchDiv  i {
+        font-size: 0.8rem;
+        border: 0.06rem solid var(--read-color);
+        border-radius: 50% 0 0 50% ;
+        background: var(--contras-color);
+        padding: 0.2rem;
+    }
+    #CoinsSearchSection{ 
+        width: 90%;
+    }
+    /* FEED  mobile*/
     .LiveFeeds {
         width: 90%;
     }
@@ -687,13 +799,44 @@
         padding: 1em;
         margin: 1rem;
     }
-    /* ABOUT PAGE */
+    /* report mobile */
+    .ReportBanner {
+        width: 95%;
+    }
+    .ReportBanner h5 {
+        font-size: 1rem;
+    }
+    .ReportBanner p {
+        font-size: 0.8rem;
+    }
+    /* Chart Mobile */
+    #chartSummery {
+        margin: 1rem;
+        border: 0.1rem solid black;
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.783);
+        box-shadow: 0 15px 20px rgba(0,0,0,.2);
+        width: 100%;
+        min-width: 10rem;
+        align-self: center;
+       text-align: center;
+    }
+    #chartSummery p {
+        font-size: 1.2rem;
+    }
+    /* ABOUT mobile */
     .about {
         width: 95%;
     }
+    .about h3 {
+        margin: 0;
+        padding:  0.4rem 0 0 0;
+        font-size: 2.5rem;
+    }
     .about article{
-        font-size: 1rem;
-        line-height: 1.5rem;
+        font-size: 1.2rem;
+        line-height: 1.8rem;
+        font-family: Arial, Helvetica, sans-serif;
         width: 100%;
         color: var(--read-color);
         padding: 1em;
