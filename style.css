@@ -1,16 +1,23 @@
 :root {
     --bg-color: linear-gradient(90deg, rgba(85,95,105,1) 0%, rgba(29,30,33,1) 100%);
-    --primary-color: #ccd3da;
-    --secondary-color:#555f69;
+    --primary-color: #e19116;
+    --secondary-color:  rgba(125,35,7,1) 100%;
+    --dark-orange: rgb(78, 50, 18);
+    --dark-trans:  rgba(57, 57, 57, 0.4);
+    --dark-shade:  1rem 1rem 2rem rgba(0,0,0,.5);;
+    --light-trans:   rgba(255, 255, 255, 0.783);
+    --light-shade:0 15px 20px rgba(0,0,0,.2);
     --read-color: black;
     --accent-color: #0d6efd;
     --contras-color: white;
-    --Gold-Color: #ffd300;
+    --error-color: red;
+    --Gold-Color: #ffb700;
     --font-1: 'Asap', sans-serif;
     --font-2: 'Khand', sans-serif;
-    --font-3: 'Lobster', cursive;
-    --font-ui: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    --bg-img: url(https://images.unsplash.com/photo-1579468118288-682e600b8565?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80);
+    --check-img: url(https://cdn.pixabay.com/photo/2013/07/13/10/06/affirmative-156538_1280.png);
+    --header-bg: linear-gradient(360deg, rgba(212, 148, 84, 0) 0%, rgba(125,35,7,1) 140%);
+    --footer-bg: linear-gradient(180deg, rgba(212, 148, 84, 0) 0%, rgba(125,35,7,1) 140%);
+    --bg-img: url('assets/Orange-Safe.jpg');
     --loader-bg-img:url(https://images.unsplash.com/photo-1645905159052-0dc842ada711?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1586&q=80);
 }
 
@@ -21,11 +28,13 @@
         background-attachment: fixed;
         background-size: cover;
         background-repeat: no-repeat;
+        background-position: center center;
         padding: 0;
         margin: 0;
         display: flex;
         flex-direction: column;
         min-height: 100vh;
+        font-family: var(--font-2);
     }
     .hideIt {
         display: none;
@@ -58,13 +67,14 @@
         height: 15em;
         transform: translate( -50%, -90% );
         text-align: center;
+        z-index: 100;
     }
     #LoaderGIF{
-        width: 5em;
+        width: 3em;
     }
     #Loader h2 {
         color: var(--primary-color);
-        font-size: 2.5em;
+        font-size: 1.5em;
         -webkit-text-stroke: 0.02em  var(--read-color) 
     }
     #LoaderSmallGIF {
@@ -81,36 +91,42 @@
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
-        background: var(--bg-color);
-        font-family: var( --font-ui);
+        background: var(--header-bg);
+        font-family: var( --font-2);
         width: 100%;
         height: 6.5rem;
         padding: 0;
         margin: 0;
         text-align: center;
-        align-items: center;
+        align-items: centbaer;
         justify-content: center;
-        padding-left: 2rem;
-        padding-right: 2rem;
+        padding: 3rem 2rem 0 2rem;
+        gap: 1rem;
+    }
+    header .side1 {
+        flex-basis: 50%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end ;
+    }
+    header  .side2 {
+        flex-basis: 50%;
+        width: 100%;
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 2rem;
     }
     header h1 {
         font-size: 2.5em;
-        font-family: var(--font-3);
+        font-family: var(--font-2);
         padding-left: 0.5em;
         color: var(--contras-color);
         -webkit-text-stroke: 0.02em  var(--secondary-color);
         margin: 0;
         padding: 0.2em;
     }
-    header div:nth-child(1) {
-        display: flex;
-        flex-direction: column;
-    }
-    header div:nth-child(2){
-        display: flex;
-        flex-wrap: nowrap;
-        gap: 2rem;
-    }
+   
     header div  h2 {
         display: inline-block;
         font-family: var(--font-2);
@@ -147,13 +163,12 @@
         font-size: 1.2em;
         text-decoration: none;
         padding-left: 0.8em;
-        -webkit-text-stroke: 0.03em  var(--read-color)
+        transition: 0.3s ease-in-out;
     }
     nav li:hover {
         cursor: pointer;
-        color: var(--accent-color);
+        transform: scale( 1.5);
     }
-
     /* COIN PAGE HOME */
     #CoinsSection {
         display: flex;
@@ -163,75 +178,129 @@
         justify-content: center;
         
     }
+    .coin_wrapper {
+    margin: 0 ;
+    box-sizing: border-box ;
+    padding: 0 ;
+    height: auto;
+    position: relative;
+    }
+    .CoinHeader {
+        position: relative;
+    border-radius: 50%;
+    border: 0.1rem solid var(--contras-color);
+    background: var(--Gold-Color);
+    color: var(--read-color);
+    width: 4rem;
+    height: 4rem;
+    left: 6.5rem;
+    top: 2.5rem;
+    display: inline-block;
+        box-sizing: border-box;
+        margin: 0 ;
+        margin-top: -2.5rem;
+        padding: 0;
+        transition: 1s ease-in-out;
+    }
+    .CoinHeader:hover {
+        transform: scale(1.1);
+        background: var(--accent-color);
+        color: var(--contras-color);
+        cursor: grab;
+    }
+    .form-check.form-switch {
+        font-size: 1rem;
+        margin: 0 !important;
+        padding: 0  !important;
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+       align-items: center;
+       justify-content: center;
+        
+    }
+    .form-check.form-switch p {
+        position: relative;
+        margin: 0 !important;
+        padding:  1rem 0 0 0  !important;
+        font-size: 1rem;
+        font-family: var(--font-2);
+    }
+    .form-check.form-switch > input[type="checkbox"]{
+        display:none;
+    }
+    input[type="checkbox"]:checked ~ .CoinHeader  {
+        background:red;
+    }
     .coinBox{
         display: flex;
         flex-direction: column;
+        align-items: center;
+        justify-content: center;
         gap: 0.2rem;
         font-family:var( --font-1);
-        background: rgba(0, 0, 0, 0.4);
-        box-shadow: 1rem 1rem 2rem rgba(0,0,0,.5);
+        background: var(--dark-trans);
+        box-shadow: var(--dark-shade);
         color: var( --contras-color);
         width: 15rem;
-        height: 10rem;
+        max-height: 10rem;
         border: 0.1rem solid var( --primary-color);
         margin: 0.5rem;
-        padding: 0.8rem;
-        
+        box-sizing: border-box;
+        padding: 2rem 0 1rem 0rem;
+        border-radius: 1rem;
+        text-transform: capitalize;
+        transition: 0.3s;
+    }
+    /* .activeCoin . */
+    .activeCoin .CoinHeader {
+        background: var(--check-img);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        filter: saturate(8);
+    }
+    .activeCoin .CoinHeader  p {
+        opacity: 0;
+    }
+    .coinBox:hover {
+        background: var( --dark-orange);
     }
     /* collapse  */
-    .coinBox #prt1 {
-        display: flex;
-        flex-direction: row;
-        gap: 0.2rem;
-        width: 15rem;
-        max-height: 6rem;
-    height: auto;
-    
-    
-    }
-    /* name Div */
-    .coinBox #prt1 div:nth-child(1) {
-        font-size: 0.8rem;
-        padding: 0.3rem;
-        width: 10rem;
-        padding: 0.2rem;
-        overflow: scroll;
-    }
-    /* Add div */
-    .coinBox #prt1 div:nth-child(2) {
+    .coinBox #prt1 , .coinBox #prt2{
         display: flex;
         flex-direction: column;
-        align-items: flex-end;
-        text-align: center;
-        width: 2rem;
-        padding: 0.2rem;
+        align-items: center;
+        justify-content: center;
+    width: 13rem;
+    height: auto;
+    z-index: 2;
     }
-    .coinBox #prt1 div:nth-child(2) p {
-        font-size: 0.8rem;
+    .coinBox #prt1 {
+        overflow: scroll;
     }
 
-    /* Info div */
-    .coinBox #prt2 { 
-    width: 15rem;
-    height: auto;
-    padding: 0.2rem;
-    }
-    .coinBox button {
+    .coinBox button.btn-primary {
         font-size: 0.8rem;
         padding: 0.5em;
+        background: var(--secondary-color);
+        color: var(--contras-color);
+        border: 0;
     }
     .coinBox .collapse {
         width: auto;
         height: auto;
         color:  #282828;
+        z-index: 3;
     }
     .CoinDetails{
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
         width: 100%;
-        gap: 1rem;
+        gap: 0.2rem;
     }
+   
     .CoinDetails p {
         font-size: 1rem;
     }
@@ -247,7 +316,15 @@
         padding: 0.2em;
         border-radius: 0.2em;
         position: sticky;
-        height: 2.5rem;
+        height: 100%;
+    }
+    #SearchBox{
+        background: var(--primary-color);
+        margin-right: 2rem;
+    }
+    #SearchBox::placeholder {
+        color:var(--contras-color);
+        text-align: center;
     }
     .Search label {
         display: flex;
@@ -256,12 +333,11 @@
         gap: 0.5rem;
         justify-content: center;
         cursor: pointer;
-        background: var(--contras-color);
+        background: var(--primary-color);
         color: var(--read-color);
         padding: 0.2rem 1rem  0.2rem 1rem;
         border: 0.1rem solid var(--contras-color);
         border-radius: 0.2rem;
-        margin-top: 0.2rem;
         margin-right: 0.5rem;
     }
     #CoinsSearchSection {
@@ -280,9 +356,36 @@
         max-height: 90%;
         overflow: scroll;
     }
+    #CoinsSearchSection .SearchHeader {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        height: 4rem;
+        padding: 1rem;
+        gap: 1rem;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+    #CoinsSearchSection .SearchHeader > button{
+        flex-basis: 20%;
+        background: transparent;
+        border: none;
+        font-size: 1.5rem;
+    }
+    #CoinsSearchSection .SearchHeader > h5{
+        flex-basis: 60%;
+        align-items: center;
+        justify-content: center;
+    }
+    #CoinsSearchSection .SearchHeader > div.counter_box{
+        flex-basis: 20%;
+       
+    }
     #CoinsSearchSection .coinBox{
         display: flex;
         flex-direction: row;
+        flex-wrap: nowrap;
         gap: 0.2rem;
         font-family:var( --font-1);
         background: rgba(0, 0, 0, 0.4);
@@ -318,14 +421,24 @@
         width: 100%;
     }
     .middle_bar {
+        width: 100%;
         display: flex;
         flex-direction: row-reverse;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+        padding: 0 1rem ;
+        height: 2rem;
+        padding: 0 10rem;
+        margin-top: 1rem;
     }
     .counter_box {
         display: flex;
         flex-direction: row;
         padding: 0.2rem;
-        height: 3rem;
+        height: 2.2rem;
+        margin-top: 0.2rem;
     }
     .counter_box  button {
         border-radius: 0.2rem;
@@ -337,20 +450,22 @@
         font-size: 0.9rem;
         font-family: var(--font-1);
         border: 0.1rem solid var(--contras-color);
-        padding: 0 1rem 0 1rem;
+        padding: 0 1rem;
     }
     .counter_box .clean_compare {
-        display: none;
+        opacity: 0;
         border: 0.1rem solid var(--contras-color);
-        
+        transition: 0.3s ease-in-out;
     }
     .CompareActive .go_compare{
-        background: var(--accent-color);
-        color: var(--contras-color);
+        background: var(--light-trans);
+        color: var(--read-color);
     }
     .CompareActive .clean_compare {
         background: rgb(225, 64, 64);
+        color: var(--contras-color);
         display: block;
+        opacity: 1;
     }
     
     #CoinsSearchSection h5 button  {
@@ -370,6 +485,21 @@
         justify-content: center;
         overflow: scroll;
     }
+    .Search {
+        margin: 0;
+        padding: 0;
+    }
+    .counter_box {
+        margin: 0;
+        margin-top: 0.2rem;
+        padding: 0;
+        height: 2rem;
+    }
+    .go_compare{
+        width: 9rem;
+        margin: 0;
+    }
+
     /* REPORT Banner  */
     .ReportBannerScreen{
         display: flex;
@@ -403,12 +533,15 @@
         gap: 0.5em;
         align-items: center;
         justify-content: center;
-        padding: 1em;
+        padding:  0 0.7rem 0  0.7rem;
         width: 50%;
         height: auto;
         overflow: scroll;
-        border-radius: 0.7rem;
+        border-radius: 0.3rem;
         border: 0.2rem solid  var( --primary-color);
+    }
+    .ReportBanner h2 {
+        margin: 0;
     }
     .reportList {
         width: 100%;
@@ -424,6 +557,7 @@
         width: 100%;
         height: 3.5em;
         border-top: 0.1em solid var( --primary-color);
+        margin: 0 0 0.1rem 0;
     }
     .CoinReportLine span {
         display: flex;
@@ -449,15 +583,16 @@
     .EndReport {
         display: flex;
         flex-direction: row;
+        align-items: center;
+        justify-content: center;
         padding: 1em;
         gap: 10em;
     }
     .EndReport button {
         border-radius: 0.5rem;
         width: 5em;
-        height: 3em;
-        font-weight: bold;
-        padding: 0.5em;
+        height: 2em;
+        padding: none;
     }
     .EndReport button:nth-child(1){
         border: 0.2 solid var(--contras-color);
@@ -467,8 +602,10 @@
     .EndReport button:nth-child(2){
         border: 0.1em solid var(--secondary-color);
         background: var( --primary-color);
-        align-self: flex-end; 
-        justify-self: flex-end;
+    }
+    .EndReport button:nth-child(1):hover{
+        background: var(--error-color);
+        color: var(--contras-color);
     }
     .reportGood {
         background: var(--accent-color) !important;
@@ -491,8 +628,7 @@
       
     /* CHART */
     #chartContainer{
-        margin-top: 1rem;
-        
+        margin: 2rem;
     }
     #chartSummery {
         border: 0.1rem solid black;
@@ -503,6 +639,7 @@
         min-width: 30rem;
         align-self: center;
        text-align: center;
+       margin: 0rem;
     }
     #chartSummery h4 {
         font-family: var(--font-1);
@@ -517,8 +654,8 @@
         flex-direction: column;
         flex-wrap: nowrap;
         width: 80%;
-        background: rgba(255, 255, 255, 0.783);
-        box-shadow: 0 15px 20px rgba(0,0,0,.2);
+        background: var(--light-trans);
+        box-shadow: var(--light-shade); 
         text-align: center;
         align-items: center;
         justify-content: center;
@@ -550,8 +687,8 @@
         text-align: center;
         width: 80%;
         color: var(--secondary-color);
-        background: rgba(255,255,255,.4);
-        box-shadow: 0 15px 20px rgba(0,0,0,.2);
+        background: var(--light-trans);
+        box-shadow: var(--light-shade);
         text-align: center;
         padding: 3em;
         margin: 1rem;
@@ -570,9 +707,11 @@
     /* footer */
     footer{
         margin-top: auto;
+        padding: 2rem 0;
         display: flex;
-        background: var(--bg-color);
-        color: var(--primary-color);
+        background: var(--footer-bg);
+        background-position-x: rotate(90deg);
+        color: var(--contras-color);
         height: 4rem;
         align-items: center;
         justify-content: center;
@@ -599,7 +738,7 @@
         padding: 0.1rem;
     }
     .alert_head h5 {
-        color: red;
+        color: var( --error-color);
      -webkit-text-stroke: 0.02rem black;
       padding-left: 1rem;
     }
@@ -615,15 +754,16 @@
 /* SMART PHONES */
 @media screen and ( max-width: 767px){
     body {
-        background-size: 400%;
-        background-position: center;
+        background-size: cover;
+        background-position: center center;
     }
     /* LOADER Progress Bar */
     #LoaderDIV {
-        background-size: 300%;
+        background-size: cover ;
         background-position: center;
     }
     /* Header */
+    
     header h1  {
         font-size: 2rem;
     }
@@ -655,14 +795,13 @@
         padding: 1rem;
         border-bottom: 0.3rem solid var(--secondary-color);
         color:var(--primary-color);
-        font-size: 1.8rem;
+        font-size: 1.5rem;
     }
     nav ul li:hover {
         color: var(--contras-color);
         font-weight: bold;
-        font-size: 2.2rem;
+        font-size: 2rem;
         color: var(--accent-color);
-        -webkit-text-stroke: 0.1rem  var(--primary-color);
     }
     nav ul li:enabled ~ nav ul {
         display: none;
@@ -670,65 +809,99 @@
      /* Checked Burger */
      .burger {
         display: block;
+        position: absolute;
+        left: 0;
+       top: 4rem;
         font-size: 2rem;
+        border-radius: 0 50% 50% 0;
+        width: 3rem;
+        height: 3rem;
+        background: var(--dark-trans);
+        padding-right: 0.5rem;
      }
      .burger .bi-x{
         display: none;
         position: absolute;
-        left: 50%;
-        transform: translate(-50%, -50%);
+       left: 50%;
+       top: 50%;
+       transform: translate(-500% , -50%);
         border: 0.1rem solid var(--primary-color);
         border-radius: 50%;
+     }
+     .burger .bi-x:hover {
+        background: var(--contras-color);
+        color: var(--read-color);
+     }
+     #burgerCheck:checked ~  .burger{
+        border: solid var(--contras-color);
+        border-width: 0.11rem 0 0 0;
      }
     #burgerCheck:checked ~  .burger .bi-list{
         display: none;
     } 
     #burgerCheck:checked ~ .burger .bi-x,
-    #burgerCheck:checked ~nav ul{
+    #burgerCheck:checked ~ nav ul{
         display: flex;
         flex-direction: column;
+        z-index: 4;
     } 
+    #burgerCheck:checked ~ .burger .bi-x {
+        display: contents;
+    }
+    #burgerCheck:checked ~ nav ul li {
+        color: var(--contras-color);
+
+    }
     .middle_bar {
-        gap: 1rem;
         display: flex;
         flex-direction: row-reverse;
+        padding: 0 1rem ;
+        margin-top: 2rem;
     }
     .counter_box {
         font-size: 0.8rem;
         display: flex;
-        flex-direction: row;
+        flex-direction: row-reverse;
     }
 
     
     .coinBox{
-        font-size: 0.1rem; 
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
         width: 10rem;
         height: 8rem; 
         padding: 0.4rem;
+        text-align: center;
     }
     .coinBox #prt1 {
         display: flex;
         flex-direction: row;
-        gap: 0.2rem;
+        flex-wrap: wrap;
         width: 9rem;
-        max-height: 4.5rem;
+        max-height: 4rem;
         height: auto;
+        overflow: hidden;
+        align-items: center;
+        justify-content: center;
     }
     /*     /* name Div */
-    .coinBox #prt1 div:nth-child(1) {
+    .coinBox #prt1 p  {
+        flex-basis: 100%;
         font-size: 0.7rem;
         width: 6;
         overflow: scroll;
     }
-    .coinBox #prt1 div:nth-child(1) h5 {
+    .coinBox #prt1 h5 {
+        flex-basis: 100%;
         font-size: 1rem;
     }
     /* Add div */
-    .coinBox #prt1 div:nth-child(2) {
+    .coinBox #prt1  {
         width: 4rem;
         font-size: 1rem;
     }
-    .coinBox #prt1 div:nth-child(2) p {
+    .coinBox #prt1  p {
         font-size: 0.7rem;
     }
     
@@ -748,8 +921,7 @@
         color:  #282828;
         padding: 0;
         margin: 0;
-        position: relative;
-        left: -1.5rem;
+        top: 10rem;
     } 
     .CoinDetails p {
         font-size: 0.8rem;
@@ -768,6 +940,13 @@
         justify-self: flex-start;
         
     }
+    .Search label {
+        background: none;
+        border: none;
+        margin: 0;
+        padding: 0;
+    }
+
     #searchDiv p {
         display: none;
     }
@@ -780,10 +959,12 @@
     }
     #searchDiv  i {
         font-size: 0.8rem;
-        border: 0.06rem solid var(--read-color);
+        border: 0.1rem solid var(--contras-color);
         border-radius: 50% 0 0 50% ;
-        background: var(--contras-color);
+        background: var(--Gold-Color);
         padding: 0.2rem;
+        color: var(--read-color);
+        height: auto;
     }
     #CoinsSearchSection{ 
         width: 90%;
@@ -856,8 +1037,5 @@
         background-position: center;
     }
     
-    /* nav ul{
-        display: none;
-    } */
 }
 

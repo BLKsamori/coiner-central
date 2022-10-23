@@ -34,6 +34,7 @@ async function NavTO(PageHeader){
             break;
         case `Feeds`:
             await FeedsPage();
+            CoinsReport.length = 0;
             break;
         case `About` : 
             Page = AboutPage(); 
@@ -68,6 +69,9 @@ function SearchCoins(Punch){
     let SearchResults = new Map();
     const SearchInput = $(`#SearchBox`);
     const SearchValue = SearchInput.val();
+    const Compare_Counter = $('.go_compare b');
+    const CompareBtn = $('.counter_box')  ;
+   
     if( Punch == "XSearch"){
         $('#CoinsSearchSection').remove()
         return;
@@ -81,6 +85,13 @@ function SearchCoins(Punch){
         if(  (SearchRegex.test( key )) || (SearchRegex.test( value )) ){
             SearchResults.set(key , value);
         }
+    }
+    console.log("SearchResults.length");
+    console.log(SearchResults.size);
+    if (SearchResults.size == 0){
+        ErrorBanner( "EmptySearch" );
+        return
+        
     }
     SearchInput.val(``);
     MainPage.append( Data2Html( SearchResults ,"Search") );
@@ -174,12 +185,13 @@ let CoinsReportBanner = [];
 
 function AddCoin2Report(CoinID){ 
     const Compare_Counter = $('.go_compare b');
-    const CompareBtn = $('.counter_box')
-    const TrashCan = $('.clean_compare ')
+    const CompareBtn = $('.counter_box');
+    const WrapperCoin = $(`#wrapper_${CoinID}`)
    const CoinCheckBox = $(`#Switch_${CoinID}` ) // checkbox Switch 
    const ClearCompare = () =>{
         Compare_Counter.html(  CoinsReport.length )
        CompareBtn.removeClass( 'CompareActive')
+       WrapperCoin.removeClass( 'activeCoin')
        const Switches = $('.form-check-input' );
        $.each( Switches,  function(){
            $(this).prop( 'checked' , false)
@@ -190,10 +202,12 @@ function AddCoin2Report(CoinID){
         ClearCompare()
         return;
     }
+    
     //check if coin has checked or unchecked
   if( !CoinCheckBox.prop( 'checked')){
     // remove the coin
     CoinsReport = CoinsReport.filter(coin => coin.id !== CoinID) //.delete()
+    WrapperCoin.removeClass( 'activeCoin');
     Compare_Counter.html(  CoinsReport.length )
     if(CoinsReport.length == 0 ){
         ClearCompare()
@@ -218,6 +232,7 @@ function AddCoin2Report(CoinID){
       CoinsReport.push(NewCoinReport)
       Compare_Counter.html(  CoinsReport.length )
       CompareBtn.addClass( 'CompareActive')
+      WrapperCoin.addClass( 'activeCoin')
       return;
   
 }
@@ -314,12 +329,16 @@ function ErrorBanner( TypeError){
         case "Search":
             MessageError = Data2Html( `No match for the phrase, <br> Please try different phrase with 2 or more letters.`, "New Alert" );
             break;
+        case "EmptySearch":
+            MessageError = Data2Html( "There Was No Coins That Match Your Search.<br/> Pls Try Another Coin.","New Alert" );
+            break;
         case "ReportFull":
             MessageError = Data2Html( "Too Many Coins.<br> Please Remove Some coins to max of 5 Coins in Total.","New Alert" );
             break;
         case "close":
             $(".new_alert").remove();
             break;
+            
         default:
             MessageError = Data2Html( "Something break pls try again","New Alert" );
             break;
@@ -368,15 +387,27 @@ function Data2Html( CoinObj , WHatToPrint){
                         </div>
 
                 </div>
-                `}
+                `};
+            const Compare_Counter_Search = `<div class="counter_box">
+                <button class="clean_compare">
+                    <i class="bi bi-trash trash_compare" onclick="AddCoin2Report('clear_Compare')"></i>
+                </button>
+                <button onclick="NavTO('Feeds')" class="go_compare">
+                    Compare <b>${CoinsReport.length}</b> Coins
+                    </button>
+            </div>`;
         const ClosedBtn = ` <button onclick="SearchCoins('XSearch')">
                 <i class="bi bi-x-square-fill"></i> 
             </button>`;
         const SectionSearched = `<section id="CoinsSearchSection">
-                <h5> Search Results ${ClosedBtn}</h5>
-                <section class="searchResult">
+                <div class="SearchHeader">
+                    ${ClosedBtn}
+                    <h5> Search Results </h5>
+                    ${Compare_Counter_Search} 
+                </div>
+                <div class="searchResult">
                     ${CoinsSearchPrint}
-                 </section>
+                 </div>
             </section>`;
         NewHtml = SectionSearched;
         break;
@@ -386,46 +417,43 @@ function Data2Html( CoinObj , WHatToPrint){
             // Key = id , values = name , symbols
             for( const [key , value] of CoinObj){
                 CoinsListPrint += 
-                `<div class="coinBox">
-
-                        <div id=prt1>
-                            <div>
-                                <h5>${value.symbol}</h5>     
-                                <p>${value.name}</p>          
-                            </div>
-
+                `<div id="wrapper_${key}" class="coin_wrapper">
+                <label for="Switch_${key}" class="CoinHeader">
                             <!-- Compare switch-->
-                            <div class="form-check form-switch">
-                                <p> Add+</p>
-                                <input onchange="AddCoin2Report('${key}')" class="form-check-input" type="checkbox" id="Switch_${key}">     
+                    <div class="form-check form-switch">
+                        <p> Add+</p>
+                        <input onchange="AddCoin2Report('${key}')" class="form-check-input" type="checkbox" id="Switch_${key}">     
+                    </div>
+                 </label>
+                <div class="coinBox">
+
+                        <div id="prt1">                    
+                            <h5>${value.symbol}</h5>     
+                            <p>${value.name}</p>           
+                        </div>
+                      
+                    <!-- Collapse -->
+                    <div id=prt2 >   
+                        <button onclick="MoreInfo('${key}')" id="Btn_${key}" data-bs-target="#Info_${key}" class="btn btn-primary" type="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="Info_${value.id}">
+                            More Info
+                        </button>
+                    
+                        <div class="collapse" id="Info_${key}">
+                            <div id="card_${key}" class="card card-body">
+                                        <img id="LoaderSmallGIF" src="https://c.tenor.com/xCav_HCNw-QAAAAj/flipping-coin-gold-flipping-coin.gif" alt="">
                             </div>
-                            
-                        </div>
-                        
-
-                        
-                        <!-- Collapse -->
-                        <div id=prt2 >   
-                                <button onclick="MoreInfo('${key}')" id="Btn_${key}" data-bs-target="#Info_${key}" class="btn btn-primary" type="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="Info_${value.id}">
-                                    More Info
-                                </button>
-                            
-                                <div class="collapse" id="Info_${key}">
-                                    <div id="card_${key}" class="card card-body">
-                                                <img id="LoaderSmallGIF" src="https://c.tenor.com/xCav_HCNw-QAAAAj/flipping-coin-gold-flipping-coin.gif" alt="">
-                                    </div>
-                                </div>
-                        </div>
-
-                </div>
-                `}
+                    </div>
+            </div>
+            </div>
+        </div>`
+            }
         const Search = `<div id="searchDiv" class="Search" >
         <label onclick="SearchCoins()" for="SearchBox"><i class="bi bi-search"></i><p> Search </p></label>
         <input id="SearchBox" type="search" placeholder="type here..">
         </div>`;
         const Compare_Counter = `<div class="counter_box">
                 <button onclick="NavTO('Feeds')" class="go_compare">
-                    Compare <b>0</b> Coins
+                    Compare <b>${CoinsReport.length}</b> Coins
                 </button>
                 <button class="clean_compare">
                     <i class="bi bi-trash trash_compare" onclick="AddCoin2Report('clear_Compare')"></i>
@@ -445,7 +473,7 @@ function Data2Html( CoinObj , WHatToPrint){
        
          NewHtml =  
             `<div class="CoinDetails">
-                    <p>
+                    <p> 
                         <b>Current Price</b> <br>
                         
                         EUR: ${CoinObj.eur.toLocaleString()} &#8364 <br>
@@ -476,8 +504,8 @@ function Data2Html( CoinObj , WHatToPrint){
                 <div class="BackDropReport">
                 </div>
                 <section class="ReportBanner">
-                    <span> You Can Add Up to 5 Coins</span>
                     <h2><span id="reportCount">${CoinObj.length}</span> Coin in The Report </h2>
+                    <span> You Can Add Up to 5 Coins</span>
                     <section class="reportList">
                         ${NewReportCOin}
                         ${EndReport}
