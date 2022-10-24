@@ -4,17 +4,20 @@ $(document).ready(function StartPage(){
     NavTO();
 })
 
+
+const BodyPage = $(`body`) // page <main> 
+
 function Loader(timeout){
     if((timeout == 0)||(timeout == undefined)){
         return;
     }
+    BodyPage.append( Data2Html( null ,"Loading"))
     const Loader = $(`#LoaderDIV`)
-    Loader.removeClass(`hideIt`)
     setTimeout(() => {
-        Loader.addClass(`hideIt`)
+        Loader.remove()
     }, 1000 * timeout);
 }
-const MainPage = $(`main`) // page <main> 
+
 let CurrentScreen; // Current Page Saver
 
 async function NavTO(PageHeader){
@@ -24,8 +27,13 @@ async function NavTO(PageHeader){
         return;
     }
     CurrentScreen = PageHeader;
-    // reload new page
-    let Page; 
+    // reload new Body if needed
+    if (!CurrentPage.length){
+        let NewBody = Data2Html(null, "NewBody")
+        BodyPage.prepend(NewBody)
+    }
+    const MainPage = $(`main`) // page <main> 
+    let Page = ``; 
      switch(PageHeader){
         case `Coins`: 
             Page = await CoinsPage();
@@ -74,6 +82,7 @@ function SearchCoins(Punch){
    
     if( Punch == "XSearch"){
         $('#CoinsSearchSection').remove()
+        $('.BackDrop').remove()
         return;
     }
     if( (SearchValue == ``)||(SearchValue < 2) ){
@@ -94,7 +103,7 @@ function SearchCoins(Punch){
         
     }
     SearchInput.val(``);
-    MainPage.append( Data2Html( SearchResults ,"Search") );
+    BodyPage.append( Data2Html( SearchResults ,"Search") );
 }
 
 let CoinsList = new Map();
@@ -103,7 +112,8 @@ async function CoinsPage(){
     try {
         let TimeOut = 2;
         const CoinsUrl = `https://api.coingecko.com/api/v3/coins/list`;
-        Loader(TimeOut)
+        
+        Loader(TimeOut) ;
         let CoinJson = await APiCatcher(CoinsUrl, TimeOut)
         CoinJson = CoinJson.slice(0, 100)
         for ( const Coin of CoinJson ){
@@ -191,11 +201,14 @@ function AddCoin2Report(CoinID){
    const ClearCompare = () =>{
         Compare_Counter.html(  CoinsReport.length )
        CompareBtn.removeClass( 'CompareActive')
-       WrapperCoin.removeClass( 'activeCoin')
-       const Switches = $('.form-check-input' );
-       $.each( Switches,  function(){
+       const AllSwitches = $('.form-check-input' );
+       const AllWrappers = $(`.coin_wrapper`)
+       $.each( AllSwitches,  function(){
            $(this).prop( 'checked' , false)
         })
+        $.each( AllWrappers,  function(){
+            $(this).removeClass( 'activeCoin')
+         })
     }
     if( CoinID == 'clear_Compare'){
         CoinsReport.length = 0;
@@ -222,7 +235,7 @@ function AddCoin2Report(CoinID){
     }
     // CoinsReportBanner = CoinsReport;
     CoinsReportBanner.push( NewCoinReport ); //adding the EXTRA coin
-    MainPage.append(Data2Html( CoinsReportBanner , "reportBanner")) 
+    BodyPage.append(Data2Html( CoinsReportBanner , "reportBanner")) 
         for( const coin of CoinsReportBanner ){
             const CheckBoxReport = $(`#Check_${coin.id}`)
             CheckBoxReport.prop( 'checked' , true)
@@ -263,7 +276,9 @@ function CoinReportBanner(CoinID){
         }
         for( const coin of CoinsReport ){
             const switchReport = $(`#Switch_${coin.id}`)
+             const WrapperCoin = $(`#wrapper_${coin.id}`)
             switchReport.prop( 'checked' , true)
+            WrapperCoin.addClass( 'activeCoin')
         }
         CoinsReportBanner.length = 0;
         $('.counter_box').addClass( 'CompareActive')
@@ -291,6 +306,7 @@ function CoinReportBanner(CoinID){
 let CoinsPricesArr = [];
 
 function FeedsPage(){
+    const MainPage = $(`main`) // page <main> 
     
         if(CoinsReport.length == 0){
             MainPage.html(``)
@@ -336,14 +352,14 @@ function ErrorBanner( TypeError){
             MessageError = Data2Html( "Too Many Coins.<br> Please Remove Some coins to max of 5 Coins in Total.","New Alert" );
             break;
         case "close":
-            $(".new_alert").remove();
+            $(".alert_wrapper").remove();
             break;
             
         default:
             MessageError = Data2Html( "Something break pls try again","New Alert" );
             break;
     }
-    MainPage.append(MessageError)
+    BodyPage.append(MessageError)
      return;
     
 }
@@ -355,39 +371,35 @@ function Data2Html( CoinObj , WHatToPrint){
             // Key = id , values = name , symbols
             for( const [key , value] of CoinObj){
                 CoinsSearchPrint += 
-                `<div class="coinBox ">
-
-                        <div id=prt1>
-                            <div>
-                                <h5>${value.symbol}</h5>     
-                                <p>${value.name}</p>          
-                            </div>
-
+                `<div id="wrapper_${key}" class="coin_wrapper">
+                <label for="Switch_${key}" class="CoinHeader">
                             <!-- Compare switch-->
-                            <div class="form-check form-switch">
-                                <p> Add+</p>
-                                <input onchange="AddCoin2Report('${key}')" class="form-check-input" type="checkbox" id="Switch_${key}">     
+                    <div class="form-check form-switch">
+                        <p> Add+</p>
+                        <input onchange="AddCoin2Report('${key}')" class="form-check-input" type="checkbox" id="Switch_${key}">     
+                    </div>
+                 </label>
+                <div class="coinBox">
+
+                        <div id="prt1">                    
+                            <h5>${value.symbol}</h5>     
+                            <p>${value.name}</p>           
+                        </div>
+                      
+                    <!-- Collapse -->
+                    <div id=prt2 >   
+                        <button onclick="MoreInfo('${key}')" id="Btn_${key}" data-bs-target="#Info_${key}" class="btn btn-primary" type="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="Info_${value.id}">
+                            More Info
+                        </button>
+                    
+                        <div class="collapse" id="Info_${key}">
+                            <div id="card_${key}" class="card card-body">
+                                <div class="LoaderSmallGIF"></div>
                             </div>
-                            
-                        </div>
-                        
-
-                        
-                        <!-- Collapse -->
-                        <div id=prt2 >   
-                                <button onclick="MoreInfo('${key}')" id="Btn_${key}" data-bs-target="#Info_${key}" class="btn btn-primary" type="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="Info_${value.id}">
-                                    More Info
-                                </button>
-                            
-                                <div class="collapse" id="Info_${key}">
-                                    <div id="card_${key}" class="card card-body">
-                                                <img id="LoaderSmallGIF" src="https://c.tenor.com/xCav_HCNw-QAAAAj/flipping-coin-gold-flipping-coin.gif" alt="">
-                                    </div>
-                                </div>
-                        </div>
-
-                </div>
-                `};
+                    </div>
+            </div>
+            </div>
+        </div>`}
             const Compare_Counter_Search = `<div class="counter_box">
                 <button class="clean_compare">
                     <i class="bi bi-trash trash_compare" onclick="AddCoin2Report('clear_Compare')"></i>
@@ -399,10 +411,12 @@ function Data2Html( CoinObj , WHatToPrint){
         const ClosedBtn = ` <button onclick="SearchCoins('XSearch')">
                 <i class="bi bi-x-square-fill"></i> 
             </button>`;
-        const SectionSearched = `<section id="CoinsSearchSection">
+        const SectionSearched = `<div class="BackDrop"></div>
+        <section id="CoinsSearchSection">
+                 
                 <div class="SearchHeader">
                     ${ClosedBtn}
-                    <h5> Search Results </h5>
+                    <h5>${CoinObj.size} Search Results </h5>
                     ${Compare_Counter_Search} 
                 </div>
                 <div class="searchResult">
@@ -440,7 +454,7 @@ function Data2Html( CoinObj , WHatToPrint){
                     
                         <div class="collapse" id="Info_${key}">
                             <div id="card_${key}" class="card card-body">
-                                        <img id="LoaderSmallGIF" src="https://c.tenor.com/xCav_HCNw-QAAAAj/flipping-coin-gold-flipping-coin.gif" alt="">
+                                <div class="LoaderSmallGIF"></div>
                             </div>
                     </div>
             </div>
@@ -501,7 +515,7 @@ function Data2Html( CoinObj , WHatToPrint){
                             <button id='doneReport' onclick="CoinReportBanner('done')" >Done</button>
                         </div>`;
         const ReportSection= `<section class="ReportBannerScreen">
-                <div class="BackDropReport">
+                <div class="BackDrop">
                 </div>
                 <section class="ReportBanner">
                     <h2><span id="reportCount">${CoinObj.length}</span> Coin in The Report </h2>
@@ -544,7 +558,9 @@ function Data2Html( CoinObj , WHatToPrint){
         </section>`;
         break;
     case "New Alert":
-        NewHtml = `<div class="new_alert">
+        NewHtml = `<section class="alert_wrapper">
+                    <div class="BackDrop"></div>
+                    <div class="new_alert"> 
                         <div class="alert_head">
                             <button onclick="ErrorBanner('close')">
                                 <i class="bi bi-x-square-fill"></i> 
@@ -554,7 +570,52 @@ function Data2Html( CoinObj , WHatToPrint){
                         <div class="alert_body">
                              <p> ${CoinObj} </p>
                         </div>
+                        </div>
+                    </section>`;
+                    break;
+    case "Loading":
+        NewHtml = `<div id="LoaderDIV" >
+                        <div class="Loader" >
+                            <div class="LoaderGIF"></div>
+                            <h2>Loading...</h2>
+                        </div>
                     </div>`;
+                    break;
+    case "NewBody":
+        NewHtml = `<header>
+                    <div class="side1">
+                        <h1>Crypto Central</h1>
+                        
+                        <input type="checkbox" id="burgerCheck">
+                        <label for="burgerCheck" class="burger">
+                            <i class="bi bi-list"></i>
+                            <i class="bi bi-x"></i>
+                        </label>
+
+                        <nav >
+                            <ul>
+                                <li onclick="NavTO('Coins')">Coins</li>
+                                <li onclick="NavTO('Feeds')">Live Feeds</li>
+                                <li onclick="NavTO('About')">About</li>
+                            </ul>
+                        </nav>
+                    </div>
+                    
+                    <div class="side2">
+                        <div class="coin_img"></div>
+                        <h2 id="CurrentPage">New Page</h2>
+                    </div>
+                
+                </header>
+                
+                <main>
+                
+                </main>
+
+                <footer>
+                    <p>&#169 Coin Crypto net</p>
+                </footer>`;
+                break;
     }
 
     return NewHtml;
