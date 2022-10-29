@@ -19,9 +19,10 @@
     --header-bg: linear-gradient(360deg, rgba(212, 148, 84, 0) 0%, rgba(125,35,7,1) 140%);
     --footer-bg: linear-gradient(180deg, rgba(212, 148, 84, 0) 0%, rgba(125,35,7,1) 140%);
     --bg-img: url('assets/Orange-Safe.jpg');
-    --loader-bg-img:url('assets/coin_dark_bg.png');
+    /* --loader-bg-img:url('assets/coin_dark_bg.png'); */
     --loader-gif: url('assets/bank-gif.gif');
     --coin-img: url('assets/ethereum-coin.png');
+    --home-img: url(assets/pexels-karolina-grabowska-5980923.jpg)
 }
 
 /* DeskTOP */
@@ -39,9 +40,11 @@
         min-height: 100vh;
         font-family: var(--font-2);
     }
+    
     .hideIt {
         display: none;
     }
+
     main {
         display: flex;
         flex-direction: column;
@@ -49,7 +52,6 @@
         justify-content: center;
         margin: 0;
         padding: 0;
-        
     }
     /* LOADER Progress Bar */
     #LoaderDIV {
@@ -65,12 +67,13 @@
         top: 0;
     }
     .Loader {
+        font-size: 2rem;
         position: absolute;
         left: 50%;
         top: 50%;
         transform: translate(-50% , -50%);
-        width: 15em;
-        height: 15em;
+        width: auto;
+        height: auto;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -79,8 +82,8 @@
         z-index: 100;
     }
     .LoaderGIF{
-        width: 3em;
-        height: 3rem;
+        width: 5em;
+        height: 5em;
     }
     .Loader h2 {
         color: var(--contras-color);
@@ -102,35 +105,43 @@
     header {
         display: flex;
         flex-direction: row;
-        flex-wrap: nowrap;
+        flex-wrap: wrap;
         background: var(--header-bg);
         font-family: var( --font-2);
         width: 100%;
-        height: 6.5rem;
+        height: auto;
         padding: 0;
         margin: 0;
         text-align: center;
         align-items: center;
         justify-content: center;
-        padding: 3rem 2rem 0 2rem;
+        padding: 1em;
         gap: 1rem;
+
     }
-    header .side1 {
-        flex-basis: 50%;
+    header .headerTitle {
+        flex-basis: 60%;
         width: 100%;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: flex-end ;
+        align-items: center;
+        gap: 1em;
     }
-    header  .side2 {
-        flex-basis: 50%;
-        width: 100%;
+    header nav{
+        flex-basis: 30%;
         display: flex;
-        flex-wrap: nowrap;
-        gap: 2rem;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+    }
+    header nav ul {
+        display: flex;
+        flex-direction: row;
+        gap: 1em;
     }
     header h1 {
-        font-size: 2.5em;
+        font-size: 2em;
         font-family: var(--font-2);
         padding-left: 0.5em;
         color: var(--contras-color);
@@ -138,11 +149,10 @@
         margin: 0;
         padding: 0.2em;
     }
-   
     header div  h2 {
         display: inline-block;
         font-family: var(--font-2);
-        font-size: 5em;
+        font-size: 2em;
         color: var(--contras-color);
         margin: 0; 
     }
@@ -157,22 +167,6 @@
         cursor: pointer;
     }
 
-    #burgerCheck {
-        display: none;
-    }
-    .burger {
-        display: none;
-        z-index: 5;
-        color: var(--contras-color);
-        width: auto; 
-    }
-    .burger:hover {
-        cursor: pointer;
-    }
-    nav {
-        display: inline-block;
-        padding: 1rem;
-    }
     nav li {
         display: inline;
         list-style: none;
@@ -186,7 +180,72 @@
         cursor: pointer;
         transform: scale( 1.1);
     }
-    /* COIN PAGE HOME */
+
+    /* Home Page */
+    .homeBody{
+        font-size: 1rem;
+        width: 70%;
+        height: 100%;
+        position: absolute;
+        color: var(--contras-color);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-self: center;
+        justify-self: center;
+        padding: 10%;
+        top: 0;
+        left: 0;
+        z-index: 900000;
+
+        /* bg Home */
+        background: var( --bg-img);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: fixed;
+        height: 100vh;
+        width: 100vw;
+    }
+    .Page_gone {
+        animation: slide_from_screen 5s alternate;
+    }
+    @keyframes slide_from_screen {
+        0% {
+            opacity: 1;
+            top: 0%;
+        }
+        10%{
+            opacity: 0;
+            top: -100%;
+        }
+        100% {
+            opacity: 0;
+            top: -1000%;
+        }
+        
+    }
+
+    .homeBody h2{
+        font-size: 3.5em;
+        filter: drop-shadow(0.01em 0.1em 0.05em rgb(0, 0, 0));
+
+    }
+    .homeBody p{
+        font-size: 1.6em;
+        filter: drop-shadow(0.01em 0.1em 0.05em rgb(0, 0, 0));
+    }
+    .homeBody button {
+        border: none;
+        width: 10em;
+        height: 3em;
+        background: var(--contras-color);
+        font-size: 1.2em;
+        border-radius: 0.3em;
+        margin-left: 50%;
+    }
+
+    /* COIN PAGE  */
     #CoinsSection {
         display: flex;
         flex-direction: row;
@@ -204,26 +263,25 @@
     position: relative;
     }
     .CoinHeader {
-        position: relative;
+    position: relative;
     border-radius: 50%;
     border: 0.1rem solid var(--contras-color);
     background: var(--Gold-Color);
     color: var(--read-color);
-    width: 4rem;
-    height: 4rem;
+    width: 3rem;
+    height: 3rem;
     left: 6.5rem;
-    top: 2.5rem;
+    top: 1.5rem;
     display: inline-block;
-        box-sizing: border-box;
-        margin: 0 ;
-        margin-top: -2.5rem;
-        padding: 0;
-        transition: 1s ease-in-out;
+    box-sizing: border-box;
+    margin: 0 ;
+    margin-top: -2.5rem;
+    padding: 0;
+    transition: 0.2s ease-in-out;
     }
     .CoinHeader:hover {
         transform: scale(1.1);
         background: var(--accent-color);
-        color: var(--contras-color);
         cursor: grab;
     }
     .form-check.form-switch {
@@ -231,6 +289,7 @@
         margin: 0 !important;
         padding: 0  !important;
         display: flex;
+        color: var(--contras-color);
         flex-direction: column;
         box-sizing: border-box;
        align-items: center;
@@ -241,7 +300,7 @@
         position: relative;
         margin: 0 !important;
         padding:  1rem 0 0 0  !important;
-        font-size: 1rem;
+        font-size: 0.8rem;
         font-family: var(--font-2);
     }
     .form-check.form-switch > input[type="checkbox"]{
@@ -258,21 +317,28 @@
         justify-content: center;
         gap: 0.2rem;
         font-family:var( --font-1);
-        background: var(--dark-trans);
-        box-shadow: var(--dark-shade);
-        color: var( --contras-color);
+        background: var( --light-trans);
+        color: var( --read-color);
+        box-shadow: var(--light-shade);
         width: 15rem;
         max-height: 10rem;
         border: 0.1rem solid var( --primary-color);
         margin: 0.5rem;
+        margin-bottom: 1.5em;
         box-sizing: border-box;
         padding: 2rem 0 1rem 0rem;
-        border-radius: 1rem;
+        border-radius: 0.4rem;
         text-transform: capitalize;
         transition: 0.3s;
+        text-align: center;
     }
     .coinBox:hover {
         background: var( --dark-orange);
+        box-shadow: var(--dark-shade);
+    }
+    .coinBox:hover > #prt1 {
+        color: var( --contras-color);
+   
     }
     /* .activeCoin . */
     .activeCoin .CoinHeader {
@@ -290,9 +356,14 @@
     width: 13rem;
     height: auto;
     z-index: 2;
-    }
+}
     .coinBox #prt1 {
         overflow-y: scroll;
+        max-height: 5em;
+    }
+    .coinBox #prt2{
+        z-index: 3;
+
     }
 
     .coinBox button.btn-primary {
@@ -302,22 +373,7 @@
         color: var(--contras-color);
         border: 0;
     }
-    .coinBox .collapse {
-        position: relative;
-        width: auto;
-        height: auto;
-        color:  #282828;
-        z-index: 3;
-        top: 0.3rem;
-    }
-    .card-body {
-        height: auto;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: center;
-    }
+  
     .CoinDetails{
         display: flex;
         flex-direction: row;
@@ -327,9 +383,10 @@
         width: 100%;
         height: auto;
         gap: 0.2rem;
-        
     }
-   
+    .collapse , .CoinDetails, .card-body{
+        z-index: 5000 !important;
+    }
     .CoinDetails p {
         font-size: 1rem;
     }
@@ -489,7 +546,7 @@
         justify-content: center;
         overflow-y: scroll;
         box-sizing: border-box;
-        padding: 1rem;
+        padding: 0rem;
     }
     .searchResult .coin_wrapper{
         box-sizing: border-box;
@@ -497,41 +554,6 @@
         width: 100%;
         padding: 0.2rem;
     }
-        #CoinsSearchSection .coinBox{
-            flex-basis: 100;
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            gap: 0.2rem;
-            font-family:var( --font-1);
-            background: rgba(0, 0, 0, 0.4);
-            box-shadow: 1rem 1rem 2rem rgba(0,0,0,.5);
-            color: var( --contras-color);
-            width: 100%;
-            height: 7rem;
-            border: 0.1rem solid var( --primary-color);
-        }
-        #CoinsSearchSection  .coinBox #prt1{
-            display: flex;
-            flex-direction: row;
-            flex-basis: 70%;
-            width: 100%;
-        }
-        #CoinsSearchSection  .coinBox #prt2{
-            display: flex;
-            flex-direction: row;
-            width: 100%;
-            align-items: center;
-            justify-content: center;
-            margin: 1rem;
-        }
-        #CoinsSearchSection .coinBox #prt1 {
-            flex-basis: 70%;
-            width: 100%;
-        }
-       
     .Search {
         margin: 0;
         padding: 0;
@@ -828,95 +850,60 @@
         background-position: center;
     }
     /* Header */
-    
-    header h1  {
-        font-size: 2rem;
-    }
-    header div:nth-child(1) {
-        display: flex;
-        flex-direction: row-reverse;
-        align-items: baseline;
-    } 
-    header div  h2 {
-        font-size: 3.5em;
-    }
-    nav ul{
-        display: none;
-        position: fixed;
+    header{
+        flex-basis: 100%;
         width: 100%;
-        height: 100%;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        background: var(--bg-color);
-        text-align: start;
+        padding: 0.5em 0;
+    }
+    
+    header .headerTitle h1  ,header .headerTitle h2{
+        font-size: 1.3em;
+    }
+    header .headerTitle {
+        display: flex;
+        flex-direction: row;
         align-items: center;
         justify-content: center;
-        margin: 0;
-        padding: 0;
-        z-index: 2;
+    } 
+
+    nav {
+        background: var(--contras-color);
+        position: fixed;
+        width: 100vw;
+        height: 4em;
+        right:  0;
+        bottom: 0;
+        z-index: 5;
+        margin: auto;
+        justify-content: center;
+        align-items: center;
+    }
+    nav ul{
+        padding: 0.1em;
+        display: flex;
+        align-items: center;
+        text-align: start;
+        align-items: center;
+        justify-content: space-between;
     }
     nav ul li { 
-        padding: 1rem;
+        width: auto;
         border-bottom: 0.3rem solid var(--secondary-color);
         color:var(--primary-color);
         font-size: 1.5rem;
+        transition: 0.2s ease-in-out;
+        padding: 0 1em ;
     }
-    nav ul li:hover {
+    nav ul li.act {
         color: var(--contras-color);
         font-weight: bold;
-        font-size: 2rem;
-        color: var(--accent-color);
-    }
-    nav ul li:enabled ~ nav ul {
-        display: none;
-    }
-     /* Checked Burger */
-     .burger {
-        display: block;
-        position: absolute;
-        left: 0;
-       top: 4rem;
-        font-size: 2rem;
-        border-radius: 0 50% 50% 0;
-        width: 3rem;
-        height: 3rem;
-        background: var(--dark-trans);
-        padding-right: 0.5rem;
-     }
-     .burger .bi-x{
-        display: none;
-        position: absolute;
-       left: 50%;
-       top: 50%;
-       transform: translate(-500% , -50%);
-        border: 0.1rem solid var(--primary-color);
-        border-radius: 50%;
-     }
-     .burger .bi-x:hover {
-        background: var(--contras-color);
-        color: var(--read-color);
-     }
-     #burgerCheck:checked ~  .burger{
-        border: solid var(--contras-color);
-        border-width: 0.11rem 0 0 0;
-     }
-    #burgerCheck:checked ~  .burger .bi-list{
-        display: none;
-    } 
-    #burgerCheck:checked ~ .burger .bi-x,
-    #burgerCheck:checked ~ nav ul{
-        display: flex;
-        flex-direction: column;
-        z-index: 4;
-    } 
-    #burgerCheck:checked ~ .burger .bi-x {
-        display: contents;
-    }
-    #burgerCheck:checked ~ nav ul li {
         color: var(--contras-color);
-
+        background: var(--Gold-Color);
+        border-radius: 1em;
     }
+  
+  
+    
     .middle_bar {
         display: flex;
         flex-direction: row-reverse;
@@ -983,6 +970,13 @@
         padding: 0;
         margin: 0;
     } 
+    .CoinHeader {
+        left: 7.5em;
+        top: 1.5em;
+    }
+    .CoinHeader:hover {
+        transform: none;
+    }
     .CoinDetails p {
         font-size: 0.8rem;
         
@@ -990,9 +984,6 @@
     .CoinDetails img {
         width: 2rem;
         height: 2rem;
-    }
-    #CoinsSearchSection .coinBox {
-        flex-direction: column;
     }
     /* Search Mobile */
     #searchDiv  {
@@ -1088,6 +1079,11 @@
         color: var(--read-color);
         padding: 1em;
     }
+    .homeBody{
+        font-size: 0.9rem;
+        width: 100%;
+    }
+    
 
 }
 
