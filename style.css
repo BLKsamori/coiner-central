@@ -1,1103 +1,1074 @@
 :root {
-    --bg-color: linear-gradient(90deg, rgba(85,95,105,1) 0%, rgba(29,30,33,1) 100%);
-    --primary-color: #e19116;
-    --secondary-color:  rgba(125,35,7,1) 100%;
-    --dark-orange: rgb(78, 50, 18);
-    --dark-trans:  rgba(57, 57, 57, 0.4);
-    --dark-shade:  1rem 1rem 2rem rgba(0,0,0,.5);;
-    --light-trans:   rgba(255, 255, 255, 0.783);
-    --light-shade:0 15px 20px rgba(0,0,0,.2);
-    --green-active : #03c300;
-    --read-color: black;
-    --accent-color: #0d6efd;
-    --contras-color: white;
-    --error-color: red;
-    --Gold-Color: #ffb700;
-    --font-1: 'Asap', sans-serif;
-    --font-2: 'Khand', sans-serif;
-    --check-img: url('assets/Check_green.png');
-    --header-bg: linear-gradient(360deg, rgba(212, 148, 84, 0) 0%, rgba(125,35,7,1) 140%);
-    --footer-bg: linear-gradient(180deg, rgba(212, 148, 84, 0) 0%, rgba(125,35,7,1) 140%);
-    --bg-img: url('assets/Orange-Safe.jpg');
-    /* --loader-bg-img:url('assets/coin_dark_bg.png'); */
-    --loader-gif: url('assets/bank-gif.gif');
-    --coin-img: url('assets/ethereum-coin.png');
-    --home-img: url(assets/pexels-karolina-grabowska-5980923.jpg)
+  --bg-color: linear-gradient(
+    90deg,
+    rgba(85, 95, 105, 1) 0%,
+    rgba(29, 30, 33, 1) 100%
+  );
+  --primary-color: #e19116;
+  --secondary-color: rgba(125, 35, 7, 1) 100%;
+  --dark-orange: rgb(78, 50, 18);
+  --dark-trans: rgba(57, 57, 57, 0.4);
+  --dark-shade: 1rem 1rem 2rem rgba(0, 0, 0, 0.5);
+  --light-trans: rgba(255, 255, 255, 0.783);
+  --light-shade: 0 15px 20px rgba(0, 0, 0, 0.2);
+  --green-active: #03c300;
+  --read-color: black;
+  --accent-color: #0d6efd;
+  --contras-color: white;
+  --error-color: red;
+  --Gold-Color: #ffb700;
+  --font-1: "Asap", sans-serif;
+  --font-2: "Khand", sans-serif;
+  --check-img: url("assets/Check_green.png");
+  --header-bg: linear-gradient(
+    360deg,
+    rgba(212, 148, 84, 0) 0%,
+    rgba(125, 35, 7, 1) 140%
+  );
+  --footer-bg: linear-gradient(
+    180deg,
+    rgba(212, 148, 84, 0) 0%,
+    rgba(125, 35, 7, 1) 140%
+  );
+  --bg-img: url("assets/Orange-Safe.jpg");
+  /* --loader-bg-img:url('assets/coin_dark_bg.png'); */
+  --loader-gif: url("assets/bank-gif.gif");
+  --coin-img: url("assets/ethereum-coin.png");
+  --home-img: url(assets/pexels-karolina-grabowska-5980923.jpg);
 }
 
 /* DeskTOP */
-    body {
-        color: var(--secondary-color);
-        background-image: var(--bg-img);
-        background-attachment: fixed;
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center center;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-        font-family: var(--font-2);
-    }
-    
-    .hideIt {
-        display: none;
-    }
-
-    main {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        margin: 0;
-        padding: 0;
-    }
-    /* LOADER Progress Bar */
-    #LoaderDIV {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh;
-        z-index: 9999;
-        background-image: var(--loader-bg-img);
-        background-size: cover;
-        background-blend-mode: darken;
-        top: 0;
-    }
-    .Loader {
-        font-size: 2rem;
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50% , -50%);
-        width: auto;
-        height: auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        z-index: 100;
-    }
-    .LoaderGIF{
-        width: 5em;
-        height: 5em;
-    }
-    .Loader h2 {
-        color: var(--contras-color);
-        font-size: 1.5em;
-        -webkit-text-stroke: 0.02em  var(--read-color) 
-    }
-    .LoaderSmallGIF {
-        width: 2rem;
-        height: 2rem;
-        text-align: center;
-    }
-    .LoaderSmallGIF ,.LoaderGIF{
-        background-image: var(--loader-gif);
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center center;
-    }
-    /* Header & NAV */
-    header {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        background: var(--header-bg);
-        font-family: var( --font-2);
-        width: 100%;
-        height: auto;
-        padding: 0;
-        margin: 0;
-        text-align: center;
-        align-items: center;
-        justify-content: center;
-        padding: 1em;
-        gap: 1rem;
-
-    }
-    header .headerTitle {
-        flex-basis: 60%;
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        align-items: flex-end ;
-        align-items: center;
-        gap: 1em;
-    }
-    header nav{
-        flex-basis: 30%;
-        display: flex;
-        text-align: center;
-        align-items: center;
-        justify-content: center;
-    }
-    header nav ul {
-        display: flex;
-        flex-direction: row;
-        gap: 1em;
-    }
-    header h1 {
-        font-size: 2em;
-        font-family: var(--font-2);
-        padding-left: 0.5em;
-        color: var(--contras-color);
-        -webkit-text-stroke: 0.02em  var(--secondary-color);
-        margin: 0;
-        padding: 0.2em;
-    }
-    header div  h2 {
-        display: inline-block;
-        font-family: var(--font-2);
-        font-size: 2em;
-        color: var(--contras-color);
-        margin: 0; 
-    }
-    .coin_img  {
-        background-image: var(--coin-img);
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center center;
-        width: 3rem;
-        height: 3rem;
-        padding: 1rem;
-        cursor: pointer;
-    }
-
-    nav li {
-        display: inline;
-        list-style: none;
-        color: var(--contras-color);
-        font-size: 1.2em;
-        text-decoration: none;
-        padding-left: 0.8em;
-        transition: 0.3s ease-in-out;
-    }
-    nav li:hover {
-        cursor: pointer;
-        transform: scale( 1.1);
-    }
-
-    /* Home Page */
-    .homeBody{
-        font-size: 1rem;
-        width: 70%;
-        height: 100%;
-        position: absolute;
-        color: var(--contras-color);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-self: center;
-        justify-self: center;
-        padding: 10%;
-        top: 0;
-        left: 0;
-        z-index: 900000;
-
-        /* bg Home */
-        background: var( --bg-img);
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        position: fixed;
-        height: 100vh;
-        width: 100vw;
-    }
-    .Page_gone {
-        animation: slide_from_screen 5s alternate;
-    }
-    @keyframes slide_from_screen {
-        0% {
-            opacity: 1;
-            top: 0%;
-        }
-        10%{
-            opacity: 0;
-            top: -100%;
-        }
-        100% {
-            opacity: 0;
-            top: -1000%;
-        }
-        
-    }
-
-    .homeBody h2{
-        font-size: 3.5em;
-        filter: drop-shadow(0.01em 0.1em 0.05em rgb(0, 0, 0));
-
-    }
-    .homeBody p{
-        font-size: 1.6em;
-        filter: drop-shadow(0.01em 0.1em 0.05em rgb(0, 0, 0));
-    }
-    .homeBody button {
-        border: none;
-        width: 10em;
-        height: 3em;
-        background: var(--contras-color);
-        font-size: 1.2em;
-        border-radius: 0.3em;
-        margin-left: 50%;
-    }
-
-    /* COIN PAGE  */
-    #CoinsSection {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: center;
-        
-    }
-    .coin_wrapper {
-    margin: 0 ;
-    margin-bottom: -1.5rem;
-    box-sizing: border-box ;
-    padding: 0 ;
-    height: auto;
-    position: relative;
-    }
-    .CoinHeader {
-    position: relative;
-    border-radius: 50%;
-    border: 0.1rem solid var(--contras-color);
-    background: var(--Gold-Color);
-    color: var(--read-color);
-    width: 3rem;
-    height: 3rem;
-    left: 6.5rem;
-    top: 1.5rem;
-    display: inline-block;
-    box-sizing: border-box;
-    margin: 0 ;
-    margin-top: -2.5rem;
-    padding: 0;
-    transition: 0.2s ease-in-out;
-    }
-    .CoinHeader:hover {
-        transform: scale(1.1);
-        background: var(--accent-color);
-        cursor: grab;
-    }
-    .form-check.form-switch {
-        font-size: 1rem;
-        margin: 0 !important;
-        padding: 0  !important;
-        display: flex;
-        color: var(--contras-color);
-        flex-direction: column;
-        box-sizing: border-box;
-       align-items: center;
-       justify-content: center;
-        
-    }
-    .form-check.form-switch p {
-        position: relative;
-        margin: 0 !important;
-        padding:  1rem 0 0 0  !important;
-        font-size: 0.8rem;
-        font-family: var(--font-2);
-    }
-    .form-check.form-switch > input[type="checkbox"]{
-        display:none;
-    }
-    input[type="checkbox"]:checked ~ .CoinHeader  {
-        background:red;
-    }
-    .coinBox{
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: center;
-        gap: 0.2rem;
-        font-family:var( --font-1);
-        background: var( --light-trans);
-        color: var( --read-color);
-        box-shadow: var(--light-shade);
-        width: 15rem;
-        max-height: 10rem;
-        border: 0.1rem solid var( --primary-color);
-        margin: 0.5rem;
-        margin-bottom: 1.5em;
-        box-sizing: border-box;
-        padding: 2rem 0 1rem 0rem;
-        border-radius: 0.4rem;
-        text-transform: capitalize;
-        transition: 0.3s;
-        text-align: center;
-    }
-    .coinBox:hover {
-        background: var( --dark-orange);
-        box-shadow: var(--dark-shade);
-    }
-    .coinBox:hover > #prt1 {
-        color: var( --contras-color);
-   
-    }
-    /* .activeCoin . */
-    .activeCoin .CoinHeader {
-        background: var(--check-img);
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center center;
-        filter: saturate(8);
-    }
-    .activeCoin .CoinHeader  p {
-        opacity: 0;
-    }
-    /* collapse  */
-    .coinBox #prt1 , .coinBox #prt2{
-    width: 13rem;
-    height: auto;
-    z-index: 2;
+body {
+  color: var(--secondary-color);
+  background-image: var(--bg-img);
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: var(--font-2);
 }
-    .coinBox #prt1 {
-        overflow-y: scroll;
-        max-height: 5em;
-    }
-    .coinBox #prt2{
-        z-index: 3;
 
-    }
+.hideIt {
+  display: none;
+}
 
-    .coinBox button.btn-primary {
-        font-size: 0.8rem;
-        padding: 0.5em;
-        background: var(--secondary-color);
-        color: var(--contras-color);
-        border: 0;
-    }
-  
-    .CoinDetails{
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        height: auto;
-        gap: 0.2rem;
-    }
-    .collapse , .CoinDetails, .card-body{
-        z-index: 5000 !important;
-    }
-    .CoinDetails p {
-        font-size: 1rem;
-    }
-    .CoinDetails img {
-        width: 3rem;
-        height: 3rem;
-    }
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+/* LOADER Progress Bar */
+#LoaderDIV {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 9999;
+  background-image: var(--loader-bg-img);
+  background-size: cover;
+  background-blend-mode: darken;
+  top: 0;
+}
+.Loader {
+  font-size: 2rem;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 100;
+}
+.LoaderGIF {
+  width: 5em;
+  height: 5em;
+}
+.Loader h2 {
+  color: var(--contras-color);
+  font-size: 1.5em;
+  -webkit-text-stroke: 0.02em var(--read-color);
+}
+.LoaderSmallGIF {
+  width: 2rem;
+  height: 2rem;
+  text-align: center;
+}
+.LoaderSmallGIF,
+.LoaderGIF {
+  background-image: var(--loader-gif);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+/* Header & NAV */
+header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background: var(--header-bg);
+  font-family: var(--font-2);
+  width: 100%;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  padding: 1em;
+  gap: 1rem;
+}
+header .headerTitle {
+  flex-basis: 60%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  align-items: center;
+  gap: 1em;
+}
+header nav {
+  flex-basis: 30%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+header nav ul {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+}
+header h1 {
+  font-size: 2em;
+  font-family: var(--font-2);
+  padding-left: 0.5em;
+  color: var(--contras-color);
+  -webkit-text-stroke: 0.02em var(--secondary-color);
+  margin: 0;
+  padding: 0.2em;
+}
+header div h2 {
+  display: inline-block;
+  font-family: var(--font-2);
+  font-size: 2em;
+  color: var(--contras-color);
+  margin: 0;
+}
+.coin_img {
+  background-image: var(--coin-img);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 3rem;
+  height: 3rem;
+  padding: 1rem;
+  cursor: pointer;
+}
 
-    .middle_bar {
-        width: 100%;
-        display: flex;
-        flex-direction: row-reverse;
-        flex-wrap: nowrap;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 1rem;
-        padding: 0 1rem ;
-        height: 2rem;
-        padding: 0 10rem;
-        margin-top: 1rem;
-    }
-     .counter_box {
-        display: flex;
-        flex-direction: row;
-        padding: 0.2rem;
-        height: 2.2rem;
-        margin-top: 0.2rem;
-    }
-    .counter_box  button {
-        border-radius: 0.2rem;
-        margin-left: 0.4rem ;
-    }
-    .counter_box  .go_compare {
-        background: var(--primary-color);
-        color: var(--read-color);
-        font-size: 0.9rem;
-        font-family: var(--font-1);
-        border: 0.1rem solid var(--contras-color);
-        padding: 0 1rem;
-    }
-    .counter_box .clean_compare {
-        opacity: 0;
-        border: 0.1rem solid var(--contras-color);
-        transition: 0.3s ease-in-out;
-    }
-    .CompareActive .go_compare{
-        background: var(--light-trans);
-        color: var(--read-color);
-    }
-    .CompareActive .clean_compare {
-        background: rgb(225, 64, 64);
-        color: var(--contras-color);
-        display: block;
-        opacity: 1;
-    }
-        /* SearchBAR  + Section*/
-        .Search {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: nowrap;
-            padding: 0.2em;
-            border-radius: 0.2em;
-            position: sticky;
-            height: 100%;
-        }
-        #SearchBox{
-            background: var(--primary-color);
-            margin-right: 2rem;
-        }
-        #SearchBox::placeholder {
-            color:var(--contras-color);
-            text-align: center;
-        }
-        .Search label {
-            display: flex;
-            flex-direction: row;
-            align-items: baseline;
-            gap: 0.5rem;
-            justify-content: center;
-            cursor: pointer;
-            background: var(--primary-color);
-            color: var(--read-color);
-            padding: 0.2rem 1rem  0.2rem 1rem;
-            border: 0.1rem solid var(--contras-color);
-            border-radius: 0.2rem;
-            margin-right: 0.5rem;
-        }
-        #CoinsSearchSection {
-            position: fixed;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50% , -50%);
-            background: var(--dark-orange);
-            box-shadow: 0 15px 20px rgba(0,0,0,.2);
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
-            z-index: 4;
-            width: 70%;
-            max-height: 90%;
-            overflow-y: scroll;
-            z-index: 6;
-        }
-        #CoinsSearchSection .SearchHeader {
-            flex-basis: 100%;
-            position: sticky;
-            display: flex;
-            flex-direction: row;
-            flex-wrap: nowrap;
-            height: 4rem;
-            padding: 1rem;
-            gap: 1rem;
-            width: 100%;
-            align-items: center;
-            justify-content: center;
-            background: var(--primary-color);
-        }
-        #CoinsSearchSection .SearchHeader > button{
-            flex-basis: 20%;
-            background: transparent;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--contras-color);
-        }
-        #CoinsSearchSection .SearchHeader > h5{
-            flex-basis: 60%;
-            align-items: center;
-            justify-content: center;
-            color: var(--contras-color);
-            
-        }
-        #CoinsSearchSection .SearchHeader > div.counter_box{
-            flex-basis: 20%;
-           
-        }
+nav li {
+  display: inline;
+  list-style: none;
+  color: var(--contras-color);
+  font-size: 1.2em;
+  text-decoration: none;
+  padding-left: 0.8em;
+  transition: 0.3s ease-in-out;
+}
+nav li:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
 
-    #CoinsSearchSection h5 button  {
-        border: none;
-        /* background: var(--Gold-Color) */
-    }
-    #CoinsSearchSection h5 {
-        font-family: var(--font-2);
-        padding-top: 1rem;
-        font-weight: bold;
-    }
-    #CoinsSearchSection  .searchResult{
-        flex-basis: 100%;
-        position: relative;
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: center;
-        overflow-y: scroll;
-        box-sizing: border-box;
-        padding: 0rem;
-    }
-    .searchResult .coin_wrapper{
-        box-sizing: border-box;
-        flex-basis: 50%;
-        width: 100%;
-        padding: 0.2rem;
-    }
-    .Search {
-        margin: 0;
-        padding: 0;
-    }
-    .counter_box {
-        margin: 0;
-        margin-top: 0.2rem;
-        padding: 0;
-        height: 2rem;
-    }
-    .go_compare{
-        width: 9rem;
-        margin: 0;
-    }
+/* Home Page */
+.homeBody {
+  font-size: 1rem;
+  width: 70%;
+  height: 100%;
+  position: absolute;
+  color: var(--contras-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+  justify-self: center;
+  padding: 10%;
+  top: 0;
+  left: 0;
+  z-index: 900000;
 
-    /* REPORT Banner  */
-    .ReportBannerScreen{
-        display: flex;
-        flex-direction: column;
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 7;
-        width: 100%;
-        height: 100%;
-        align-items: center;
-        justify-content: center;
-        font-size: 1rem;
-    }
- 
-    .alert_wrapper {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 7;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .BackDrop {
-        position: absolute;
-        left: 0;
-        top: 0;
-        background: var(--dark-trans);
-        box-shadow: var(--dark-shade);
-        width: 100vw;
-        height: 100%;
-        z-index: 6;
-    }
-    .ReportBanner {
-        z-index: 6;
-        background: var(--light-trans);
-        color: var(--read-color);
-        font-family:var( --font-1);
-        display: flex;
-        flex-direction: column;
-        flex-wrap: nowrap;
-        gap: 0.5em;
-        align-items: center;
-        justify-content: center;
-        padding:  0 0.7rem 0  0.7rem;
-        width: 50%;
-        height: auto;
-        overflow-y: scroll;
-        border-radius: 0.3rem;
-        border: 0.2rem solid  var(--primary-color);
-    }
-    .ReportBanner h2 {
-        margin: 1rem 0 0 0;
-    }
-    .reportList {
-        width: 100%;
-    }
-    .CoinReportLine {
-        display: flex;
-        flex-direction: row;
-        gap: 0.2rem;
-        color: var(--secondary-color);
-        display: flex;
-        margin-bottom: 0.2rem;
-        flex-direction: row; 
-        width: 100%;
-        height: 3.5em;
-        border-top: 0.1em solid var( --primary-color);
-        margin: 0 0 0.1rem 0;
-    }
-    .CoinReportLine span {
-        display: flex;
-        background: var(--contras-color);
-        width: 2rem;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.2rem;
-    }
-    .CoinReportLine label {
-        padding-left: 1rem;
-        background: var(--contras-color);
-        width: 90%;
-        display: flex;
-        flex-direction: column;
-    }
-    .CoinReportLine input[type="checkbox"]{
-        width: 1.5em;
-        height: 1.5em;
-        align-self: flex-start;
-        width: 3rem;
-    }
-    .EndReport {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        padding: 1em;
-        gap: 10em;
-    }
-    .EndReport button {
-        border-radius: 0.5rem;
-        width: 5em;
-        height: 2em;
-        padding: none;
-    }
-    .EndReport button:nth-child(1){
-        border: 0.2 solid var(--contras-color);
-        color:  var( --primary-color);
-        background: rgb(39, 39, 39);
-    }
-    .EndReport button:nth-child(2){
-        border: 0.1em solid var(--secondary-color);
-        background: var( --primary-color);
-    }
-    .EndReport button:nth-child(1):hover{
-        background: var(--error-color);
-        color: var(--contras-color);
-    }
-    .EndReport button:nth-child(2):hover{
-        background: var(--accent-color);
-        color: var(--contras-color);
-    }
-    .reportGood {
-        background: var(--green-active) !important;
-        color: var(--contras-color);
-        animation: doneBtn_swirl 2.5s infinite;
-    }
-    @keyframes doneBtn_swirl {
-        0% { transform: skewX(9deg); } 
-        10% { transform: skewX(-8deg); } 
-        20% { transform: skewX(7deg); } 
-        30% { transform: skewX(-6deg); } 
-        40% { transform: skewX(5deg); } 
-        50% { transform: skewX(-4deg); } 
-        60% { transform: skewX(3deg); } 
-        70% { transform: skewX(-2deg); } 
-        80% { transform: skewX(1deg); } 
-        90% { transform: skewX(0deg); } 
-        100% { transform: skewX(0deg); } 
-        }
-      
-    /* CHART */
-    #chartContainer{
-        margin: 2rem;
-    }
-    #chartSummery {
-        border: 0.1rem solid black;
-        padding: 1rem;
-        background: rgba(255, 255, 255, 0.783);
-        box-shadow: 0 15px 20px rgba(0,0,0,.2);
-        width: 40%;
-        min-width: 30rem;
-        align-self: center;
-       text-align: center;
-       margin: 0rem;
-    }
-    #chartSummery h4 {
-        font-family: var(--font-1);
-    }
-    #chartSummery p {
-        font-family: var(--font-2);
-        font-size: 1.3rem;
-    }
-    /* ABOUT PAGE */
-    .about {
-        display: flex;
-        flex-direction: column;
-        flex-wrap: nowrap;
-        width: 80%;
-        background: var(--light-trans);
-        box-shadow: var(--light-shade); 
-        text-align: center;
-        align-items: center;
-        justify-content: center;
-        margin: 1rem;
-    }
-    .about > h3 {
-        color: var(--read-color);
-        padding-top: 1rem;
-        font-size: 3rem;
-        font-family: var(--font-1);
-    }
-    .about article{
-        font-size: 1.3rem;
-        line-height: 2rem;
-        align-self: center;
-        justify-self: center;
-        width: 100%;
-        padding-left: 2rem;
-        padding-right: 2rem;
-        color: var(--read-color);
-        text-align: center;
-    }
-    /* FEED PAGE */
-    .emptyFeeds {
-        display: flex;
-        flex-direction: column;
-        font-size: 1.2rem;
-        line-height: 2rem;
-        text-align: center;
-        width: 80%;
-        color: var(--secondary-color);
-        background: var(--light-trans);
-        box-shadow: var(--light-shade);
-        text-align: center;
-        padding: 3em;
-        margin: 1rem;
-    }
-    .LiveFeeds {
-        display: flex;
-        flex-direction: column;
-        width: 90%;
-        align-items: center;
-    }
-    .canvasjs-chart-canvas {
-        width: 100%;
-        margin: 0  !important;
-        padding: 0 !important;
-    }
-    /* footer */
-    footer{
-        margin-top: auto;
-        padding: 2rem 0;
-        display: flex;
-        background: var(--footer-bg);
-        background-position-x: rotate(90deg);
-        color: var(--contras-color);
-        height: 4rem;
-        align-items: center;
-        justify-content: center;
-    }
-    .new_alert{
-        display: flex;
-        flex-direction: column;
-        position: fixed;
-        width: 20rem;
-        left: 50;
-        top: 50%;
-        transform: translate( 0%, -50%);
-        background: rgba(255, 255, 255, 0.914);
-        box-shadow: 0 15px 20px rgba(0,0,0,.2);
-        padding: 1rem;
-        border-radius: 0.3rem;
-        z-index: 20;
-    }
-    .alert_head {
-        display: flex;
-        flex-direction: row;
-        align-items: baseline;
-        border-bottom: 0.2rem solid var(--secondary-color);
-        padding: 0.1rem;
-    }
-    .alert_head h5 {
-        color: var( --error-color);
-     -webkit-text-stroke: 0.02rem black;
-      padding-left: 1rem;
-    }
-    .alert_head button {
-        border: none;
-    }
-    .alert_head button i {
-        font-size: 1.2rem;
-    }
-    
+  /* bg Home */
+  background: var(--bg-img);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+}
+.Page_gone {
+  animation: slide_from_screen 5s alternate;
+}
+@keyframes slide_from_screen {
+  0% {
+    opacity: 1;
+    top: 0%;
+  }
+  10% {
+    opacity: 0;
+    top: -100%;
+  }
+  100% {
+    opacity: 0;
+    top: -1000%;
+  }
+}
 
+.homeBody h2 {
+  font-size: 3.5em;
+  filter: drop-shadow(0.01em 0.1em 0.05em rgb(0, 0, 0));
+}
+.homeBody p {
+  font-size: 1.6em;
+  filter: drop-shadow(0.01em 0.1em 0.05em rgb(0, 0, 0));
+}
+.homeBody button {
+  border: none;
+  width: 10em;
+  height: 3em;
+  background: var(--contras-color);
+  font-size: 1.2em;
+  border-radius: 0.3em;
+  margin-left: 50%;
+}
+
+/* COIN PAGE  */
+#CoinsSection {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+.coin_wrapper {
+  margin: 0;
+  margin-bottom: -1.5rem;
+  box-sizing: border-box;
+  padding: 0;
+  height: auto;
+  position: relative;
+}
+.CoinHeader {
+  position: relative;
+  border-radius: 50%;
+  border: 0.1rem solid var(--contras-color);
+  background: var(--Gold-Color);
+  color: var(--read-color);
+  width: 3rem;
+  height: 3rem;
+  left: 6.5rem;
+  top: 1.5rem;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0;
+  margin-top: -2.5rem;
+  padding: 0;
+  transition: 0.2s ease-in-out;
+}
+.CoinHeader:hover {
+  transform: scale(1.1);
+  background: var(--accent-color);
+  cursor: grab;
+}
+.form-check.form-switch {
+  font-size: 1rem;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex;
+  color: var(--contras-color);
+  flex-direction: column;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+}
+.form-check.form-switch p {
+  position: relative;
+  margin: 0 !important;
+  padding: 1rem 0 0 0 !important;
+  font-size: 0.8rem;
+  font-family: var(--font-2);
+}
+.form-check.form-switch > input[type="checkbox"] {
+  display: none;
+}
+input[type="checkbox"]:checked ~ .CoinHeader {
+  background: red;
+}
+.coinBox {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  font-family: var(--font-1);
+  background: var(--light-trans);
+  color: var(--read-color);
+  box-shadow: var(--light-shade);
+  width: 15rem;
+  max-height: 10rem;
+  border: 0.1rem solid var(--primary-color);
+  margin: 0.5rem;
+  margin-bottom: 1.5em;
+  box-sizing: border-box;
+  padding: 2rem 0 1rem 0rem;
+  border-radius: 0.4rem;
+  text-transform: capitalize;
+  transition: 0.3s;
+  text-align: center;
+}
+.coinBox:hover {
+  background: var(--dark-orange);
+  box-shadow: var(--dark-shade);
+}
+.coinBox:hover > #prt1 {
+  color: var(--contras-color);
+}
+/* .activeCoin . */
+.activeCoin .CoinHeader {
+  background: var(--check-img);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  filter: saturate(8);
+}
+.activeCoin .CoinHeader p {
+  opacity: 0;
+}
+/* collapse  */
+.coinBox #prt1,
+.coinBox #prt2 {
+  width: 13rem;
+  height: auto;
+  z-index: 2;
+}
+.coinBox #prt1 {
+  overflow-y: scroll;
+  max-height: 5em;
+}
+.coinBox #prt2 {
+  z-index: 3;
+}
+
+.coinBox button.btn-primary {
+  font-size: 0.8rem;
+  padding: 0.5em;
+  background: var(--secondary-color);
+  color: var(--contras-color);
+  border: 0;
+}
+
+.CoinDetails {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  gap: 0.2rem;
+}
+.collapse,
+.CoinDetails,
+.card-body {
+  z-index: 5000 !important;
+}
+.CoinDetails p {
+  font-size: 1rem;
+}
+.CoinDetails img {
+  width: 3rem;
+  height: 3rem;
+}
+
+.middle_bar {
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 0 1rem;
+  height: 2rem;
+  padding: 0 10rem;
+  margin-top: 1rem;
+}
+.counter_box {
+  display: flex;
+  flex-direction: row;
+  padding: 0.2rem;
+  height: 2.2rem;
+  margin-top: 0.2rem;
+}
+.counter_box button {
+  border-radius: 0.2rem;
+  margin-left: 0.4rem;
+}
+.counter_box .go_compare {
+  background: var(--primary-color);
+  color: var(--read-color);
+  font-size: 0.9rem;
+  font-family: var(--font-1);
+  border: 0.1rem solid var(--contras-color);
+  padding: 0 1rem;
+}
+.counter_box .clean_compare {
+  opacity: 0;
+  border: 0.1rem solid var(--contras-color);
+  transition: 0.3s ease-in-out;
+}
+.CompareActive .go_compare {
+  background: var(--light-trans);
+  color: var(--read-color);
+}
+.CompareActive .clean_compare {
+  background: rgb(225, 64, 64);
+  color: var(--contras-color);
+  display: block;
+  opacity: 1;
+}
+/* SearchBAR  + Section*/
+.Search {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  padding: 0.2em;
+  border-radius: 0.2em;
+  position: sticky;
+  height: 100%;
+}
+#SearchBox {
+  background: var(--primary-color);
+  margin-right: 2rem;
+}
+#SearchBox::placeholder {
+  color: var(--contras-color);
+  text-align: center;
+}
+.Search label {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 0.5rem;
+  justify-content: center;
+  cursor: pointer;
+  background: var(--primary-color);
+  color: var(--read-color);
+  padding: 0.2rem 1rem 0.2rem 1rem;
+  border: 0.1rem solid var(--contras-color);
+  border-radius: 0.2rem;
+  margin-right: 0.5rem;
+}
+
+.counter_box {
+  margin: 0;
+  margin-top: 0.2rem;
+  padding: 0;
+  height: 2rem;
+}
+.go_compare {
+  width: 9rem;
+  margin: 0;
+}
+/* search section */
+.searchSection {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  background: var(--dark-orange);
+  border-radius: 0.5em;
+  width: 99vw;
+  padding: 1em;
+  border: 0.3em solid var(--contras-color)
+}
+.searchHeader {
+  color: var(--contras-color);
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 0 2em;
+  width: 100%;
+}
+.searchHeader button{
+  background: transparent;
+  border: none;
+}
+.searchHeader button i{
+  font-size: 1.5em;
+  color: var(--contras-color);
+}
+.searchResult {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* REPORT Banner  */
+.ReportBannerScreen {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 7;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+.alert_wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.BackDrop {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: var(--dark-trans);
+  box-shadow: var(--dark-shade);
+  width: 100vw;
+  height: 100%;
+  z-index: 6;
+}
+.ReportBanner {
+  z-index: 6;
+  background: var(--light-trans);
+  color: var(--read-color);
+  font-family: var(--font-1);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 0.5em;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0.7rem 0 0.7rem;
+  width: 50%;
+  height: auto;
+  overflow-y: scroll;
+  border-radius: 0.3rem;
+  border: 0.2rem solid var(--primary-color);
+}
+.ReportBanner h2 {
+  margin: 1rem 0 0 0;
+}
+.reportList {
+  width: 100%;
+}
+.CoinReportLine {
+  display: flex;
+  flex-direction: row;
+  gap: 0.2rem;
+  color: var(--secondary-color);
+  display: flex;
+  margin-bottom: 0.2rem;
+  flex-direction: row;
+  width: 100%;
+  height: 3.5em;
+  border-top: 0.1em solid var(--primary-color);
+  margin: 0 0 0.1rem 0;
+}
+.CoinReportLine span {
+  display: flex;
+  background: var(--contras-color);
+  width: 2rem;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+.CoinReportLine label {
+  padding-left: 1rem;
+  background: var(--contras-color);
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+.CoinReportLine input[type="checkbox"] {
+  width: 1.5em;
+  height: 1.5em;
+  align-self: flex-start;
+  width: 3rem;
+}
+.EndReport {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 1em;
+  gap: 10em;
+}
+.EndReport button {
+  border-radius: 0.5rem;
+  width: 5em;
+  height: 2em;
+  padding: none;
+}
+.EndReport button:nth-child(1) {
+  border: 0.2 solid var(--contras-color);
+  color: var(--primary-color);
+  background: rgb(39, 39, 39);
+}
+.EndReport button:nth-child(2) {
+  border: 0.1em solid var(--secondary-color);
+  background: var(--primary-color);
+}
+.EndReport button:nth-child(1):hover {
+  background: var(--error-color);
+  color: var(--contras-color);
+}
+.EndReport button:nth-child(2):hover {
+  background: var(--accent-color);
+  color: var(--contras-color);
+}
+.reportGood {
+  background: var(--green-active) !important;
+  color: var(--contras-color);
+  animation: doneBtn_swirl 2.5s infinite;
+}
+@keyframes doneBtn_swirl {
+  0% {
+    transform: skewX(9deg);
+  }
+  10% {
+    transform: skewX(-8deg);
+  }
+  20% {
+    transform: skewX(7deg);
+  }
+  30% {
+    transform: skewX(-6deg);
+  }
+  40% {
+    transform: skewX(5deg);
+  }
+  50% {
+    transform: skewX(-4deg);
+  }
+  60% {
+    transform: skewX(3deg);
+  }
+  70% {
+    transform: skewX(-2deg);
+  }
+  80% {
+    transform: skewX(1deg);
+  }
+  90% {
+    transform: skewX(0deg);
+  }
+  100% {
+    transform: skewX(0deg);
+  }
+}
+
+/* CHART */
+#chartContainer {
+  margin: 2rem;
+}
+#chartSummery {
+  border: 0.1rem solid black;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.783);
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.2);
+  width: 40%;
+  min-width: 30rem;
+  align-self: center;
+  text-align: center;
+  margin: 0rem;
+}
+#chartSummery h4 {
+  font-family: var(--font-1);
+}
+#chartSummery p {
+  font-family: var(--font-2);
+  font-size: 1.3rem;
+}
+/* ABOUT PAGE */
+.about {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  width: 80%;
+  background: var(--light-trans);
+  box-shadow: var(--light-shade);
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem;
+}
+.about > h3 {
+  color: var(--read-color);
+  padding-top: 1rem;
+  font-size: 3rem;
+  font-family: var(--font-1);
+}
+.about article {
+  font-size: 1.3rem;
+  line-height: 2rem;
+  align-self: center;
+  justify-self: center;
+  width: 100%;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  color: var(--read-color);
+  text-align: center;
+}
+/* FEED PAGE */
+.emptyFeeds {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.2rem;
+  line-height: 2rem;
+  text-align: center;
+  width: 80%;
+  color: var(--secondary-color);
+  background: var(--light-trans);
+  box-shadow: var(--light-shade);
+  text-align: center;
+  padding: 3em;
+  margin: 1rem;
+}
+.LiveFeeds {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  align-items: center;
+}
+.canvasjs-chart-canvas {
+  width: 100%;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+/* footer */
+footer {
+  margin-top: auto;
+  padding: 2rem 0;
+  display: flex;
+  background: var(--footer-bg);
+  background-position-x: rotate(90deg);
+  color: var(--contras-color);
+  height: 4rem;
+  align-items: center;
+  justify-content: center;
+}
+.new_alert {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  width: 20rem;
+  left: 50;
+  top: 50%;
+  transform: translate(0%, -50%);
+  background: rgba(255, 255, 255, 0.914);
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  border-radius: 0.3rem;
+  z-index: 20;
+}
+.alert_head {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  border-bottom: 0.2rem solid var(--secondary-color);
+  padding: 0.1rem;
+}
+.alert_head h5 {
+  color: var(--error-color);
+  -webkit-text-stroke: 0.02rem black;
+  padding-left: 1rem;
+}
+.alert_head button {
+  border: none;
+}
+.alert_head button i {
+  font-size: 1.2rem;
+}
 
 /* SMART PHONES */
-@media screen and ( max-width: 767px){
-    body {
-        background-size: cover;
-        background-position: center center;
-    }
-    /* LOADER Progress Bar */
-    #LoaderDIV {
-        background-size: cover ;
-        background-position: center;
-    }
-    /* Header */
-    header{
-        flex-basis: 100%;
-        width: 100%;
-        padding: 0.5em 0;
-    }
-    
-    header .headerTitle h1  ,header .headerTitle h2{
-        font-size: 1.3em;
-    }
-    header .headerTitle {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-    } 
+@media screen and (max-width: 767px) {
+  body {
+    background-size: cover;
+    background-position: center center;
+  }
+  /* LOADER Progress Bar */
+  #LoaderDIV {
+    background-size: cover;
+    background-position: center;
+  }
+  /* Header */
+  header {
+    flex-basis: 100%;
+    width: 100%;
+    padding: 0.5em 0;
+  }
 
-    nav {
-        background: var(--contras-color);
-        position: fixed;
-        width: 100vw;
-        height: 4em;
-        right:  0;
-        bottom: 0;
-        z-index: 5;
-        margin: auto;
-        justify-content: center;
-        align-items: center;
-    }
-    nav ul{
-        padding: 0.1em;
-        display: flex;
-        align-items: center;
-        text-align: start;
-        align-items: center;
-        justify-content: space-between;
-    }
-    nav ul li { 
-        width: auto;
-        border-bottom: 0.3rem solid var(--secondary-color);
-        color:var(--primary-color);
-        font-size: 1.5rem;
-        transition: 0.2s ease-in-out;
-        padding: 0 1em ;
-    }
-    nav ul li.act {
-        color: var(--contras-color);
-        font-weight: bold;
-        color: var(--contras-color);
-        background: var(--Gold-Color);
-        border-radius: 1em;
-    }
+  header .headerTitle h1,
+  header .headerTitle h2 {
+    font-size: 1.3em;
+  }
+  header .headerTitle {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
+  nav {
+    background: var(--contras-color);
+    position: fixed;
+    width: 100vw;
+    height: 4em;
+    right: 0;
+    bottom: 0;
+    z-index: 5;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+  }
+  nav ul {
+    padding: 0.1em;
+    display: flex;
+    align-items: center;
+    text-align: start;
+    align-items: center;
+    justify-content: space-between;
+  }
+  nav ul li {
+    width: auto;
+    border-bottom: 0.3rem solid var(--secondary-color);
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    transition: 0.2s ease-in-out;
+    padding: 0 1em;
+  }
+  nav ul li.act {
+    color: var(--contras-color);
+    font-weight: bold;
+    color: var(--contras-color);
+    background: var(--Gold-Color);
+    border-radius: 1em;
+  }
+
+  .middle_bar {
+    display: flex;
+    flex-direction: row-reverse;
+    padding: 0 1rem;
+    margin-top: 2rem;
+  }
+  .counter_box {
+    font-size: 0.8rem;
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  .coinBox {
+    width: 10rem;
+    height: 8rem;
+    padding: 0.4rem;
+    text-align: center;
+  }
+  .coinBox #prt1 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 9rem;
+    max-height: 4rem;
+    height: auto;
+    overflow-y: hidden;
+    align-items: center;
+    justify-content: center;
+  }
+  /*     /* name Div */
+  .coinBox #prt1 p {
+    flex-basis: 100%;
+    font-size: 0.7rem;
+    width: 6;
+    overflow-y: scroll;
+  }
+  .coinBox #prt1 h5 {
+    flex-basis: 100%;
+    font-size: 1rem;
+  }
+  /* Add div */
+  .coinBox #prt1 {
+    width: 4rem;
+    font-size: 1rem;
+  }
+  .coinBox #prt1 p {
+    font-size: 0.7rem;
+  }
+
+  /* Info div */
+  .coinBox #prt2 {
+    width: 9rem;
+    height: auto;
+    /* padding: 0.2rem; */
+  }
+  .coinBox button {
+    padding: 0.5em;
+  }
+  .coinBox .collapse {
+    width: 12rem;
+    height: auto;
+    color: #282828;
+    padding: 0;
+    margin: 0;
+  }
+  .CoinHeader {
+    left: 7.5em;
+    top: 1.5em;
+  }
+  .CoinHeader:hover {
+    transform: none;
+  }
+  .CoinDetails p {
+    font-size: 0.8rem;
+  }
+  .CoinDetails img {
+    width: 2rem;
+    height: 2rem;
+  }
+  /* Search Mobile */
+  #searchDiv {
+    font-size: 0.8rem;
+    display: flex;
+    width: 50%;
+    align-self: flex-start;
+    justify-self: flex-start;
+    padding: 0.2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.2rem;
+  }
+  .Search label {
+    background: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  #searchDiv p {
+    display: none;
+  }
   
+  #searchDiv i {
+    font-size: 0.8rem;
+    border: 0.1rem solid var(--contras-color);
+    border-radius: 50% 0 0 50%;
+    background: var(--Gold-Color);
+    padding: 0.2rem;
+    color: var(--read-color);
+    height: auto;
+  }
   
-    
-    .middle_bar {
-        display: flex;
-        flex-direction: row-reverse;
-        padding: 0 1rem ;
-        margin-top: 2rem;
-    }
-    .counter_box {
-        font-size: 0.8rem;
-        display: flex;
-        flex-direction: row-reverse;
-    }
-
-    .coinBox{
-        width: 10rem;
-        height: 8rem; 
-        padding: 0.4rem;
-        text-align: center;
-    }
-    .coinBox #prt1 {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        width: 9rem;
-        max-height: 4rem;
-        height: auto;
-        overflow-y: hidden;
-        align-items: center;
-        justify-content: center;
-    }
-    /*     /* name Div */
-    .coinBox #prt1 p  {
-        flex-basis: 100%;
-        font-size: 0.7rem;
-        width: 6;
-        overflow-y: scroll;
-    }
-    .coinBox #prt1 h5 {
-        flex-basis: 100%;
-        font-size: 1rem;
-    }
-    /* Add div */
-    .coinBox #prt1  {
-        width: 4rem;
-        font-size: 1rem;
-    }
-    .coinBox #prt1  p {
-        font-size: 0.7rem;
-    }
-    
-    /* Info div */
-    .coinBox #prt2 { 
-        width: 9rem;
-        height: auto;
-        /* padding: 0.2rem; */
-    
-    }
-    .coinBox button {
-        padding: 0.5em;
-    }
-    .coinBox .collapse {
-        width: 12rem;
-        height: auto;
-        color:  #282828;
-        padding: 0;
-        margin: 0;
-    } 
-    .CoinHeader {
-        left: 7.5em;
-        top: 1.5em;
-    }
-    .CoinHeader:hover {
-        transform: none;
-    }
-    .CoinDetails p {
-        font-size: 0.8rem;
-        
-    }
-    .CoinDetails img {
-        width: 2rem;
-        height: 2rem;
-    }
-    /* Search Mobile */
-    #searchDiv  {
-        font-size: 0.8rem;
-        display: flex;
-        width: 50%;
-        align-self: flex-start;
-        justify-self: flex-start;
-        
-    }
-    .Search label {
-        background: none;
-        border: none;
-        margin: 0;
-        padding: 0;
-    }
-
-    #searchDiv p {
-        display: none;
-    }
-    #searchDiv {
-        padding: 0.2rem;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 0.2rem;
-    }
-    #searchDiv  i {
-        font-size: 0.8rem;
-        border: 0.1rem solid var(--contras-color);
-        border-radius: 50% 0 0 50% ;
-        background: var(--Gold-Color);
-        padding: 0.2rem;
-        color: var(--read-color);
-        height: auto;
-    }
-    .searchResult .coin_wrapper{
-        flex-basis: 100%;
-    }
-    #CoinsSearchSection{ 
-        width: 90%;
-    }
-    /* FEED  mobile*/
-    .LiveFeeds {
-        width: 90%;
-    }
-    .emptyFeeds {
-        font-size: 1rem;
-        line-height: 1.5rem;
-        width: 90%;
-        padding: 1em;
-        margin: 1rem;
-    }
-    /* report mobile */
-    .ReportBanner {
-        width: 95%;
-    }
-    .ReportBanner h5 {
-        font-size: 1rem;
-    }
-    .ReportBanner p {
-        font-size: 0.8rem;
-    }
-    /* Chart Mobile */
-    #chartSummery {
-        margin: 1rem;
-        border: 0.1rem solid black;
-        padding: 1rem;
-        background: rgba(255, 255, 255, 0.783);
-        box-shadow: 0 15px 20px rgba(0,0,0,.2);
-        width: 100%;
-        min-width: 10rem;
-        align-self: center;
-       text-align: center;
-    }
-    #chartSummery p {
-        font-size: 1.2rem;
-    }
-    /* ABOUT mobile */
-    .about {
-        width: 95%;
-    }
-    .about h3 {
-        margin: 0;
-        padding:  0.4rem 0 0 0;
-        font-size: 2.5rem;
-    }
-    .about article{
-        font-size: 1.2rem;
-        line-height: 1.8rem;
-        font-family: Arial, Helvetica, sans-serif;
-        width: 100%;
-        color: var(--read-color);
-        padding: 1em;
-    }
-    .homeBody{
-        font-size: 0.9rem;
-        width: 100%;
-    }
-    
-
+  /* FEED  mobile*/
+  .LiveFeeds {
+    width: 90%;
+  }
+  .emptyFeeds {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    width: 90%;
+    padding: 1em;
+    margin: 1rem;
+  }
+  /* report mobile */
+  .ReportBanner {
+    width: 95%;
+  }
+  .ReportBanner h5 {
+    font-size: 1rem;
+  }
+  .ReportBanner p {
+    font-size: 0.8rem;
+  }
+  /* Chart Mobile */
+  #chartSummery {
+    margin: 1rem;
+    border: 0.1rem solid black;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.783);
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    min-width: 10rem;
+    align-self: center;
+    text-align: center;
+  }
+  #chartSummery p {
+    font-size: 1.2rem;
+  }
+  /* ABOUT mobile */
+  .about {
+    width: 95%;
+  }
+  .about h3 {
+    margin: 0;
+    padding: 0.4rem 0 0 0;
+    font-size: 2.5rem;
+  }
+  .about article {
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+    color: var(--read-color);
+    padding: 1em;
+  }
+  .homeBody {
+    font-size: 0.9rem;
+    width: 100%;
+  }
 }
 
 /* TABLETS */
-@media screen and ( min-width: 767px) and ( max-width: 1023px){
-    body {
-        background-size: cover;
-        background-position: center;
-    }
-     /* LOADER Progress Bar */
-     #LoaderDIV {
-        background-size: 300%;
-        background-position: center;
-    }
-    
+@media screen and (min-width: 767px) and (max-width: 1023px) {
+  body {
+    background-size: cover;
+    background-position: center;
+  }
+  /* LOADER Progress Bar */
+  #LoaderDIV {
+    background-size: 300%;
+    background-position: center;
+  }
 }
-
